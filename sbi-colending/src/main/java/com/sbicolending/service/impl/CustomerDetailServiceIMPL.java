@@ -21,7 +21,6 @@ public class CustomerDetailServiceIMPL implements CustomerDetailService {
     public CustomerDetails getCustomerDetails(String loanNo) {
 
         CustomerDetails customerDetails = new CustomerDetails();
-        BusinessBlockNonIndividualApplicante customerBussinessDetail = new BusinessBlockNonIndividualApplicante();
         try {
             List<?> custPersonalDetail = CustomerDetailDao.getCustomerPersonalDetails(loanNo);
 
@@ -30,19 +29,13 @@ public class CustomerDetailServiceIMPL implements CustomerDetailService {
                 customerDetails.setLanSp(obj[1]+"");
             }
 
-            List<?> custBussinessDetail = CustomerDetailDao.getCustomerBussinessDetails(loanNo);
-            if (!custBussinessDetail.isEmpty() && custBussinessDetail.size() > 0) {
-                Objects obj[] = (Objects[]) custBussinessDetail.get(0);
-                customerBussinessDetail.setCustomerTypeSp(obj[1]+"");
-                customerBussinessDetail.setCustomerCategorySp(obj[2]+"");
-            }
+            List<Objects> custBussinessDetail = (List<Objects>) CustomerDetailDao.getCustomerBussinessDetails(loanNo);
             List<BusinessBlockNonIndividualApplicante> businessList = new ArrayList<>();
-            for(int i = 0 ; i<businessList.size() ; i++){
-                BusinessBlockNonIndividualApplicante d = new BusinessBlockNonIndividualApplicante();
-                Objects obj[] = (Objects[]) custBussinessDetail.get(0);
-                d.setCustomerTypeSp(customerBussinessDetail.getCustomerTypeSp()+i);
-                d.setCustomerCategorySp(customerBussinessDetail.getCustomerCategorySp()+i);
-                businessList.add(d);
+            for(Objects obj : custBussinessDetail) {
+                BusinessBlockNonIndividualApplicante customerBussinessDetail = new BusinessBlockNonIndividualApplicante();
+                customerBussinessDetail.setCustomerTypeSp(obj+"");
+                customerBussinessDetail.setCustomerCategorySp(obj+"");
+                businessList.add(customerBussinessDetail);
             }
 
             customerDetails.setBusinessBlockNonIndividualApplicante(businessList);
