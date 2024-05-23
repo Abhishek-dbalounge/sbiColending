@@ -79,8 +79,11 @@ public class CreateLoanResponseModel {
  private float applicant_age_at_maturity;
  private BusinessModel business;
  private GuarantorsModel guarantors;
- private CoApplicantsModel coApplicantsModel;
-
-
+ private CoApplicantsModel coApplicants;
+ private BankStatementModel bankStatement;
+ private FinancialDataModel financialData;
+ private BusinessCoApplicantsModel businessCoApplicants;
+ private OriginalDisbursementDetailsModel originalDisbursementDetails;
+ private AssetsModel assets;
 
 }

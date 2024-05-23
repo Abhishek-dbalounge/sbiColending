@@ -76,9 +76,7 @@ public class CreateLoanDataModel {
     private int interest_rate_sp;
     private int loan_emi_sp;
     private float applicant_age_at_maturity_ia;
-
     //===========Business=====================================
-
     private String name_of_business_nia;
     private String nature_of_business_nia;
     private String type_of_constitution_nia;
@@ -119,9 +117,7 @@ public class CreateLoanDataModel {
     private String annual_income_nia;
     private String Balance_sheet_year_nia;
     private String ckyc_id_ni;
-
     //==========Guarantors==========================
-
     private String date_of_birth_ig;
     private String gender_ig;
     private String current_address_ig;
@@ -151,9 +147,7 @@ public class CreateLoanDataModel {
     private String customer_type_ig;
     private String ckyc_id_ig;
     private String annual_income_ig;
-
     //=======CoApplicants==============================
-
     private String relationship_with_applicant_addcolumn;
     private String first_name_ic;
     private String last_name_ic;
@@ -185,7 +179,57 @@ public class CreateLoanDataModel {
   //  private String total_net_worth_addcolumn;(Dublicate)
     private String customer_type_ic;
     private String ckyc_id_addcolumn;
-
+    //====================BankStatement===========================
+    private String sma_account_sp;
+    private String business_transactions_sp;
+    //===========FinancialData============
+    private int annual_business_turnover_sp;
+    //==============BusinessCoApplicants=======================
+    private String name_of_business_nic;
+    private String nature_of_business_nic;
+    private String type_of_constitution_nic;
+    private Date registration_date_nic;
+    private Date incorporation_date_nic;
+    private String industry_type_nic;
+   // private String sector_type_nic;
+    private String sub_sector_type_nic;
+    private float business_vintage_nic;
+    private String business_registered_office_address_nic;
+    private String business_mailing_office_city_nic;
+    private String State_nic;
+    private String business_mailing_office_pincode_nic;
+    //private String business_registered_office_address_nic;
+    private String business_mailing_office_address1_nic;
+    private String business_mailing_office_address2_nic;
+    private String business_mailing_office_address3_nic;
+    //private String business_mailing_office_city_nic;
+    //private String business_mailing_office_pincode_nic;
+    private String business_phone_number_nic;
+    private String business_pan_number_nic;
+    //private String business_pan_link_nic;
+    private String business_rc_number_nic;
+    //private String business_rc_link_nic;
+    //private int  annual_business_turnover_sp;
+    private String ckyc_id_nic;
+    //============OriginalDisbursementDetails====
+    private int disbursement_amount_sp;
+    private Date disbursement_date_sp;
+    //=========Assets============================
+    private String collateral_created_date_ac;
+    private String cersai_date_ac;
+    private int security_valuation_ac;
+    private String survey_or_gat_number_ac;
+    private String bound_by_north_ac;
+    private String bound_by_south_ac;
+    private String bound_by_east_ac;
+    private String bound_by_west_ac;
+    private int purchase_cost_ac;
+    private Date purchase_date_ac;
+    private String carpet_area_unit_ac;
+    private String plot_id_number_ac;
+    private String property_nature_ac;
+    private String property_locality_ac;
+    private String valuation_date_ac;
 
 
 }

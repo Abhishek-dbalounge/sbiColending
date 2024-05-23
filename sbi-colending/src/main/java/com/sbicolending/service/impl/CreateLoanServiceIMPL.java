@@ -3,10 +3,7 @@ package com.sbicolending.service.impl;
 import com.sbicolending.dao.CreateLoanDao;
 import com.sbicolending.exception.SystemException;
 import com.sbicolending.model.CreateLoanDataModel;
-import com.sbicolending.model.createloanresponse.CoApplicantsModel;
-import com.sbicolending.model.createloanresponse.CreateLoanResponseModel;
-import com.sbicolending.model.createloanresponse.BusinessModel;
-import com.sbicolending.model.createloanresponse.GuarantorsModel;
+import com.sbicolending.model.createloanresponse.*;
 import com.sbicolending.service.CreateLoanService;
 import com.sbicolending.utils.BaseLogger;
 import org.slf4j.Logger;
@@ -14,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -112,14 +110,26 @@ public class CreateLoanServiceIMPL implements CreateLoanService {
                 GuarantorsModel guarantorsModel = getGuarantorsModelData(createLoanDataModel);
                 createLoanResponse.setGuarantors(guarantorsModel);
                 CoApplicantsModel coApplicantsModel = getCoApplicantsModelData(createLoanDataModel);
-                createLoanResponse.setCoApplicantsModel(coApplicantsModel);
+                createLoanResponse.setCoApplicants(coApplicantsModel);
+                BankStatementModel bankStatementModel = getBankStatementModelData(createLoanDataModel);
+                createLoanResponse.setBankStatement(bankStatementModel);
+                FinancialDataModel financialDataModel= getFinancialDataModelData(createLoanDataModel);
+                createLoanResponse.setFinancialData(financialDataModel);
+                BusinessCoApplicantsModel businessCoApplicantsModel = getBusinessCoApplicantsModelData(createLoanDataModel);
+                createLoanResponse.setBusinessCoApplicants(businessCoApplicantsModel);
+                OriginalDisbursementDetailsModel originalDisbursementDetailsModel = getOriginalDisbursementDetailsModelData(createLoanDataModel);
+                createLoanResponse.setOriginalDisbursementDetails(originalDisbursementDetailsModel);
+                AssetsModel AssetsModel = getAssetsModelData(createLoanDataModel);
+                createLoanResponse.setAssets(AssetsModel);
             }
+
         } catch (Exception e) {
             logger.error("getCreateLoanDetails : "+e.toString());
             throw new SystemException("1111","something went worng");
         }
         return createLoanResponse;
     }
+
 
 
     private BusinessModel getBusinessModelData(CreateLoanDataModel createLoanDataModel) {
@@ -241,11 +251,112 @@ public class CreateLoanServiceIMPL implements CreateLoanService {
         return coApplicantsModel;
     }
 
+
+    private BankStatementModel getBankStatementModelData(CreateLoanDataModel createLoanDataModel) {
+
+        BankStatementModel bankStatementModel = new BankStatementModel();
+
+        bankStatementModel.setSma_account(createLoanDataModel.getSma_account_sp());
+        bankStatementModel.setBusiness_transactions(createLoanDataModel.getBusiness_transactions_sp());
+
+        return bankStatementModel;
+    }
+
+
+    private FinancialDataModel getFinancialDataModelData(CreateLoanDataModel createLoanDataModel) {
+
+        FinancialDataModel financialDataModel = new FinancialDataModel();
+
+        financialDataModel.setAnnual_business_turnover(createLoanDataModel.getAnnual_business_turnover_sp());
+        return financialDataModel;
+    }
+
+    private BusinessCoApplicantsModel getBusinessCoApplicantsModelData(CreateLoanDataModel createLoanDataModel) {
+
+        BusinessCoApplicantsModel businessCoApplicantsModel = new BusinessCoApplicantsModel();
+
+        businessCoApplicantsModel.setName_of_business(createLoanDataModel.getName_of_business_nic());
+        businessCoApplicantsModel.setNature_of_business(createLoanDataModel.getNature_of_business_nic());
+        businessCoApplicantsModel.setType_of_constitution(createLoanDataModel.getType_of_constitution_nic());
+        businessCoApplicantsModel.setRegistration_date(createLoanDataModel.getRegistration_date_nic());
+        businessCoApplicantsModel.setIncorporation_date(createLoanDataModel.getIncorporation_date_nic());
+        businessCoApplicantsModel.setIndustry_type(createLoanDataModel.getIndustry_type_nic());
+        businessCoApplicantsModel.setSub_sector_type(createLoanDataModel.getSub_sector_type_nic());
+        businessCoApplicantsModel.setBusiness_vintage(createLoanDataModel.getBusiness_vintage_nic());
+        businessCoApplicantsModel.setBusiness_registered_office_address(createLoanDataModel.getBusiness_registered_office_address_nic());
+        businessCoApplicantsModel.setBusiness_registered_office_city(createLoanDataModel.getBusiness_mailing_office_city_nic());
+        businessCoApplicantsModel.setBusiness_registered_office_state(createLoanDataModel.getBusiness_registered_office_address_nic());
+        businessCoApplicantsModel.setBusiness_registered_office_pincode(createLoanDataModel.getBusiness_mailing_office_pincode_nic());
+        businessCoApplicantsModel.setBusiness_mailing_office_address1(createLoanDataModel.getBusiness_mailing_office_address1_nic());
+        businessCoApplicantsModel.setBusiness_mailing_office_address2(createLoanDataModel.getBusiness_mailing_office_address2_nic());
+        businessCoApplicantsModel.setBusiness_mailing_office_address3(createLoanDataModel.getBusiness_mailing_office_address3_nic());
+        businessCoApplicantsModel.setBusiness_phone_number(createLoanDataModel.getName_of_business_nic());
+        businessCoApplicantsModel.setBusiness_pan_number(createLoanDataModel.getBusiness_pan_number_nic());
+        List<String> business_pan_link = getBusinessPanLink();
+        businessCoApplicantsModel.setBusiness_pan_link(business_pan_link);
+        businessCoApplicantsModel.setBusiness_rc_number(createLoanDataModel.getBusiness_rc_number_nic());
+        List<String> business_rc_link = getBusinessRcLink();
+        businessCoApplicantsModel.setBusiness_rc_link(business_rc_link);
+        businessCoApplicantsModel.setCkyc_id(createLoanDataModel.getCkyc_id_nic());
+
+        return businessCoApplicantsModel;
+    }
+
+
+    private OriginalDisbursementDetailsModel getOriginalDisbursementDetailsModelData(CreateLoanDataModel createLoanDataModel) {
+
+        OriginalDisbursementDetailsModel originalDisbursementDetailsModel = new OriginalDisbursementDetailsModel();
+
+        originalDisbursementDetailsModel.setDisbursement_amount(createLoanDataModel.getDisbursement_amount_sp());
+        originalDisbursementDetailsModel.setDisbursement_date(createLoanDataModel.getDisbursement_date_sp());
+
+        return originalDisbursementDetailsModel;
+    }
+
+    private AssetsModel getAssetsModelData(CreateLoanDataModel createLoanDataModel) {
+
+        AssetsModel assetsModel = new AssetsModel();
+
+        assetsModel.setCollateral_created_date(createLoanDataModel.getCollateral_created_date_ac());
+        assetsModel.setCersai_date(createLoanDataModel.getCersai_date_ac());
+        assetsModel.setSecurity_valuation(createLoanDataModel.getSecurity_valuation_ac());
+        assetsModel.setSurvey_or_gat_number(createLoanDataModel.getSurvey_or_gat_number_ac());
+        assetsModel.setBound_by_north(createLoanDataModel.getBound_by_north_ac());
+        assetsModel.setBound_by_south(createLoanDataModel.getBound_by_south_ac());
+        assetsModel.setBound_by_east(createLoanDataModel.getBound_by_east_ac());
+        assetsModel.setBound_by_west(createLoanDataModel.getBound_by_west_ac());
+        assetsModel.setPurchase_cost(createLoanDataModel.getPurchase_cost_ac());
+        assetsModel.setPurchase_date(createLoanDataModel.getPurchase_date_ac());
+        assetsModel.setCarpet_area_unit(createLoanDataModel.getCarpet_area_unit_ac());
+        assetsModel.setPlot_id_number(createLoanDataModel.getPlot_id_number_ac());
+        assetsModel.setProperty_nature(createLoanDataModel.getProperty_nature_ac());
+        assetsModel.setProperty_locality(createLoanDataModel.getProperty_locality_ac());
+        assetsModel.setValuation_date(createLoanDataModel.getValuation_date_ac());
+
+        return assetsModel;
+    }
+
     private List<String> getBureauReportLinkSP() {
 
         List<String> bureauReportLinkSP = new ArrayList<>();
         bureauReportLinkSP.add("http:bureau_report_link_SP1");
         bureauReportLinkSP.add("http:bureau_report_link_SP2");
         return bureauReportLinkSP;
+    }
+
+    private List<String> getBusinessPanLink() {
+
+        List<String> businessPanLink = new ArrayList<>();
+        businessPanLink.add("http:business_pan_link1");
+        businessPanLink.add("http:business_pan_link1");
+        return businessPanLink;
+    }
+
+    private List<String> getBusinessRcLink() {
+
+        List<String> businessRcLink = new ArrayList<>();
+        businessRcLink.add("http:business_rc_link1");
+        businessRcLink.add("http:business_rc_link2");
+        return businessRcLink;
     }
 }

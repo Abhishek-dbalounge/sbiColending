@@ -142,7 +142,7 @@ public class DBQuery {
             "customer_type_ig,\n" +
             "ckyc_id_ig,\n" +
             "annual_income_ig,\n" +
-            //==============================
+            //==========CoApplicants====================
             "null relationship_with_applicant_addcolumn,\n" +
             "first_name_ic,\n" +
             "last_name_ic,\n" +
@@ -173,7 +173,58 @@ public class DBQuery {
             //"current_address_ic,\n" +
             //"null total_net_worth_addcolumn,\n" +
             "customer_type_ic,\n" +
-            "null ckyc_id_addcolumn\n" +
+            "null ckyc_id_addcolumn,\n" +
+            //==========BankStatement==================
+            "sma_account_sp,\n" +
+            "business_transactions_sp,\n" +
+            //==============FinancialData==================
+            "annual_business_turnover_sp,\n" +
+            //==============BusinessCoApplicants=============
+            "name_of_business_nic,\n" +
+            "nature_of_business_nic,\n" +
+            "type_of_constitution_nic,\n" +
+            "registration_date_nic,\n" +
+            "incorporation_date_nic,\n" +
+            "industry_type_nic,\n" +
+           // "sector_type_nic,\n" +
+            "sub_sector_type_nic,\n" +
+            "business_vintage_nic,\n" +
+            "business_registered_office_address_nic,\n" +
+            "business_mailing_office_city_nic,\n" +
+            "State_nic ,\n" +
+            "business_mailing_office_pincode_nic,\n" +
+           // "business_registered_office_address_nic,\n" +
+            "business_mailing_office_address1_nic,\n" +
+            "business_mailing_office_address2_nic,\n" +
+            "business_mailing_office_address3_nic,\n" +
+           // "business_mailing_office_city_nic,\n" +
+           // "business_mailing_office_pincode_nic,\n" +
+            "business_phone_number_nic,\n" +
+            "business_pan_number_nic,\n" +
+           // "business_pan_link_nic,\n" +
+            "business_rc_number_nic,\n" +
+           // "business_rc_link_nic,\n" +
+           // "annual_business_turnover_sp,\n" +
+            "ckyc_id_nic\n," +
+            //===========OriginalDisbursementDetails============
+            "disbursement_amount_sp, \n" +
+            "disbursement_date_sp, \n" +
+            //=========================
+            "collateral_created_date_ac,\n" +
+            "cersai_date_ac,\n" +
+            "security_valuation_ac,\n" +
+            "survey_or_gat_number_ac,\n" +
+            "bound_by_north_ac,\n" +
+            "bound_by_south_ac,\n" +
+            "bound_by_east_ac,\n" +
+            "bound_by_west_ac,\n" +
+            "purchase_cost_ac,\n" +
+            "purchase_date_ac,\n" +
+            "carpet_area_unit_ac,\n" +
+            "plot_id_number_ac,\n" +
+            "property_nature_ac,\n" +
+            "property_locality_ac,\n" +
+            "valuation_date_ac\n" +
             "from public.create_loan  where lan_sp = ?";
 
 }
