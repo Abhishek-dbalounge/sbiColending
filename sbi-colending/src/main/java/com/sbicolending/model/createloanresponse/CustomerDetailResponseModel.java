@@ -2,11 +2,11 @@ package com.sbicolending.model.createloanresponse;
 
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Data
-public class CreateLoanResponseModel {
+public class CustomerDetailResponseModel {
 
 
  private String primary_borrower_type;
@@ -22,10 +22,10 @@ public class CreateLoanResponseModel {
  private String place_of_birth;
  private String current_city;
  private String current_district;
- private String current_pincode;
+ private int current_pincode;//(int-Done)
  private String residence_type_current_address;
  private String permanent_district;
- private String permanent_pincode;
+ private int permanent_pincode;//(int-Done)
  private String residence_type_permanent_address;
  private String religion;
  private String caste;
@@ -34,7 +34,7 @@ public class CreateLoanResponseModel {
  private String property_ownership_flag;
  private String udyam_number;
  private String name_of_bureau;
- private String bureau_score;
+ private int bureau_score;//(int-NotDone Because in Db String type but data is empty)
  private List<String> bureau_report_link;
  private String product_id;
  private String application_id;
@@ -42,15 +42,15 @@ public class CreateLoanResponseModel {
  private String sub_category;
  private String purpose;
  private String disbursement_type;
- private String number_of_tranches;
- private String tenure;
- private String number_of_repayments;
+ private int number_of_tranches;//(int)
+ private int tenure;//(int)
+ private int number_of_repayments;//(int)
  private String psl_description;
  private String impacted_industry_description;
  private String applicant_never_in_30_plus_sma_sub_last_12m;
  private String tax_slab;
  private String psl_msme_type_of_enterprise;
- //private String current_address_line1;(Repeate Column)
+ private String current_address_line1;
  private String cersai_security_int_id;
  private String repayment_frequency;
  private String father_first_name;
@@ -61,29 +61,35 @@ public class CreateLoanResponseModel {
  private String ckyc_id;
  private String date_of_birth;
  private String first_repayment_date;
- private String itr_filed_date_current_fy;
- private Date application_date;
- private String fcu_done_date;
- private String e_verification_of_kyc_done_date;
- private String pd_done_date;
- private String search_with_registrar_of_companies_obtained_date;
- private String cersai_registration_reference_number_verification_date;
- private String cibil_report_done_date;
- private Date repayment_period_end_date;
- private String date_of_sanction_by_nbfc;
- private String date_of_documentation_by_nbfc;
- private String annual_income;
- private int principal_amount;
- private int interest_rate;
- private int loan_emi;
- private float applicant_age_at_maturity;
+ private LocalDate itr_filed_date_current_fy;//(Date)
+ private LocalDate application_date;
+ private LocalDate fcu_done_date;//(Date)
+ private LocalDate e_verification_of_kyc_done_date;//(Date)
+ private LocalDate pd_done_date;//(Date)
+ private LocalDate search_with_registrar_of_companies_obtained_date;//(Date)
+ private LocalDate cersai_registration_reference_number_verification_date;//(Date)
+ private LocalDate cibil_report_done_date;//(Date)
+ private LocalDate repayment_period_end_date;//(Date)
+ private LocalDate date_of_sanction_by_nbfc;//(Date)
+ private LocalDate date_of_documentation_by_nbfc;//(Date)
+ private float annual_income;//(float)
+ private float principal_amount;//(float)
+ private float interest_rate;//(float)
+ private float loan_emi;//(float)
+ private float applicant_age_at_maturity;//(float)
  private BusinessModel business;
  private GuarantorsModel guarantors;
  private CoApplicantsModel coApplicants;
  private BankStatementModel bankStatement;
  private FinancialDataModel financialData;
+ private TranchesModel tranchesModel;
+ private LinkedLoanInfosModel linkedLoanInfosModel;
  private BusinessCoApplicantsModel businessCoApplicants;
+ private BusinessGuarantorsModel businessGuarantorsModel;
+ private RelatedPartiesModel relatedPartiesModel;
+ private OriginalLoanDetailModel originalLoanDetailModel;
  private OriginalDisbursementDetailsModel originalDisbursementDetails;
  private AssetsModel assets;
+ private PropertyReviewDocumentsModel propertyReviewDocumentsModel;
 
 }

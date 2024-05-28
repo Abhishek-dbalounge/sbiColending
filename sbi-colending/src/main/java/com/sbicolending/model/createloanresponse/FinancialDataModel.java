@@ -5,5 +5,5 @@ import lombok.Data;
 @Data
 public class FinancialDataModel {
 
-      private int annual_business_turnover;
+      private float annual_business_turnover;
 }

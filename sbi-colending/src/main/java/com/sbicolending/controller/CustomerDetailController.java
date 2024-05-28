@@ -2,8 +2,8 @@ package com.sbicolending.controller;
 
 import com.sbicolending.exception.SystemException;
 import com.sbicolending.model.*;
-import com.sbicolending.model.createloanresponse.CreateLoanResponseModel;
-import com.sbicolending.service.CreateLoanService;
+import com.sbicolending.model.createloanresponse.CustomerDetailResponseModel;
+import com.sbicolending.service.CustomerDetailService;
 import com.sbicolending.utils.BaseLogger;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/customer")
-public class CreateLoanController {
+public class CustomerDetailController {
 
-    private Logger logger = BaseLogger.getLogger(CreateLoanController.class);
+    private Logger logger = BaseLogger.getLogger(CustomerDetailController.class);
     @Autowired
-    private CreateLoanService createLoanService;
+    private CustomerDetailService customerDetailService;
 
     @GetMapping("/createLoan/{lanSp}")
     public ResponseEntity<?> createLoan(@PathVariable("lanSp") String lanSp){
@@ -31,12 +31,12 @@ public class CreateLoanController {
             commonResponse.setErrorCode("1112");
             return new ResponseEntity<>(commonResponse,HttpStatus.OK);
         }
-                CreateLoanResponseModel createLoanResponse = createLoanService.getCreateLoanDetails(lanSp);
-                if (createLoanResponse == null) {
+                CustomerDetailResponseModel customerDetailResponse = customerDetailService.getCustomerDetails(lanSp);
+                if (customerDetailResponse == null) {
                     logger.info("createLoan : Invalid LenSp");
                     throw new SystemException("1113","Invalid LenSp");
                 }
-                return new ResponseEntity<>(createLoanResponse, HttpStatus.OK);
+                return new ResponseEntity<>(customerDetailResponse, HttpStatus.OK);
             }
             catch (SystemException se){
                 CommonResponseModel commonResponse = new CommonResponseModel();
