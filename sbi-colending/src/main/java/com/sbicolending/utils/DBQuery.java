@@ -24,23 +24,36 @@ public class DBQuery {
             "religion_ia,\n" +
             "caste_ia,\n" +
             "occupation_ic,\n" +
+            "income_source_sp,\n"+
+            "property_ownership_flag_sp,\n"+
             "business_udhyam_regn_number_nia,\n" +
             "name_of_bureau_sp,\n" +
             "bureau_score_sp,\n" +
+            "product_id_sp,\n" +
+            "application_id_sp,\n" +
+            "category_sp,\n" +
+            "sub_category_sp,\n"+
             "purpose_sp,\n" +
+            "disbursement_type_sp,\n" +
+            "number_of_tranches_sp,\n"+
             "tenure_sp,\n" +
             "number_of_repayments_sp,\n" +
+            "psl_description_sp,\n" +
+            "impacted_industry_description_sp,\n" +
+            "applicant_never_in_30_plus_sma_sub_last_12m_sp,\n"+
             "tax_slab_sp,\n" +
             "psl_msme_type_of_enterprise_sp,\n" +
             "cersai_security_int_id_ac,\n" +
             "repayment_frequency_sp,\n" +
             "father_first_name_ia,\n" +
             "father_last_name_ia,\n" +
+            "tenure_frequency_sp,\n"+
             "total_value_of_security_sp,\n" +
             "marital_status_ia,\n" +
             "ckyc_id_ia,\n" +
             "date_of_birth_ia,\n" +
             "first_repayment_date_sp,\n" +
+            "itr_filed_date_current_fy_sp,\n"+
             "application_date_sp,\n" +
             "fcu_done_date_sp,\n" +
             "e_verification_of_kyc_done_date_sp,\n" +
@@ -51,6 +64,7 @@ public class DBQuery {
             "repayment_period_end_date_sp,\n" +
             "date_of_sanction_by_nbfc_sp,\n" +
             "date_of_documentation_by_nbfc_sp,\n" +
+            "annual_income_sp,\n"+
             "principal_amount_sp,\n" +
             "interest_rate_sp,\n" +
             "loan_emi_sp,\n" +
@@ -67,6 +81,7 @@ public class DBQuery {
             "business_vintage_nia,\n" +
             "business_registered_office_address_nia,\n" +
             "business_mailing_office_city_nia,\n" +
+            "business_registered_office_state_nia,\n"+
             "business_mailing_office_pincode_nia,\n" +
             "business_mailing_office_address1_nia,\n" +
             "business_phone_number_nia,\n" +
@@ -76,6 +91,7 @@ public class DBQuery {
             "business_rc_number_nia,\n" +
             "business_mailing_office_address2_nia,\n" +
             "business_mailing_office_address3_nia,\n" +
+            "enterprise_activity_nia,\n"+
             "customer_type_nia,\n" +
             "exisiting_shareholding_of_promoters_nia,\n" +
             "exisiting_shareholding_of_mutual_funds_nia,\n" +
@@ -106,21 +122,25 @@ public class DBQuery {
             "bureau_score_ig,\n" +
             "age_at_maturity_ig,\n" +
             "employment_details_designation_sp,\n" +
+            "caste_ig,\n"+
             "father_first_name_ig,\n" +
             "father_last_name_ig,\n" +
             "occupation_ig,\n" +
             "place_of_birth_ig,\n" +
             "title_ig,\n" +
+            "income_source_ig,\n"+
             "current_address_line1_ig,\n" +
             "education_ig,\n" +
             "other_than_agricultural_income_ig,\n" +
+            "total_net_worth_ig,\n"+
             "customer_type_ig,\n" +
             "ckyc_id_ig,\n" +
             "annual_income_ig,\n" +
             //==========CoApplicants====================
-            "null relationship_with_applicant_addcolumn,\n" +
+            "relationship_with_applicant_ic,\n"+
             "first_name_ic,\n" +
             "last_name_ic,\n" +
+            "gender_ic,\n"+
             "occupation_ic,\n" +
             "date_of_birth_ic,\n" +
             "mobile_number_ic,\n" +
@@ -142,12 +162,29 @@ public class DBQuery {
             "father_last_name_ic,\n" +
             "place_of_birth_ic,\n" +
             "title_ic,\n" +
+            "income_source_ic,\n"+
+            "total_net_worth_ic,\n"+
             "customer_type_ic,\n" +
+            "ckyc_id_ic,\n"+
             //==========BankStatement==================
             "sma_account_sp,\n" +
             "business_transactions_sp,\n" +
             //==============FinancialData==================
             "annual_business_turnover_sp,\n" +
+            //==============Tranche========================
+            "tranche_number,\n" +
+            "principal_amount,\n"+
+            //==============LinkedLoanInfos==========================
+            "linked_loan_id,\n" +
+            "foreclosure,\n"+
+            //===================================
+            "connected_with_rp,\n" +
+            "connection_name_rp,\n" +
+            "rp_type_rp,\n" +
+            "name_rp,\n" +
+            "share_holding_rp,\n" +
+            "designation_rp,\n" +
+            "proposed_share_holding_rp,\n"+
             //==============BusinessCoApplicants=============
             "name_of_business_nic,\n" +
             "nature_of_business_nic,\n" +
@@ -155,7 +192,7 @@ public class DBQuery {
             "registration_date_nic,\n" +
             "incorporation_date_nic,\n" +
             "industry_type_nic,\n" +
-           // "sector_type_nic,\n" +
+            "sector_type_nic,\n" +
             "sub_sector_type_nic,\n" +
             "business_vintage_nic,\n" +
             "business_registered_office_address_nic,\n" +
@@ -173,7 +210,9 @@ public class DBQuery {
              "business_rc_link_nic,\n" +
             "disbursement_amount_sp, \n" +
             "disbursement_date_sp, \n" +
+            "ckyc_id_nic,\n"+
             //==========Assets===============
+            "sanction_ltv_ac,\n"+
             "collateral_created_date_ac,\n" +
             "cersai_date_ac,\n" +
             "security_valuation_ac,\n" +

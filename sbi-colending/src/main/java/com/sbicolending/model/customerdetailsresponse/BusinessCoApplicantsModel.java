@@ -1,8 +1,7 @@
-package com.sbicolending.model.createloanresponse;
+package com.sbicolending.model.customerdetailsresponse;
 
 import lombok.Data;
 
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -12,8 +11,8 @@ public class BusinessCoApplicantsModel {
     private String name_of_business;
     private String nature_of_business;
     private String type_of_constitution;
-    private LocalDate registration_date;//(Date)
-    private LocalDate incorporation_date;//(Date)
+    private String registration_date;//(Date)
+    private String incorporation_date;//(Date)
     private String industry_type;
     private String sector_type;
     private String sub_sector_type;
@@ -28,7 +27,7 @@ public class BusinessCoApplicantsModel {
     private String business_mailing_office_address3;
     private String business_mailing_office_city;
     private int business_mailing_office_pincode;//(//int)
-    private String business_phone_number;
+    private List<Long> business_phone_number;
     private String business_pan_number;
     private String business_pan_link;
     private String business_rc_number;

@@ -1,7 +1,7 @@
 package com.sbicolending.service;
 
 
-import com.sbicolending.model.createloanresponse.CustomerDetailResponseModel;
+import com.sbicolending.model.customerdetailsresponse.CustomerDetailResponseModel;
 
 public interface CustomerDetailService {
     CustomerDetailResponseModel getCustomerDetails(String lanSp);

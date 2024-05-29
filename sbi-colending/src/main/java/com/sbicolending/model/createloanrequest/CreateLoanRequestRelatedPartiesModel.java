@@ -1,9 +1,9 @@
-package com.sbicolending.model.createloanresponse;
+package com.sbicolending.model.createloanrequest;
 
 import lombok.Data;
 
 @Data
-public class RelatedPartiesModel {
+public class CreateLoanRequestRelatedPartiesModel {
 
     private String connected_with;
     private String connection_name;

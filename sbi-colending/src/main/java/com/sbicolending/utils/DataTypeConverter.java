@@ -1,5 +1,6 @@
 package com.sbicolending.utils;
 
+import org.apache.catalina.util.StringUtil;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
@@ -13,10 +14,9 @@ import java.util.Date;
 @Component
 public class DataTypeConverter {
 
-    public int stringtoIntConverter(String stringVal)  {
+    public int getStringFromInt(String stringVal)  {
         int convarteVal = 0;
-        try {
-            convarteVal = 0;
+
             if (stringVal == null || stringVal.trim().isEmpty()) {
 
                 return convarteVal;
@@ -25,36 +25,14 @@ public class DataTypeConverter {
                 int intVal = Integer.parseInt(stringVal);
                 convarteVal = intVal;
             }
-        } catch (Exception e) {
-            System.out.println("Exception:- StringtoIntConverter: " + e);
-        }
+
         return convarteVal;
     }
 
 
-    public LocalDate stringtoDateConverter(String stringVal) throws ParseException {
-
-        LocalDate convertDate = null;
-        try {
-            convertDate = null;
-            if (stringVal == null || stringVal.trim().isEmpty()) {
-
-                return convertDate;
-            }else{
-                LocalDate date = LocalDate.parse(stringVal, DateTimeFormatter.ISO_DATE);
-                convertDate = date;
-            }
-        } catch (Exception e) {
-            System.out.println("Exception:- stringtoDateConverter" + e);
-        }
-        return convertDate;
-    }
-
-    public float integertoFloatConverter(Integer intVal) {
+    public float getIntegerFromFloat(Integer intVal) {
 
         float convertVal = 0f;
-        try {
-            convertVal = 0f;
 
             if(intVal == null || StringUtils.isEmpty(intVal) ){
 
@@ -63,19 +41,14 @@ public class DataTypeConverter {
                 float floatVal = (float) intVal;
                 convertVal =floatVal;
             }
-        } catch (Exception e) {
-            System.out.println("Exception:- integertoFloatConverter" + e);
-        }
         return convertVal;
     }
 
 
-    public Float stringtoFloatConverter(String stringVal) {
+    public Float getStringFromFloat(String stringVal) {
 
 
         Float convertVal = 0f;
-        try {
-            convertVal = 0f;
 
         if(stringVal == null || StringUtils.isEmpty(stringVal) || stringVal.trim().isEmpty()){
 
@@ -84,19 +57,16 @@ public class DataTypeConverter {
             float floatValue = Float.parseFloat(stringVal);
             convertVal =floatValue;
         }
-        } catch (Exception e) {
-            System.out.println("Exception:- integertoFloatConverter" + e);
-        }
+
         return convertVal;
 
     }
 
 
-    public int doubletoIntConverter(Double doubleVal) {
+    public int getDoubletoFromInt(Double doubleVal) {
 
         int convertVal = 0;
-        try {
-            convertVal = 0;
+
             if (doubleVal == null || StringUtils.isEmpty(doubleVal)) {
 
                 return convertVal;
@@ -104,30 +74,44 @@ public class DataTypeConverter {
                 int value1 = (int)Math.round(doubleVal);
                 convertVal = value1;
             }
-        } catch (Exception e) {
-            System.out.println("Exception:- doubletoIntConverter" + e);
+        return convertVal;
+    }
+
+
+    public Date getDateFromString(String formatOfDate,String value) throws ParseException {
+        if(StringUtils.isEmpty(value)) {
+            return null;
         }
-        return convertVal;
+        SimpleDateFormat sdf = new SimpleDateFormat(formatOfDate);
+        sdf.setLenient(false);
+        Date date = sdf.parse(value);
+        return date;
     }
 
-    public String FloattoStringConverter(Float floatVal) {
-
-        String convertVal = null;
-      try {
-          if(floatVal == null || StringUtils.isEmpty(floatVal) ) {
-
-              return convertVal;
-          }else {
-              String stringVal=String.valueOf(floatVal);
-              stringVal =stringVal;
-          }
-
-       }catch (Exception e){
-          System.out.println("Exception:- FloattoStringConverter" + e);
-      }
-        return convertVal;
+    public String getStringFromDate(String formatOfDate,Date value) throws ParseException {
+        if(value == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat(formatOfDate);
+        sdf.setLenient(false);
+        String date = sdf.format(value);
+        return date;
     }
 
+    public Long getStringFromLong(String stringVal) {
 
+        long convarteVal = 0l;
 
+        if (stringVal == null || stringVal.trim().isEmpty()) {
+
+            return convarteVal;
+        }else {
+
+            Long intVal = Long.parseLong(stringVal);
+            convarteVal = intVal;
+        }
+
+        return convarteVal;
+
+    }
 }

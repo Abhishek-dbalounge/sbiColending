@@ -1,4 +1,4 @@
-package com.sbicolending.model.createloanresponse;
+package com.sbicolending.model.customerdetailsresponse;
 
 import lombok.Data;
 

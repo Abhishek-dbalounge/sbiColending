@@ -1,8 +1,8 @@
-package com.sbicolending.model.createloanresponse;
+package com.sbicolending.model.customerdetailsresponse;
 
 import lombok.Data;
 
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -61,24 +61,24 @@ public class CustomerDetailResponseModel {
  private String ckyc_id;
  private String date_of_birth;
  private String first_repayment_date;
- private LocalDate itr_filed_date_current_fy;//(Date)
- private LocalDate application_date;
- private LocalDate fcu_done_date;//(Date)
- private LocalDate e_verification_of_kyc_done_date;//(Date)
- private LocalDate pd_done_date;//(Date)
- private LocalDate search_with_registrar_of_companies_obtained_date;//(Date)
- private LocalDate cersai_registration_reference_number_verification_date;//(Date)
- private LocalDate cibil_report_done_date;//(Date)
- private LocalDate repayment_period_end_date;//(Date)
- private LocalDate date_of_sanction_by_nbfc;//(Date)
- private LocalDate date_of_documentation_by_nbfc;//(Date)
+ private String itr_filed_date_current_fy;//(Date)
+ private String application_date;
+ private String fcu_done_date;//(Date)
+ private String e_verification_of_kyc_done_date;//(Date)
+ private String pd_done_date;//(Date)
+ private String search_with_registrar_of_companies_obtained_date;//(Date)
+ private String cersai_registration_reference_number_verification_date;//(Date)
+ private String cibil_report_done_date;//(Date)
+ private String repayment_period_end_date;//(Date)
+ private String date_of_sanction_by_nbfc;//(Date)
+ private String date_of_documentation_by_nbfc;//(Date)
  private float annual_income;//(float)
  private float principal_amount;//(float)
  private float interest_rate;//(float)
  private float loan_emi;//(float)
  private float applicant_age_at_maturity;//(float)
  private BusinessModel business;
- private GuarantorsModel guarantors;
+ private List<GuarantorsModel> guarantors;
  private CoApplicantsModel coApplicants;
  private BankStatementModel bankStatement;
  private FinancialDataModel financialData;
@@ -87,9 +87,9 @@ public class CustomerDetailResponseModel {
  private BusinessCoApplicantsModel businessCoApplicants;
  private BusinessGuarantorsModel businessGuarantorsModel;
  private RelatedPartiesModel relatedPartiesModel;
- private OriginalLoanDetailModel originalLoanDetailModel;
+ private OriginalLoanDetailModel original_loan_detail;
  private OriginalDisbursementDetailsModel originalDisbursementDetails;
- private AssetsModel assets;
+ private List<AssetsModel> assets;
  private PropertyReviewDocumentsModel propertyReviewDocumentsModel;
 
 }

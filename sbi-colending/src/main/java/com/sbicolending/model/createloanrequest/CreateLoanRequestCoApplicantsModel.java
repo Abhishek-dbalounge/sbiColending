@@ -1,18 +1,18 @@
-package com.sbicolending.model.createloanresponse;
+package com.sbicolending.model.createloanrequest;
 
 import lombok.Data;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 @Data
-public class CoApplicantsModel {
+public class CreateLoanRequestCoApplicantsModel {
 
     private String relationship_with_applicant;
     private String first_name;
     private String last_name;
     private String gender;
     private String occupation;
-    private LocalDate date_of_birth;//(Date)
+    private Date date_of_birth;//(Date)
     private int mobile_number;//(int)
     private String current_address;
     private String current_city;
