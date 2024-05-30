@@ -31,20 +31,20 @@ public class CustomerDetailController {
 
     RestTemplate restTemplate = new RestTemplate();
 
-    @GetMapping("/loanDetail/{lanSp}")
+    @GetMapping("/customerDetails/{lanSp}")
     public ResponseEntity<?> customerDetails(@PathVariable("lanSp") String lanSp){
 
         try {
         if(StringUtils.isEmpty(lanSp)){
             CommonResponseModel commonResponse = new CommonResponseModel();
-            logger.info("createLoan : LenSp filed is empty");
+            logger.info("customerDetails : LenSp filed is empty");
             commonResponse.setErrorMsg("LenSp filed is empty");
             commonResponse.setErrorCode("1112");
             return new ResponseEntity<>(commonResponse,HttpStatus.OK);
         }
                 CustomerDetailResponseModel customerDetailResponse = customerDetailService.getCustomerDetails(lanSp);
                 if (customerDetailResponse == null) {
-                    logger.info("createLoan : Invalid LenSp");
+                    logger.info("customerDetails : Invalid LenSp");
                     throw new SystemException("1113","Invalid LenSp");
                 }
 

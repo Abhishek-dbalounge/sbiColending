@@ -30,13 +30,14 @@ public class CallYubiApiServiceIMPL implements CallYubiApiService {
            Map<String,String> responseMap = new HashMap<>();
 
            responseMap = HttpClient.handlePOSTWebRequest(createJobApiUrl,requestString,header);
-           String jsonResponseAccessStr = responseMap.get("requestString");
+           String responseCode = responseMap.get("responseCode");
+           String responseString = responseMap.get("responseString");
 
-           if (StringUtils.isBlank(jsonResponseAccessStr)) {
+           if (StringUtils.isBlank(responseString)) {
                throw new SystemException("1115","Api no any response");
            }
 
-           return mapper.readValue(jsonResponseAccessStr,Object.class);
+           return mapper.readValue(responseString,Object.class);
        }
        catch (NoResponseException npe) {
            throw new SystemException(npe.getErrorCode(),npe.getErrorMsg());

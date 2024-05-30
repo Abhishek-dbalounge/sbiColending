@@ -1,12 +1,9 @@
-package com.sbicolending.model.customerdetailsresponse;
+package com.sbicolending.model.updatecustomerdetailsrequest;
 
 import lombok.Data;
 
-import java.util.Date;
-import java.util.List;
-
 @Data
-public class BusinessCoApplicantsModel {
+public class CustomerDetailUpdateBusinessCoApplicantsModel {
 
     private String name_of_business;
     private String nature_of_business;

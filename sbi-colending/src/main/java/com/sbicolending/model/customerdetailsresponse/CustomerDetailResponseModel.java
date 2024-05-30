@@ -82,13 +82,12 @@ public class CustomerDetailResponseModel {
  private CoApplicantsModel coApplicants;
  private BankStatementModel bankStatement;
  private FinancialDataModel financialData;
- private TranchesModel tranchesModel;
+ private List<TranchesModel> tranchesModel;
  private LinkedLoanInfosModel linkedLoanInfosModel;
  private BusinessCoApplicantsModel businessCoApplicants;
- private BusinessGuarantorsModel businessGuarantorsModel;
  private RelatedPartiesModel relatedPartiesModel;
  private OriginalLoanDetailModel original_loan_detail;
- private OriginalDisbursementDetailsModel originalDisbursementDetails;
+ private List<OriginalDisbursementDetailsModel> original_disbursement_details;
  private List<AssetsModel> assets;
  private PropertyReviewDocumentsModel propertyReviewDocumentsModel;
 

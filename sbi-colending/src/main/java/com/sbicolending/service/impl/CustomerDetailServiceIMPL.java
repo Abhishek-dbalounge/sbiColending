@@ -54,13 +54,13 @@ public class CustomerDetailServiceIMPL implements CustomerDetailService {
                 customerDetailResponse.setCurrent_district(customerDetailDataModel.getCurrent_district_ia());
                 Integer current_pincode_ia = dataTypeConverter.getStringFromInt(customerDetailDataModel.getCurrent_pincode_ia());
                 customerDetailResponse.setCurrent_pincode(current_pincode_ia);
-               //customerDetailResponse.setResidence_type_current_address(customerDetailDataModel.getResidence_permanent_address_ic());
-                customerDetailResponse.setResidence_type_current_address("owned");
+                customerDetailResponse.setResidence_type_current_address(customerDetailDataModel.getResidence_permanent_address_ic());
+                //customerDetailResponse.setResidence_type_current_address("owned");
                 customerDetailResponse.setPermanent_district(customerDetailDataModel.getPermanent_district_ia());
                 Integer permanent_pincode_ia = dataTypeConverter.getStringFromInt(customerDetailDataModel.getPermanent_pincode_ia());
                 customerDetailResponse.setPermanent_pincode(permanent_pincode_ia);
-               //customerDetailResponse.setResidence_type_permanent_address(customerDetailDataModel.getResidence_permanent_address_ic());
-                customerDetailResponse.setResidence_type_permanent_address("owned");
+                customerDetailResponse.setResidence_type_permanent_address(customerDetailDataModel.getResidence_permanent_address_ic());
+                //customerDetailResponse.setResidence_type_permanent_address("owned");
                 customerDetailResponse.setReligion(customerDetailDataModel.getReligion_ia());
                 customerDetailResponse.setCaste(customerDetailDataModel.getCaste_ia());
                 customerDetailResponse.setOccupation(customerDetailDataModel.getOccupation_ic());
@@ -77,6 +77,7 @@ public class CustomerDetailServiceIMPL implements CustomerDetailService {
                 customerDetailResponse.setCategory(customerDetailDataModel.getCategory_sp());
                 customerDetailResponse.setSub_category(customerDetailDataModel.getSub_category_sp());
                 customerDetailResponse.setPurpose(customerDetailDataModel.getPurpose_sp());
+               // customerDetailResponse.setDisbursement_type("single");
                 customerDetailResponse.setDisbursement_type(customerDetailDataModel.getDisbursement_type_sp());
                 customerDetailResponse.setNumber_of_tranches(customerDetailDataModel.getNumber_of_tranches_sp());
                 customerDetailResponse.setTenure(customerDetailDataModel.getTenure_sp());
@@ -91,7 +92,6 @@ public class CustomerDetailServiceIMPL implements CustomerDetailService {
                 customerDetailResponse.setRepayment_frequency(customerDetailDataModel.getRepayment_frequency_sp());
                 customerDetailResponse.setFather_first_name(customerDetailDataModel.getFather_first_name_ia());
                 customerDetailResponse.setFather_last_name(customerDetailDataModel.getFather_last_name_ia());
-               // String total_value_of_security_sp = dataTypeConverter.FloattoStringConverter(customerDetailDataModel.getTotal_value_of_security_sp());
                 customerDetailResponse.setTotal_value_of_security(customerDetailDataModel.getTotal_value_of_security_sp());
                 customerDetailResponse.setTenure_frequency(customerDetailDataModel.getTenure_frequency_sp());
                 customerDetailResponse.setMarital_status(customerDetailDataModel.getMarital_status_ia());
@@ -211,20 +211,18 @@ public class CustomerDetailServiceIMPL implements CustomerDetailService {
                 customerDetailResponse.setBankStatement(bankStatementModel);
                 FinancialDataModel financialDataModel = getFinancialDataModelData(customerDetailDataModel);
                 customerDetailResponse.setFinancialData(financialDataModel);
-                TranchesModel tranchesModel = getTranchesModelData(customerDetailDataModel);
+                List<TranchesModel> tranchesModel = getTranchesModelData(customerDetailDataModel);
                 customerDetailResponse.setTranchesModel(tranchesModel);
                 LinkedLoanInfosModel linkedLoanInfosModel = getLinkedLoanInfosModelData(customerDetailDataModel);
                 customerDetailResponse.setLinkedLoanInfosModel(linkedLoanInfosModel);
                 BusinessCoApplicantsModel businessCoApplicantsModel = getBusinessCoApplicantsModelData(customerDetailDataModel);
                 customerDetailResponse.setBusinessCoApplicants(businessCoApplicantsModel);
-                BusinessGuarantorsModel BusinessGuarantorsModel = getBusinessGuarantorsModelData(customerDetailDataModel);
-                customerDetailResponse.setBusinessGuarantorsModel(BusinessGuarantorsModel);
                 RelatedPartiesModel relatedPartiesModel = getRelatedPartiesModelData(customerDetailDataModel);
                 customerDetailResponse.setRelatedPartiesModel(relatedPartiesModel);
                 OriginalLoanDetailModel originalLoanDetailModel = getOriginalLoanDetailModelData(customerDetailDataModel);
                 customerDetailResponse.setOriginal_loan_detail(originalLoanDetailModel);
-                OriginalDisbursementDetailsModel originalDisbursementDetailsModel = getOriginalDisbursementDetailsModelData(customerDetailDataModel);
-                customerDetailResponse.setOriginalDisbursementDetails(originalDisbursementDetailsModel);
+                List<OriginalDisbursementDetailsModel> originalDisbursementDetailsModel = getOriginalDisbursementDetailsModelData(customerDetailDataModel);
+                customerDetailResponse.setOriginal_disbursement_details(originalDisbursementDetailsModel);
                 List<AssetsModel> AssetsModel = getAssetsModelData(customerDetailDataModel);
                 customerDetailResponse.setAssets(AssetsModel);
                 PropertyReviewDocumentsModel propertyReviewDocumentsModel = getPropertyReviewDocumentsModelData(customerDetailDataModel);
@@ -241,10 +239,10 @@ public class CustomerDetailServiceIMPL implements CustomerDetailService {
 
 
         businessModel.setName_of_business(createLoanDataModel.getName_of_business_nia());
-        businessModel.setNature_of_business("manufacturer");
-        //businessModel.setNature_of_business(createLoanDataModel.getNature_of_business_nia());
-        businessModel.setType_of_constitution("partnership");
-        //businessModel.setType_of_constitution(createLoanDataModel.getType_of_constitution_nia());
+        //businessModel.setNature_of_business("manufacturer");
+        businessModel.setNature_of_business(createLoanDataModel.getNature_of_business_nia());
+        //businessModel.setType_of_constitution("partnership");
+        businessModel.setType_of_constitution(createLoanDataModel.getType_of_constitution_nia());
         try {
             String registration_date_nia = dataTypeConverter.getStringFromDate("yyyy-MM-dd",createLoanDataModel.getRegistration_date_nia());
             businessModel.setRegistration_date(registration_date_nia);
@@ -279,16 +277,28 @@ public class CustomerDetailServiceIMPL implements CustomerDetailService {
         businessModel.setBusiness_mailing_office_city(createLoanDataModel.getBusiness_mailing_office_city_nia());
         try {
             Integer business_mailing_office_pincode_nia = dataTypeConverter.getStringFromInt(createLoanDataModel.getBusiness_mailing_office_pincode_nia());
-            businessModel.setBusiness_registered_office_pincode(business_mailing_office_pincode_nia);
+            businessModel.setBusiness_mailing_office_pincode(business_mailing_office_pincode_nia);
         }catch (Exception e){
             throw new SystemException("1110","Unparseable business_mailing_office_pincode_nia");
         }
-      //businessModel.setBusiness_phone_number(createLoanDataModel.getBusiness_phone_number_nia());
+       /* try {
+            List<Long> business_phone_number_nia = new ArrayList<>();
+            Long business_phone_number_nia_converter = dataTypeConverter.getStringFromLong(createLoanDataModel.getBusiness_phone_number_nia());
+            business_phone_number_nia.add(business_phone_number_nia_converter);
+            businessModel.setBusiness_phone_number(business_phone_number_nia);
+        }catch (Exception e){
+            throw new SystemException("1110","Unparseable business_phone_number_nia");
+        }*/
+
         List<Long> business_phone_number_nia = getBusinessPhoneNumberNia();
         businessModel.setBusiness_phone_number(business_phone_number_nia);
-        List<String> business_email_id_nia = getBusinessEmailIdNia();
+        //businessModel.setBusiness_phone_number(createLoanDataModel.getBusiness_phone_number_nia());
+        List<String> business_email_id_nia = new ArrayList<>();
+        business_email_id_nia.add(createLoanDataModel.getBusiness_email_id_nia());
         businessModel.setBusiness_email_id(business_email_id_nia);
        // businessModel.setBusiness_email_id(createLoanDataModel.getBusiness_email_id_nia());
+
+
         businessModel.setProperty_ownership_flag(createLoanDataModel.getProperty_ownership_flag_nic());
         businessModel.setBusiness_pan_number(createLoanDataModel.getBusiness_pan_number_nia());
         businessModel.setBusiness_rc_number(createLoanDataModel.getBusiness_rc_number_nia());
@@ -391,8 +401,8 @@ public class CustomerDetailServiceIMPL implements CustomerDetailService {
         guarantorsModel.setCurrent_address(createLoanDataModel.getCurrent_address_ig());
         guarantorsModel.setCurrent_district(createLoanDataModel.getCurrent_district_ig());
         guarantorsModel.setCurrent_city(createLoanDataModel.getCity_ig());
-        guarantorsModel.setCurrent_state("tamil_nadu");
-        //guarantorsModel.setCurrent_state(createLoanDataModel.getState_ig());
+        //guarantorsModel.setCurrent_state("tamil_nadu");
+        guarantorsModel.setCurrent_state(createLoanDataModel.getState_ig());
         try {
             Integer current_pincode_ig = dataTypeConverter.getStringFromInt(createLoanDataModel.getCurrent_pincode_ig());
             guarantorsModel.setCurrent_pincode(current_pincode_ig);
@@ -406,9 +416,15 @@ public class CustomerDetailServiceIMPL implements CustomerDetailService {
         }catch (Exception e){
 
         }
-       //Integer mobile_number_ig = dataTypeConverter.stringtoIntConverter(createLoanDataModel.getMobile_number_ig());
-        Long mobileno = Long.parseLong("9999999999");
-        guarantorsModel.setMobile_number(mobileno);
+       try {
+            Long mobile_number_ig = dataTypeConverter.getStringFromLong(createLoanDataModel.getMobile_number_ig());
+            guarantorsModel.setMobile_number(mobile_number_ig);
+        }catch (Exception e){
+
+        }
+       /* Long mobileno = Long.parseLong("9999999999");
+        guarantorsModel.setMobile_number(mobileno);*/
+        //Integer mobile_number_ig = dataTypeConverter.stringtoIntConverter(createLoanDataModel.getMobile_number_ig());
         guarantorsModel.setMarital_status(createLoanDataModel.getMarital_status_ig());
         guarantorsModel.setReligion(createLoanDataModel.getReligion_ig());
         try {
@@ -445,8 +461,8 @@ public class CustomerDetailServiceIMPL implements CustomerDetailService {
         }catch (Exception e){
 
         }
-        guarantorsModel.setCustomer_type("individual");
-        /*guarantorsModel.setCustomer_type(createLoanDataModel.getCustomer_type_ig());*/
+        //guarantorsModel.setCustomer_type("individual");
+        guarantorsModel.setCustomer_type(createLoanDataModel.getCustomer_type_ig());
         guarantorsModel.setCkyc_id(createLoanDataModel.getCkyc_id_ig());
         guarantorsModel.setAnnual_income(createLoanDataModel.getAnnual_income_ig());
         guarantorsModelList.add(guarantorsModel);
@@ -553,13 +569,16 @@ public class CustomerDetailServiceIMPL implements CustomerDetailService {
         return financialDataModel;
     }
 
-    private TranchesModel getTranchesModelData(CustomerDetailDataModel createLoanDataModel) {
+    private List<TranchesModel> getTranchesModelData(CustomerDetailDataModel createLoanDataModel) {
 
         TranchesModel tranchesModel = new TranchesModel();
+        List<TranchesModel> tranchesModelList = new ArrayList<>();
+
         tranchesModel.setTranche_number(createLoanDataModel.getTranche_number());
         tranchesModel.setPrincipal_amount(createLoanDataModel.getPrincipal_amount());
+        tranchesModelList.add(tranchesModel);
 
-        return tranchesModel;
+        return tranchesModelList;
 
     }
 
@@ -607,14 +626,17 @@ public class CustomerDetailServiceIMPL implements CustomerDetailService {
         businessCoApplicantsModel.setBusiness_mailing_office_address3(createLoanDataModel.getBusiness_mailing_office_address3_nic());
         businessCoApplicantsModel.setBusiness_mailing_office_city(createLoanDataModel.getBusiness_mailing_office_city_nic());
         try {
-            Integer business_mailing_office_pincode_nic = dataTypeConverter.getStringFromInt(createLoanDataModel.getBusiness_mailing_office_pincode_nic());
-            businessCoApplicantsModel.setBusiness_mailing_office_pincode(business_mailing_office_pincode_nic);
+           // Integer business_mailing_office_pincode_nic = dataTypeConverter.getStringFromInt(createLoanDataModel.getBusiness_mailing_office_pincode_nic());
+            businessCoApplicantsModel.setBusiness_mailing_office_pincode(110080);
         }catch (Exception e){
             throw new SystemException("1110","Unparseable business_mailing_office_pincode_nic");
         }
-        List<Long> business_phone_number_nic = getBusinessPhoneNumberNic();
-        businessCoApplicantsModel.setBusiness_phone_number(business_phone_number_nic);
-        //businessCoApplicantsModel.setBusiness_phone_number(createLoanDataModel.getName_of_business_nic());
+        try {
+            Long business_phone_number_nic = dataTypeConverter.getStringFromLong(createLoanDataModel.getBusiness_phone_number_nic());
+            businessCoApplicantsModel.setBusiness_phone_number(business_phone_number_nic);
+        }catch (Exception e){
+            throw new SystemException("1110","Unparseable business_phone_number_nic");
+        }
         businessCoApplicantsModel.setBusiness_pan_number(createLoanDataModel.getBusiness_pan_number_nic());
         businessCoApplicantsModel.setBusiness_pan_link(createLoanDataModel.getBusiness_pan_link_nic());
         businessCoApplicantsModel.setBusiness_rc_number(createLoanDataModel.getBusiness_rc_number_nic());
@@ -628,45 +650,6 @@ public class CustomerDetailServiceIMPL implements CustomerDetailService {
         businessCoApplicantsModel.setCkyc_id(createLoanDataModel.getCkyc_id_nic());
 
         return businessCoApplicantsModel;
-    }
-
-
-
-    private BusinessGuarantorsModel getBusinessGuarantorsModelData(CustomerDetailDataModel createLoanDataModel) {
-
-        BusinessGuarantorsModel businessGuarantorsModel = new BusinessGuarantorsModel();
-
-
-        businessGuarantorsModel.setName_of_business("Credavenue");
-        businessGuarantorsModel.setNature_of_business("Agri Machinery; Hospitality; Textiles, Electronics, Heavy Machinery etc.");
-        businessGuarantorsModel.setType_of_constitution("Private limited");
-        businessGuarantorsModel.setRegistration_date("2012-12-12");
-        businessGuarantorsModel.setIncorporation_date("2012-12-12");
-        businessGuarantorsModel.setIndustry_type("Services");
-        businessGuarantorsModel.setSector_type("Financial Services");
-        businessGuarantorsModel.setSub_sector_type("Banking");
-        businessGuarantorsModel.setBusiness_vintage(31);
-        businessGuarantorsModel.setBusiness_registered_office_address("221B, Baker Street, Chennai");
-        businessGuarantorsModel.setBusiness_registered_office_city("Chennai");
-        businessGuarantorsModel.setBusiness_registered_office_state("Tamil Nadu");
-        businessGuarantorsModel.setBusiness_registered_office_pincode(63);
-        businessGuarantorsModel.setBusiness_mailing_office_address("221B, Baker Street, Chennai");
-        businessGuarantorsModel.setBusiness_mailing_office_address1("35 nagar");
-        businessGuarantorsModel.setBusiness_mailing_office_address2("samta colony");
-        businessGuarantorsModel.setBusiness_mailing_office_address3("main road");
-        businessGuarantorsModel.setBusiness_mailing_office_city("Chennai");
-        businessGuarantorsModel.setBusiness_mailing_office_pincode(86);//(//int)
-        List<Long> business_phone_number = getBusinessPhoneNumber();
-        businessGuarantorsModel.setBusiness_phone_number(business_phone_number);
-       // businessGuarantorsModel.setBusiness_phone_number("");
-        businessGuarantorsModel.setBusiness_pan_number("BMMPG9018G");
-        businessGuarantorsModel.setBusiness_pan_link("business_pan_link_37");
-        businessGuarantorsModel.setBusiness_rc_number("U72200MH2009PLC123456");
-        businessGuarantorsModel.setBusiness_rc_link("https://cdn.pixabay.com/photo/2017/06/22/20/22/green-2432374_1280.jpg");
-        businessGuarantorsModel.setAnnual_business_turnover(100.0f);//(float)
-        businessGuarantorsModel.setCkyc_id("123456789876548");
-
-        return businessGuarantorsModel;
     }
 
 
@@ -691,60 +674,36 @@ public class CustomerDetailServiceIMPL implements CustomerDetailService {
 
         OriginalLoanDetailModel originalLoanDetailModel = new OriginalLoanDetailModel();
 
-
-     /*   originalLoanDetailModel.setLoan_amount(100.0f);
-        originalLoanDetailModel.setTenure(13);
-        originalLoanDetailModel.setTenure_frequency(createLoanDataModel.getRepayment_frequency_sp());
-*/
-
-        originalLoanDetailModel.setPos_excl_insurance(100.0);
-        originalLoanDetailModel.setSanction_date("2012-12-12");
-        originalLoanDetailModel.setConsent_time_stamp("2012-12-12");
-        originalLoanDetailModel.setInsurance_application_form_link("https://cdn.pixabay.com/photo/2017/06/22/20/22/green-2432374_1280.jpg");
-        originalLoanDetailModel.setNach_enach_mandate_link("https://cdn.pixabay.com/photo/2017/06/22/20/22/green-2432374_1280.jpg");
-        originalLoanDetailModel.setSanction_letter_link("https://cdn.pixabay.com/photo/2017/06/22/20/22/green-2432374_1280.jpg");
-        originalLoanDetailModel.setTele_verification_report_link("https://cdn.pixabay.com/photo/2017/06/22/20/22/green-2432374_1280.jpg");
-        originalLoanDetailModel.setLoan_amount(100.0);
-        originalLoanDetailModel.setCibil_score(11);
-        originalLoanDetailModel.setDpn_link("https://cdn.pixabay.com/photo/2017/06/22/20/22/green-2432374_1280.jpg");
-        originalLoanDetailModel.setDrf_link("https://cdn.pixabay.com/photo/2017/06/22/20/22/green-2432374_1280.jpg");
-        originalLoanDetailModel.setCredit_discussion_mail_link("https://cdn.pixabay.com/photo/2017/06/22/20/22/green-2432374_1280.jpg");
-        originalLoanDetailModel.setSeasoning(76);
-        originalLoanDetailModel.setLoan_status("loan_status_26");
-        originalLoanDetailModel.setOriginal_sanctioned_amount(100.0);
-        originalLoanDetailModel.setOriginal_rate_type(100.0);
-        originalLoanDetailModel.setSelf_declaration_form_link("https://cdn.pixabay.com/photo/2017/06/22/20/22/green-2432374_1280.jpg");
-        originalLoanDetailModel.setTenure(64);
-        originalLoanDetailModel.setVehicle_inspection_report_link("https://cdn.pixabay.com/photo/2017/06/22/20/22/green-2432374_1280.jpg");
-        originalLoanDetailModel.setEntire_set_of_loan_agreements_link("https://cdn.pixabay.com/photo/2017/06/22/20/22/green-2432374_1280.jpg");
-        originalLoanDetailModel.setTenure_frequency("bullet");
-        originalLoanDetailModel.setFatca_declaration_link("https://cdn.pixabay.com/photo/2017/06/22/20/22/green-2432374_1280.jpg");
-        originalLoanDetailModel.setPool_id("pool_id_57");
-        originalLoanDetailModel.setOriginal_no_of_repayments(22);
-        originalLoanDetailModel.setFuture_pos(100.0);
-        originalLoanDetailModel.setField_verification_report_link("https://cdn.pixabay.com/photo/2017/06/22/20/22/green-2432374_1280.jpg");
-
-
+        originalLoanDetailModel.setLoan_amount(createLoanDataModel.getLoan_amount());
+        originalLoanDetailModel.setTenure(createLoanDataModel.getTenure());
+        originalLoanDetailModel.setTenure_frequency(createLoanDataModel.getTenure_frequency_sp());
 
         return originalLoanDetailModel;
     }
 
 
-    private OriginalDisbursementDetailsModel getOriginalDisbursementDetailsModelData(CustomerDetailDataModel createLoanDataModel) {
+    private List<OriginalDisbursementDetailsModel> getOriginalDisbursementDetailsModelData(CustomerDetailDataModel createLoanDataModel) {
 
         OriginalDisbursementDetailsModel originalDisbursementDetailsModel = new OriginalDisbursementDetailsModel();
+        List<OriginalDisbursementDetailsModel> originalDisbursementDetailsModelList = new ArrayList<>();
 
-        Float disbursement_amount_sp = dataTypeConverter.getStringFromFloat(createLoanDataModel.getDisbursement_amount_sp());
-        originalDisbursementDetailsModel.setDisbursement_amount(disbursement_amount_sp);
+        try {
+            Float disbursement_amount_sp = dataTypeConverter.getStringFromFloat(createLoanDataModel.getDisbursement_amount_sp());
+            originalDisbursementDetailsModel.setDisbursement_amount(disbursement_amount_sp);
+        }catch (Exception e){
+
+        }
         try {
             String disbursement_date_sp = dataTypeConverter.getStringFromDate("yyyy-MM-dd",createLoanDataModel.getDisbursement_date_sp());
             originalDisbursementDetailsModel.setDisbursement_date(disbursement_date_sp);
         }catch (Exception e){
-            throw new SystemException("1110","Unparseable disbursement_date_sp");
-        }
 
-        return originalDisbursementDetailsModel;
+        }
+        originalDisbursementDetailsModelList.add(originalDisbursementDetailsModel);
+
+        return originalDisbursementDetailsModelList;
     }
+
 
     private List<AssetsModel> getAssetsModelData(CustomerDetailDataModel createLoanDataModel) {
 
@@ -807,11 +766,16 @@ public class CustomerDetailServiceIMPL implements CustomerDetailService {
 
         PropertyReviewDocumentsModel propertyReviewDocumentsModel = new PropertyReviewDocumentsModel();
 
-        List<String> field_verification_report_link = getField_verification_report_link();
+        List<String> field_verification_report_link = new ArrayList<>();
+        field_verification_report_link.add(createLoanDataModel.getField_verification_report_link());
         propertyReviewDocumentsModel.setField_verification_report_link(field_verification_report_link);
-        List<String> cersai_check_report_link = getCersai_check_report_link();
+
+        List<String> cersai_check_report_link = new ArrayList<>();
+        cersai_check_report_link.add(createLoanDataModel.getCersai_check_report_link());
         propertyReviewDocumentsModel.setCersai_check_report_link(cersai_check_report_link);
-        List<String> entire_set_of_property_documents_link = getEntire_set_of_property_documents_link();
+
+        List<String> entire_set_of_property_documents_link = new ArrayList<>();
+        entire_set_of_property_documents_link.add(createLoanDataModel.getEntire_set_of_property_documents_link());
         propertyReviewDocumentsModel.setEntire_set_of_property_documents_link(entire_set_of_property_documents_link);
 
 
@@ -835,55 +799,12 @@ public class CustomerDetailServiceIMPL implements CustomerDetailService {
         return businessPhoneNumberNia;
     }
 
-    private List<String> getBusinessEmailIdNia() {
+   /* private List<String> getBusinessEmailIdNia() {
 
         List<String> businessEmailIdNia = new ArrayList<>();
         businessEmailIdNia.add("holmes@credavenue.com");
         businessEmailIdNia.add("holmes@credavenue.com");
         return businessEmailIdNia;
-    }
-
-    private List<Long> getBusinessPhoneNumberNic() {
-
-        List<Long> businessPhoneNumberNic = new ArrayList<>();
-        businessPhoneNumberNic.add(9876543210L);
-        businessPhoneNumberNic.add(9876543210L);
-        return businessPhoneNumberNic;
-    }
-
-    private List<Long> getBusinessPhoneNumber() {
-
-        List<Long> businessPhoneNumber = new ArrayList<>();
-        businessPhoneNumber.add(9876543210L);
-        businessPhoneNumber.add(9876543210L);
-        return businessPhoneNumber;
-    }
-
-    private List<String> getField_verification_report_link() {
-
-        List<String> field_verification_report_link = new ArrayList<>();
-        field_verification_report_link.add("https://cdn.pixabay.com/photo/2017/06/22/20/22/green-2432374_1280.jpg");
-        field_verification_report_link.add("https://cdn.pixabay.com/photo/2017/06/22/20/22/green-2432374_1280.jpg");
-        return field_verification_report_link;
-    }
-
-    private List<String> getEntire_set_of_property_documents_link() {
-
-        List<String> cersai_check_report_link = new ArrayList<>();
-        cersai_check_report_link.add("https://cdn.pixabay.com/photo/2017/06/22/20/22/green-2432374_1280.jpg");
-        cersai_check_report_link.add("https://cdn.pixabay.com/photo/2017/06/22/20/22/green-2432374_1280.jpg");
-        return cersai_check_report_link;
-
-    }
-
-    private List<String> getCersai_check_report_link() {
-
-        List<String> entire_set_of_property_documents_link = new ArrayList<>();
-        entire_set_of_property_documents_link.add("https://cdn.pixabay.com/photo/2017/06/22/20/22/green-2432374_1280.jpg");
-        entire_set_of_property_documents_link.add("https://cdn.pixabay.com/photo/2017/06/22/20/22/green-2432374_1280.jpg");
-        return entire_set_of_property_documents_link;
-
-    }
-
+    }*/
 
 }

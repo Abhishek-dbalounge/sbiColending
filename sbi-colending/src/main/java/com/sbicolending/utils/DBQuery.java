@@ -211,6 +211,10 @@ public class DBQuery {
             "disbursement_amount_sp, \n" +
             "disbursement_date_sp, \n" +
             "ckyc_id_nic,\n"+
+            //==========orignalloandetails===========
+            "loan_amount,\n" +
+            "tenure,\n" +
+            "repayment_frequency_sp,\n"+
             //==========Assets===============
             "sanction_ltv_ac,\n"+
             "collateral_created_date_ac,\n" +
@@ -227,7 +231,11 @@ public class DBQuery {
             "plot_id_number_ac,\n" +
             "property_nature_ac,\n" +
             "property_locality_ac,\n" +
-            "valuation_date_ac\n" +
+            "valuation_date_ac,\n" +
+            //=========PropertyReviewDocuments=========
+            "Field_verification_report_link, \n"+
+            "cersai_check_report_link,\n" +
+            "entire_set_of_property_documents_link\n"+
             "from public.create_loan  where lan_sp = ?";
 
 

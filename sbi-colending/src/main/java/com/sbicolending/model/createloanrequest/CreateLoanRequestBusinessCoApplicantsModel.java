@@ -27,7 +27,7 @@ public class CreateLoanRequestBusinessCoApplicantsModel {
     private String business_mailing_office_address3;
     private String business_mailing_office_city;
     private int business_mailing_office_pincode;//(//int)
-    private List<Long> business_phone_number;
+    private Long business_phone_number;
     private String business_pan_number;
     private String business_pan_link;
     private String business_rc_number;

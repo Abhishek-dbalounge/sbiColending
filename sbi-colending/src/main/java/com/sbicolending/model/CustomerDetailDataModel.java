@@ -29,63 +29,63 @@ public class CustomerDetailDataModel {
     private String religion_ia;
     private String caste_ia;
     private String occupation_ic;
-    private String income_source_sp;//(new)
-    private String property_ownership_flag_sp;//(new)
+    private String income_source_sp;
+    private String property_ownership_flag_sp;
     private String business_udhyam_regn_number_nia;
     private String name_of_bureau_sp;
     private String bureau_score_sp;
-    private String product_id_sp;//(new)
-    private String application_id_sp;//(new)
-    private String category_sp;//(new)
-    private String sub_category_sp;//(new)
+    private String product_id_sp;
+    private String application_id_sp;
+    private String category_sp;
+    private String sub_category_sp;
     private String purpose_sp;
-    private String disbursement_type_sp;//(new)
-    private int number_of_tranches_sp;//(int)//(new)
+    private String disbursement_type_sp;
+    private int number_of_tranches_sp;
     private int tenure_sp;
     private int number_of_repayments_sp;
-    private String psl_description_sp;//(new)
-    private String impacted_industry_description_sp;//(new)
-    private String applicant_never_in_30_plus_sma_sub_last_12m_sp;//(new)
+    private String psl_description_sp;
+    private String impacted_industry_description_sp;
+    private String applicant_never_in_30_plus_sma_sub_last_12m_sp;
     private String tax_slab_sp;
     private String psl_msme_type_of_enterprise_sp;
     private String cersai_security_int_id_ac;
     private String repayment_frequency_sp;
     private String father_first_name_ia;
     private String father_last_name_ia;
-    private String total_value_of_security_sp;//(numeric)
-    private String tenure_frequency_sp;//(new)
+    private String total_value_of_security_sp;
+    private String tenure_frequency_sp;
     private String marital_status_ia;
     private String ckyc_id_ia;
     private Date date_of_birth_ia;
     private Date first_repayment_date_sp;
-    private Date itr_filed_date_current_fy_sp;//(Date)//(new)
-    private Date application_date_sp;//(Date)//(new)
+    private Date itr_filed_date_current_fy_sp;
+    private Date application_date_sp;
     private Date fcu_done_date_sp;
     private Date e_verification_of_kyc_done_date_sp;
     private Date pd_done_date_sp;
     private Date search_with_registrar_of_companies_obtained_date_sp;
     private Date cersai_registration_reference_number_verification_date_sp;
     private Date cibil_report_done_date_sp;
-    private Date repayment_period_end_date_sp;//(Date)
+    private Date repayment_period_end_date_sp;
     private Date date_of_sanction_by_nbfc_sp;
     private Date date_of_documentation_by_nbfc_sp;
     private String annual_income_sp;
-    private int principal_amount_sp;//(numeric)
-    private int interest_rate_sp;//(numeric)
-    private int loan_emi_sp;//(numeric)
-    private float applicant_age_at_maturity_ia;//(Double)
+    private int principal_amount_sp;
+    private int interest_rate_sp;
+    private int loan_emi_sp;
+    private float applicant_age_at_maturity_ia;
     //===========Business=====================================
     private String name_of_business_nia;
     private String nature_of_business_nia;
     private String type_of_constitution_nia;
-    private Date registration_date_nia;//(Date)
-    private Date incorporation_date_nia;//(Date)
+    private Date registration_date_nia;
+    private Date incorporation_date_nia;
     private String industry_type_nia;
     private String sector_type_nic;
     private String sub_sector_type_nia;
-    private Double business_vintage_nia;//(Double)
+    private Double business_vintage_nia;
     private String business_registered_office_address_nia;
-    private String business_registered_office_state_nia;//(new)
+    private String business_registered_office_state_nia;
     private String business_mailing_office_city_nia;
     private String business_mailing_office_pincode_nia;
     private String business_mailing_office_address1_nia;
@@ -96,7 +96,7 @@ public class CustomerDetailDataModel {
     private String business_rc_number_nia;
     private String business_mailing_office_address2_nia;
     private String business_mailing_office_address3_nia;
-    private String enterprise_activity_nia;//(new)
+    private String enterprise_activity_nia;
     private String customer_type_nia;
     private String exisiting_shareholding_of_promoters_nia;
     private String exisiting_shareholding_of_mutual_funds_nia;
@@ -215,6 +215,10 @@ public class CustomerDetailDataModel {
     //============OriginalDisbursementDetails====
     private String disbursement_amount_sp;//(numeric)
     private Date disbursement_date_sp;//(Date)
+    //============original Loan details============
+    private int loan_amount;
+    private int        tenure;
+   // private String tenure_frequency_sp;(Repeate)
     //=========Assets============================
     private float sanction_ltv_ac;
     private Date collateral_created_date_ac;
@@ -232,6 +236,11 @@ public class CustomerDetailDataModel {
     private String property_nature_ac;
     private String property_locality_ac;
     private Date valuation_date_ac;
+    //=========PropertyReviewDocuments==============
+    private String Field_verification_report_link;
+    private String cersai_check_report_link;
+    private String entire_set_of_property_documents_link;
+
 
 
 }

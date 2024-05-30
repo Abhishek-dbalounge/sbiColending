@@ -1,13 +1,12 @@
-package com.sbicolending.model.customerdetailsresponse;
+package com.sbicolending.model.updatecustomerdetailsrequest;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
-import java.util.Date;
 import java.util.List;
 
 @Data
-public class BusinessModel {
+public class CustomerDetailUpdateBusinessModel {
 
 
     private String name_of_business;

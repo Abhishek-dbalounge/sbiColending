@@ -1,11 +1,11 @@
-package com.sbicolending.model.createloanrequest;
+package com.sbicolending.model.updatecustomerdetailsrequest;
 
 import lombok.Data;
 
 import java.util.Date;
 
 @Data
-public class CreateLoanRequestCoApplicantsModel {
+public class CustomerDetailUpdateCoApplicantsModel {
 
     private String relationship_with_applicant;
     private String first_name;

@@ -1,11 +1,11 @@
-package com.sbicolending.model.createloanrequest;
+package com.sbicolending.model.updatecustomerdetailsrequest;
 
 import lombok.Data;
 
 import java.util.List;
 
 @Data
-public class CreateLoanRequestModel {
+public class CustomerDetailUpdateModel {
 
 
  private String primary_borrower_type;
@@ -76,18 +76,18 @@ public class CreateLoanRequestModel {
  private float interest_rate;//(float)
  private float loan_emi;//(float)
  private float applicant_age_at_maturity;//(float)
- private CreateLoanRequestBusinessModel business;
- private List<CreateLoanRequestGuarantorsModel> guarantors;
- private CreateLoanRequestCoApplicantsModel coApplicants;
- private CreateLoanRequestBankStatementModel bankStatement;
- private CreateLoanRequestFinancialDataModel financialData;
- private List<CreateLoanRequestTranchesModel> tranchesModel;
- private CreateLoanRequestLinkedLoanInfosModel linkedLoanInfosModel;
- private CreateLoanRequestBusinessCoApplicantsModel businessCoApplicants;
- private CreateLoanRequestRelatedPartiesModel relatedPartiesModel;
- private CreateLoanRequestOriginalLoanDetailModel original_loan_detail;
- private List<CreateLoanRequestOriginalDisbursementDetailsModel> original_disbursement_details;
- private List<CreateLoanRequestAssetsModel> assets;
- private CreateLoanRequestPropertyReviewDocumentsModel propertyReviewDocumentsModel;
+ private CustomerDetailUpdateBusinessModel business;
+ private List<CustomerDetailUpdateGuarantorsModel> guarantors;
+ private CustomerDetailUpdateCoApplicantsModel coApplicants;
+ private CustomerDetailUpdateBankStatementModel bankStatement;
+ private CustomerDetailUpdateFinancialDataModel financialData;
+ private List<CustomerDetailUpdateTranchesModel> tranchesModel;
+ private CustomerDetailUpdateLinkedLoanInfosModel linkedLoanInfosModel;
+ private CustomerDetailUpdateBusinessCoApplicantsModel businessCoApplicants;
+ private CustomerDetailUpdateRelatedPartiesModel relatedPartiesModel;
+ private CustomerDetailUpdateOriginalLoanDetailModel original_loan_detail;
+ private List<CustomerDetailUpdateOriginalDisbursementDetailsModel> original_disbursement_details;
+ private List<CustomerDetailUpdateAssetsModel> assets;
+ private CustomerDetailUpdatePropertyReviewDocumentsModel propertyReviewDocumentsModel;
 
 }
