@@ -1,6 +1,7 @@
 package com.sbicolending.model.updatecustomerdetailsrequest;
 
 import lombok.Data;
+import org.apache.poi.ss.usermodel.Cell;
 
 import java.util.List;
 
@@ -89,5 +90,6 @@ public class CustomerDetailUpdateModel {
  private List<CustomerDetailUpdateOriginalDisbursementDetailsModel> original_disbursement_details;
  private List<CustomerDetailUpdateAssetsModel> assets;
  private CustomerDetailUpdatePropertyReviewDocumentsModel propertyReviewDocumentsModel;
+
 
 }

@@ -78,12 +78,16 @@ public class CreateLoanRequestModel {
  private float applicant_age_at_maturity;//(float)
  private CreateLoanRequestBusinessModel business;
  private List<CreateLoanRequestGuarantorsModel> guarantors;
- private CreateLoanRequestCoApplicantsModel coApplicants;
+ //================Set Multiple array=====================
+ private List<CreateLoanRequestCoApplicantsModel> coApplicants;
+ //====================================
  private CreateLoanRequestBankStatementModel bankStatement;
  private CreateLoanRequestFinancialDataModel financialData;
  private List<CreateLoanRequestTranchesModel> tranchesModel;
  private CreateLoanRequestLinkedLoanInfosModel linkedLoanInfosModel;
- private CreateLoanRequestBusinessCoApplicantsModel businessCoApplicants;
+ //===================Set Multiple array=========================
+ private List<CreateLoanRequestBusinessCoApplicantsModel> businessCoApplicants;
+ //========================================
  private CreateLoanRequestRelatedPartiesModel relatedPartiesModel;
  private CreateLoanRequestOriginalLoanDetailModel original_loan_detail;
  private List<CreateLoanRequestOriginalDisbursementDetailsModel> original_disbursement_details;

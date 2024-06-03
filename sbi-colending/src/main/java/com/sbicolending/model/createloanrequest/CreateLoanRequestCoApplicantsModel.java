@@ -39,4 +39,5 @@ public class CreateLoanRequestCoApplicantsModel {
     private String customer_type;
     private String ckyc_id;
 
+
 }

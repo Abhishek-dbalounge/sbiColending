@@ -13,6 +13,9 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RestController
 @RequestMapping("/customer")
 public class CustomerDetailUpdateController {
@@ -22,7 +25,7 @@ public class CustomerDetailUpdateController {
     @Autowired
     private CustomerDetailUpdateService customerDetailUpdateService;
 
-    @PostMapping("/updateCustomerDetails")
+    @PutMapping("/updateCustomerDetails/{lanSp}")
     public ResponseEntity<?> customerDetails(@PathVariable("lanSp") String lanSp, @RequestParam("file") MultipartFile file){
 
         try {
@@ -34,7 +37,8 @@ public class CustomerDetailUpdateController {
                 return new ResponseEntity<>(commonResponse, HttpStatus.OK);
             }
 
-            CommonResponseModel commonResponseModel =  customerDetailUpdateService.updateCustomerDetails(lanSp,file);
+            List<String> header = getCustomerDetailsUpdateExcelHeaderList();
+            CommonResponseModel commonResponseModel = customerDetailUpdateService.updateCustomerDetailsData(lanSp,file, header);
 
             return new ResponseEntity<>(commonResponseModel, HttpStatus.OK);
 
@@ -53,6 +57,21 @@ public class CustomerDetailUpdateController {
             commonResponse.setErrorCode("1111");
             return new ResponseEntity<>(commonResponse,HttpStatus.OK);
         }
+    }
+
+    private List<String> getCustomerDetailsUpdateExcelHeaderList() {
+
+        List<String> header = new ArrayList<String>();
+
+        header.add("primary_borrower_type");
+        header.add("first_name");
+        header.add("current_address");
+        header.add("current_state");
+        header.add("number_of_tranches" );
+
+
+        return header;
+
     }
 
 

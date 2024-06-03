@@ -79,12 +79,16 @@ public class CustomerDetailResponseModel {
  private float applicant_age_at_maturity;//(float)
  private BusinessModel business;
  private List<GuarantorsModel> guarantors;
- private CoApplicantsModel coApplicants;
+ //=========add  multi array=========
+ private List<CoApplicantsModel> coApplicants;
+ //=======================
  private BankStatementModel bankStatement;
  private FinancialDataModel financialData;
  private List<TranchesModel> tranchesModel;
  private LinkedLoanInfosModel linkedLoanInfosModel;
- private BusinessCoApplicantsModel businessCoApplicants;
+ //=========add  multi array=========
+ private List<BusinessCoApplicantsModel> businessCoApplicants;
+ //=========================
  private RelatedPartiesModel relatedPartiesModel;
  private OriginalLoanDetailModel original_loan_detail;
  private List<OriginalDisbursementDetailsModel> original_disbursement_details;

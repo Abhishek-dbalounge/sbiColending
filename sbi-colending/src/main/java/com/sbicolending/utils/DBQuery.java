@@ -157,6 +157,7 @@ public class DBQuery {
             "annual_income_ic,\n" +
             "bureau_score_ic,\n" +
             "age_at_maturity_ic,\n" +
+            "employment_details_designation_sp,\n"+
             "caste_ic,\n" +
             "father_first_name_ic,\n" +
             "father_last_name_ic,\n" +
@@ -166,6 +167,37 @@ public class DBQuery {
             "total_net_worth_ic,\n"+
             "customer_type_ic,\n" +
             "ckyc_id_ic,\n"+
+            //---Array1------
+            "relationship_with_applicant_ic_1,\n"+
+            "first_name_ic_1,\n" +
+            "last_name_ic_1,\n"+
+            "gender_ic_1,\n"+
+            "occupation_ic_1,\n"+
+            "date_of_birth_ic_1,\n"+
+            "mobile_number_ic_1,\n"+
+            "current_address_ic_1,\n"+
+            "city_ic_1,\n"+
+            "current_district_ic_1,\n"+
+            "state_ic_1,\n"+
+            "current_pincode_ic_1,\n"+
+            "permanent_district_ic_1,\n"+
+            "permanent_pincode_ic_1,\n"+
+            "marital_status_ic_1,\n"+
+            "religion_ic_1,\n"+
+            "education_ic_1,\n"+
+            "annual_income_ic_1,\n"+
+            "bureau_score_ic_1,\n"+
+            "age_at_maturity_ic_1,\n" +
+            "employment_details_designation_sp_1,\n"+
+            "caste_ic_1,\n"+
+            "father_first_name_ic_1,\n" +
+            "father_last_name_ic_1,\n"+
+            "place_of_birth_ic_1,\n" +
+            "title_ic_1 ,\n" +
+            "income_source_ic_1,\n" +
+            "total_net_worth_ic_1,\n" +
+            "customer_type_ic_1,\n" +
+            "ckyc_id_ic_1,\n" +
             //==========BankStatement==================
             "sma_account_sp,\n" +
             "business_transactions_sp,\n" +
@@ -237,6 +269,18 @@ public class DBQuery {
             "cersai_check_report_link,\n" +
             "entire_set_of_property_documents_link\n"+
             "from public.create_loan  where lan_sp = ?";
+
+
+
+
+
+
+
+
+
+
+
+    public static final String CUSTOMER_DETAILS_UPDATE_DATA ="";
 
 
 

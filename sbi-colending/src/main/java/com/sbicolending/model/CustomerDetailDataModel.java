@@ -171,6 +171,38 @@ public class CustomerDetailDataModel {
     private String total_net_worth_ic;//(new)
     private String customer_type_ic;
     private String ckyc_id_ic;//(new)
+    //---Array1------
+    private String relationship_with_applicant_ic_1;//(new)
+    private String first_name_ic_1;
+    private String last_name_ic_1;
+    private String gender_ic_1;
+    private String occupation_ic_1;
+    private Date date_of_birth_ic_1;
+    private String mobile_number_ic_1;
+    private String current_address_ic_1;
+    private String City_ic_1;
+    private String current_district_ic_1;
+    private String State_ic_1;
+    private String current_pincode_ic_1;
+    private String permanent_district_ic_1;
+    private String permanent_pincode_ic_1;
+    private String marital_status_ic_1;
+    private String religion_ic_1;
+    private String education_ic_1;
+    private String annual_income_ic_1;//(numeric)
+    private String bureau_score_ic_1;//(integer)
+    private String age_at_maturity_ic_1;
+    private String employment_details_designation_sp_1;
+    private String caste_ic_1;
+    private String father_first_name_ic_1;
+    private String father_last_name_ic_1;
+    private String place_of_birth_ic_1;
+    private String title_ic_1;
+    private String income_source_ic_1;//(new)
+    //private String current_address_ic;
+    private String total_net_worth_ic_1;//(new)
+    private String customer_type_ic_1;
+    private String ckyc_id_ic_1;//(new)
     //====================BankStatement===========================
     private String sma_account_sp;
     private String business_transactions_sp;
