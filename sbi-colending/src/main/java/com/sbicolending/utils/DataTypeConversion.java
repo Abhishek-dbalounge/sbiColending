@@ -1,18 +1,14 @@
 package com.sbicolending.utils;
 
-import org.apache.catalina.util.StringUtil;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 @Component
-public class DataTypeConverter {
+public class DataTypeConversion {
 
     public int getStringFromInt(String stringVal)  {
         int convarteVal = 0;
@@ -112,6 +108,65 @@ public class DataTypeConverter {
         }
 
         return convarteVal;
+    }
+
+
+
+
+//=========UpdateCustomerDetails====================================================
+
+
+    public String getIntFromString(Integer intVal)  {
+        String convarteVal = null;
+
+        if (intVal == null || StringUtils.isEmpty(intVal)) {
+
+            return convarteVal;
+        }else {
+
+            String stringVal = String.valueOf(intVal);
+            convarteVal = stringVal;
+        }
+
+        return convarteVal;
+    }
+
+
+    public String getStringFromFloat(Float floatVal) {
+
+
+        String convertVal = null;
+
+        if(floatVal == null || StringUtils.isEmpty(floatVal)){
+
+            return convertVal;
+        }else {
+            String stringVal = String.valueOf(floatVal);
+            convertVal =stringVal;
+        }
+
+        return convertVal;
 
     }
+
+   /* public float getFloatFromInteger(Float floatVal) {
+
+        Integer convertVal = 0;
+
+        if(floatVal == null || StringUtils.isEmpty(floatVal) ){
+
+            return convertVal;
+        }else {
+
+
+            int value = (int) floatVal;
+            int floatVal1= (int) floatVal;
+            convertVal =floatVal;
+
+            Integer integerVal = (Integer) floatVal;
+            convertVal =floatVal;
+        }
+        return convertVal;
+    }*/
+
 }

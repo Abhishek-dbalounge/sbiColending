@@ -3,8 +3,10 @@ package com.sbicolending.controller;
 import com.sbicolending.exception.SystemException;
 import com.sbicolending.model.CommonResponseModel;
 import com.sbicolending.model.updatecustomerdetailsrequest.CustomerDetailUpdateModel;
+import com.sbicolending.service.CustomerDetailUpdateService;
 import com.sbicolending.utils.BaseLogger;
 import org.slf4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
@@ -16,8 +18,12 @@ public class CustomerDetailUpdateController {
 
     private Logger logger = BaseLogger.getLogger(CustomerDetailUpdateController.class);
 
+    @Autowired
+    private CustomerDetailUpdateService customerDetailUpdateService;
+
+
     @PutMapping("/updateCustomerDetails/{lanSp}")
-    public ResponseEntity<?> customerDetails(@PathVariable("lanSp") String lanSp, @RequestBody CustomerDetailUpdateModel CustomerDetailUpdateRequest){
+    public ResponseEntity<?> customerDetailsUpdate(@PathVariable("lanSp") String lanSp, @RequestBody CustomerDetailUpdateModel customerDetailUpdateRequest){
 
         try {
             if(StringUtils.isEmpty(lanSp)){
@@ -27,6 +33,8 @@ public class CustomerDetailUpdateController {
                 commonResponse.setErrorCode("1112");
                 return new ResponseEntity<>(commonResponse, HttpStatus.OK);
             }
+
+            customerDetailUpdateService.updateCustomerDetails(customerDetailUpdateRequest);
           /*  CustomerDetailResponseModel customerDetailResponse = customerDetailService.getCustomerDetails(lanSp);
             if (customerDetailResponse == null) {
                 logger.info("updateCustomerDetails : Invalid LenSp");
