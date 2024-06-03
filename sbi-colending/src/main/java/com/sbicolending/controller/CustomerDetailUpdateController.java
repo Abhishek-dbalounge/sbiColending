@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/customer")
@@ -21,28 +22,21 @@ public class CustomerDetailUpdateController {
     @Autowired
     private CustomerDetailUpdateService customerDetailUpdateService;
 
-
-    @PutMapping("/updateCustomerDetails/{lanSp}")
-    public ResponseEntity<?> customerDetailsUpdate(@PathVariable("lanSp") String lanSp, @RequestBody CustomerDetailUpdateModel customerDetailUpdateRequest){
+    @PostMapping("/updateCustomerDetails")
+    public ResponseEntity<?> customerDetails(@PathVariable("lanSp") String lanSp, @RequestParam("file") MultipartFile file){
 
         try {
-            if(StringUtils.isEmpty(lanSp)){
+            if(StringUtils.isEmpty(file)){
                 CommonResponseModel commonResponse = new CommonResponseModel();
-                logger.info("updateCustomerDetails : LenSp filed is empty");
-                commonResponse.setErrorMsg("LenSp filed is empty");
+                logger.info("updateCustomerDetails : file is empty");
+                commonResponse.setErrorMsg("file is empty");
                 commonResponse.setErrorCode("1112");
                 return new ResponseEntity<>(commonResponse, HttpStatus.OK);
             }
 
-            customerDetailUpdateService.updateCustomerDetails(customerDetailUpdateRequest);
-          /*  CustomerDetailResponseModel customerDetailResponse = customerDetailService.getCustomerDetails(lanSp);
-            if (customerDetailResponse == null) {
-                logger.info("updateCustomerDetails : Invalid LenSp");
-                throw new SystemException("1113","Invalid LenSp");
-            }
-            return new ResponseEntity<>(customerDetailResponse, HttpStatus.OK);*/
-            return null;
+            CommonResponseModel commonResponseModel =  customerDetailUpdateService.updateCustomerDetails(lanSp,file);
 
+            return new ResponseEntity<>(commonResponseModel, HttpStatus.OK);
 
         }
         catch (SystemException se){
@@ -60,5 +54,6 @@ public class CustomerDetailUpdateController {
             return new ResponseEntity<>(commonResponse,HttpStatus.OK);
         }
     }
+
 
 }
