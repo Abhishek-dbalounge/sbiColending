@@ -2,14 +2,11 @@ package com.sbicolending.dao.impl;
 
 import com.sbicolending.dao.CustomerDetailUpdateDao;
 import com.sbicolending.exception.SystemException;
-import com.sbicolending.model.CommonResponseModel;
 import com.sbicolending.model.updatecustomerdetailsrequest.CustomerDetailUpdateModel;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
 
 @Repository
 public class CustomerDetailUpdateDaoIMPL implements CustomerDetailUpdateDao {

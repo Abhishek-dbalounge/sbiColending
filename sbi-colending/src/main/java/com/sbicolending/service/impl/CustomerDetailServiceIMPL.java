@@ -78,7 +78,10 @@ public class CustomerDetailServiceIMPL implements CustomerDetailService {
                 }catch (Exception e){
                     throw new SystemException("1110","Unparseable bureau_score_sp");
                 }
-                List<String> bureau_report_link_SP = getBureauReportLinkSP();
+
+
+                List<String>  bureau_report_link_SP = new ArrayList<>();
+                bureau_report_link_SP.add(customerDetailDataModel.getBureau_report_link_SP());
                 customerDetailResponse.setBureau_report_link(bureau_report_link_SP);
                 customerDetailResponse.setProduct_id(customerDetailDataModel.getProduct_id_sp());
                 customerDetailResponse.setApplication_id(customerDetailDataModel.getApplication_id_sp());
@@ -288,9 +291,10 @@ public class CustomerDetailServiceIMPL implements CustomerDetailService {
         }catch (Exception e){
             throw new SystemException("1110","Unparseable business_mailing_office_pincode_nia");
         }
-       /* try {
+        /*try {
             List<Long> business_phone_number_nia = new ArrayList<>();
-            Long business_phone_number_nia_converter = dataTypeConverter.getStringFromLong(createLoanDataModel.getBusiness_phone_number_nia());
+            Long business_phone_number_nia_converter = dataTypeConversion.getStringFromLong(createLoanDataModel.getBusiness_phone_number_nia());
+            System.out.println("====business_phone_number_nia_converter=="+business_phone_number_nia_converter);
             business_phone_number_nia.add(business_phone_number_nia_converter);
             businessModel.setBusiness_phone_number(business_phone_number_nia);
         }catch (Exception e){
@@ -477,11 +481,15 @@ public class CustomerDetailServiceIMPL implements CustomerDetailService {
 
         CoApplicantsModel coApplicantsModel = new CoApplicantsModel();
         CoApplicantsModel coApplicantsModel1 = new CoApplicantsModel();
+        CoApplicantsModel coApplicantsModel2 = new CoApplicantsModel();
+        CoApplicantsModel coApplicantsModel3 = new CoApplicantsModel();
+        CoApplicantsModel coApplicantsModel4 = new CoApplicantsModel();
+        CoApplicantsModel coApplicantsModel5 = new CoApplicantsModel();
         List<CoApplicantsModel> coApplicantsModelList = new ArrayList<>();
 
-        if(createLoanDataModel.getFather_first_name_ic() != null) {
+        if(createLoanDataModel.getRelationship_with_applicant_ic() != null) {
             coApplicantsModel.setRelationship_with_applicant(createLoanDataModel.getRelationship_with_applicant_ic());
-            coApplicantsModel.setFirst_name(createLoanDataModel.getFather_first_name_ic());
+            coApplicantsModel.setFirst_name(createLoanDataModel.getFirst_name_ic());
             coApplicantsModel.setLast_name(createLoanDataModel.getLast_name_ia());
             coApplicantsModel.setGender(createLoanDataModel.getGender_ic());
             coApplicantsModel.setOccupation(createLoanDataModel.getOccupation_ic());
@@ -550,78 +558,362 @@ public class CustomerDetailServiceIMPL implements CustomerDetailService {
             coApplicantsModelList.add(coApplicantsModel);
         }
 
-        //==Array1===
+                 //==Array1===
+                 if (createLoanDataModel.getRelationship_with_applicant_ic_1() !=null) {
+                     coApplicantsModel1.setRelationship_with_applicant(createLoanDataModel.getRelationship_with_applicant_ic_1());
+                     coApplicantsModel1.setFirst_name(createLoanDataModel.getFirst_name_ic_1());
+                     coApplicantsModel1.setLast_name(createLoanDataModel.getLast_name_ic_1());
+                     coApplicantsModel1.setGender(createLoanDataModel.getGender_ic_1());
+                     coApplicantsModel1.setOccupation(createLoanDataModel.getOccupation_ic_1());
+                     coApplicantsModel1.setDate_of_birth(createLoanDataModel.getDate_of_birth_ic_1());
+                     try {
+                        Long mobile_number_ic_1 = dataTypeConversion.getStringFromLong(createLoanDataModel.getMobile_number_ic_1());
+                        coApplicantsModel1.setMobile_number(mobile_number_ic_1);
+                     } catch (Exception e) {
+                        throw new SystemException("1110", "Unparseable mobile_number_ic_1");
+                     }
+                     coApplicantsModel1.setCurrent_address(createLoanDataModel.getCurrent_address_ic_1());
+                     coApplicantsModel1.setCurrent_city(createLoanDataModel.getCity_ic_1());
+                     coApplicantsModel1.setCurrent_district(createLoanDataModel.getCurrent_district_ic_1());
+                     coApplicantsModel1.setCurrent_state(createLoanDataModel.getState_ic_1());
+                     try {
+                       Integer current_pincode_ic_1 = dataTypeConversion.getStringFromInt(createLoanDataModel.getCurrent_pincode_ic_1());
+                       coApplicantsModel1.setCurrent_pincode(current_pincode_ic_1);
+                     } catch (Exception e) {
+                       throw new SystemException("1110", "Unparseable current_pincode_ic_1");
+                     }
+                     coApplicantsModel1.setPermanent_district(createLoanDataModel.getPermanent_district_ic_1());
+                     try {
+                       Integer permanent_pincode_ic_1 = dataTypeConversion.getStringFromInt(createLoanDataModel.getPermanent_pincode_ic_1());
+                       coApplicantsModel1.setPermanent_pincode(permanent_pincode_ic_1);
+                     } catch (Exception e) {
+                       throw new SystemException("1110", "Unparseable permanent_pincode_ic_1");
+                     }
+                     coApplicantsModel1.setMarital_status(createLoanDataModel.getMarital_status_ic_1());
+                     coApplicantsModel1.setReligion(createLoanDataModel.getReligion_ic_1());
+                     coApplicantsModel1.setEducation(createLoanDataModel.getEducation_ic_1());
+                     try {
+                       Float annual_income_ic_1 = dataTypeConversion.getStringFromFloat(createLoanDataModel.getAnnual_income_ic_1());
+                       coApplicantsModel1.setAnnual_income(annual_income_ic_1);
+                     } catch (Exception e) {
+                       throw new SystemException("1110", "Unparseable annual_income_ic_1");
+                     }
+                     try {
+                       Integer bureau_score_ic_1 = dataTypeConversion.getStringFromInt(createLoanDataModel.getBureau_score_ic_1());
+                       coApplicantsModel1.setBureau_score(bureau_score_ic_1);
+                     } catch (Exception e) {
+                     throw new SystemException("1110", "Unparseable bureau_score_ic_1");
+                     }
+                     try {
+                     Integer age_at_maturity_ic_1 = dataTypeConversion.getStringFromInt(createLoanDataModel.getAge_at_maturity_ic_1());
+                     coApplicantsModel1.setAge_at_maturity(age_at_maturity_ic_1);
+                     } catch (Exception e) {
+                     throw new SystemException("1110", "Unparseable age_at_maturity_ic_1");
+                     }
+                     coApplicantsModel1.setEmployment_details_designation(createLoanDataModel.getEmployment_details_designation_sp_1());
+                     coApplicantsModel1.setCaste(createLoanDataModel.getCaste_ic_1());
+                     coApplicantsModel1.setFather_first_name(createLoanDataModel.getFirst_name_ic_1());
+                     coApplicantsModel1.setFather_last_name(createLoanDataModel.getFather_last_name_ic_1());
+                     coApplicantsModel1.setPlace_of_birth(createLoanDataModel.getPlace_of_birth_ic_1());
+                     coApplicantsModel1.setTitle(createLoanDataModel.getTitle_ic_1());
+                     coApplicantsModel1.setIncome_source(createLoanDataModel.getIncome_source_ic_1());
+                     coApplicantsModel1.setCurrent_address_line1(createLoanDataModel.getCurrent_address_ic_1());
+                     try {
+                       Float total_net_worth_ic_1 = dataTypeConversion.getStringFromFloat(createLoanDataModel.getTotal_net_worth_ic_1());
+                       coApplicantsModel1.setTotal_net_worth(total_net_worth_ic_1);
+                     } catch (Exception e) {
+                      throw new SystemException("1110", "Unparseable total_net_worth_ic_1");
+                     }
+                     coApplicantsModel1.setCustomer_type(createLoanDataModel.getCustomer_type_ic_1());
+                     coApplicantsModel1.setCkyc_id(createLoanDataModel.getCkyc_id_ic_1());
+                     coApplicantsModelList.add(coApplicantsModel1);
+                 }
 
-        if (createLoanDataModel.getFather_first_name_ic_1() !=null) {
-            coApplicantsModel1.setRelationship_with_applicant(createLoanDataModel.getRelationship_with_applicant_ic_1());
-            coApplicantsModel1.setFirst_name(createLoanDataModel.getFather_first_name_ic_1());
-            coApplicantsModel1.setLast_name(createLoanDataModel.getLast_name_ic_1());
-            coApplicantsModel1.setGender(createLoanDataModel.getGender_ic_1());
-            coApplicantsModel1.setOccupation(createLoanDataModel.getOccupation_ic_1());
-            coApplicantsModel1.setDate_of_birth(createLoanDataModel.getDate_of_birth_ic_1());
-            try {
-                Long mobile_number_ic = dataTypeConversion.getStringFromLong(createLoanDataModel.getMobile_number_ic_1());
-                coApplicantsModel1.setMobile_number(mobile_number_ic);
-            } catch (Exception e) {
-                throw new SystemException("1110", "Unparseable mobile_number_ic");
-            }
+                 //==Array2===
+                 if (createLoanDataModel.getRelationship_with_applicant_ic_2() !=null) {
+                     coApplicantsModel2.setRelationship_with_applicant(createLoanDataModel.getRelationship_with_applicant_ic_2());
+                     coApplicantsModel2.setFirst_name(createLoanDataModel.getFirst_name_ic_2());
+                     coApplicantsModel2.setLast_name(createLoanDataModel.getLast_name_ic_2());
+                     coApplicantsModel2.setGender(createLoanDataModel.getGender_ic_2());
+                     coApplicantsModel2.setOccupation(createLoanDataModel.getOccupation_ic_2());
+                     coApplicantsModel2.setDate_of_birth(createLoanDataModel.getDate_of_birth_ic_2());
+                     try {
+                       Long mobile_number_ic_2 = dataTypeConversion.getStringFromLong(createLoanDataModel.getMobile_number_ic_2());
+                         coApplicantsModel2.setMobile_number(mobile_number_ic_2);
+                     } catch (Exception e) {
+                       throw new SystemException("1110", "Unparseable mobile_number_ic_2");
+                     }
+                     coApplicantsModel2.setCurrent_address(createLoanDataModel.getCurrent_address_ic_2());
+                     coApplicantsModel2.setCurrent_city(createLoanDataModel.getCity_ic_2());
+                     coApplicantsModel2.setCurrent_district(createLoanDataModel.getCurrent_district_ic_2());
+                     coApplicantsModel2.setCurrent_state(createLoanDataModel.getState_ic_2());
+                     try {
+                       Integer current_pincode_ic_2 = dataTypeConversion.getStringFromInt(createLoanDataModel.getCurrent_pincode_ic_2());
+                       coApplicantsModel2.setCurrent_pincode(current_pincode_ic_2);
+                     } catch (Exception e) {
+                       throw new SystemException("1110", "Unparseable current_pincode_ic_2");
+                     }
+                     coApplicantsModel2.setPermanent_district(createLoanDataModel.getPermanent_district_ic_2());
+                     try {
+                        Integer permanent_pincode_ic_2 = dataTypeConversion.getStringFromInt(createLoanDataModel.getPermanent_pincode_ic_2());
+                        coApplicantsModel2.setPermanent_pincode(permanent_pincode_ic_2);
+                     } catch (Exception e) {
+                        throw new SystemException("1110", "Unparseable permanent_pincode_ic_2");
+                     }
+                     coApplicantsModel2.setMarital_status(createLoanDataModel.getMarital_status_ic_2());
+                     coApplicantsModel2.setReligion(createLoanDataModel.getReligion_ic_2());
+                     coApplicantsModel2.setEducation(createLoanDataModel.getEducation_ic_2());
+                     try {
+                         Float annual_income_ic_2 = dataTypeConversion.getStringFromFloat(createLoanDataModel.getAnnual_income_ic_2());
+                         coApplicantsModel2.setAnnual_income(annual_income_ic_2);
+                     } catch (Exception e) {
+                       throw new SystemException("1110", "Unparseable annual_income_ic_2");
+                     }
+                     try {
+                         Integer bureau_score_ic_2 = dataTypeConversion.getStringFromInt(createLoanDataModel.getBureau_score_ic_2());
+                         coApplicantsModel2.setBureau_score(bureau_score_ic_2);
+                     } catch (Exception e) {
+                     throw new SystemException("1110", "Unparseable bureau_score_ic_2");
+                     }
+                     try {
+                        Integer age_at_maturity_ic_2 = dataTypeConversion.getStringFromInt(createLoanDataModel.getAge_at_maturity_ic_2());
+                         coApplicantsModel2.setAge_at_maturity(age_at_maturity_ic_2);
+                     } catch (Exception e) {
+                      throw new SystemException("1110", "Unparseable age_at_maturity_ic_2");
+                     }
+                     coApplicantsModel2.setEmployment_details_designation(createLoanDataModel.getEmployment_details_designation_sp_2());
+                     coApplicantsModel2.setCaste(createLoanDataModel.getCaste_ic_2());
+                     coApplicantsModel2.setFather_first_name(createLoanDataModel.getFirst_name_ic_2());
+                     coApplicantsModel2.setFather_last_name(createLoanDataModel.getFather_last_name_ic_2());
+                     coApplicantsModel2.setPlace_of_birth(createLoanDataModel.getPlace_of_birth_ic_2());
+                     coApplicantsModel2.setTitle(createLoanDataModel.getTitle_ic_2());
+                     coApplicantsModel2.setIncome_source(createLoanDataModel.getIncome_source_ic_2());
+                     coApplicantsModel2.setCurrent_address_line1(createLoanDataModel.getCurrent_address_ic_2());
+                     try {
+                       Float total_net_worth_ic_2 = dataTypeConversion.getStringFromFloat(createLoanDataModel.getTotal_net_worth_ic_2());
+                         coApplicantsModel2.setTotal_net_worth(total_net_worth_ic_2);
+                     } catch (Exception e) {
+                       throw new SystemException("1110", "Unparseable total_net_worth_ic_2");
+                     }
+                     coApplicantsModel2.setCustomer_type(createLoanDataModel.getCustomer_type_ic_2());
+                     coApplicantsModel2.setCkyc_id(createLoanDataModel.getCkyc_id_ic_2());
+                     coApplicantsModelList.add(coApplicantsModel2);
+                     }
 
-            coApplicantsModel1.setCurrent_address(createLoanDataModel.getCurrent_address_ic_1());
-            coApplicantsModel1.setCurrent_city(createLoanDataModel.getCity_ic_1());
-            coApplicantsModel1.setCurrent_district(createLoanDataModel.getCurrent_district_ic_1());
-            coApplicantsModel1.setCurrent_state(createLoanDataModel.getState_ic_1());
-            try {
-                Integer current_pincode_ic = dataTypeConversion.getStringFromInt(createLoanDataModel.getCurrent_pincode_ic_1());
-                coApplicantsModel1.setCurrent_pincode(current_pincode_ic);
-            } catch (Exception e) {
-                throw new SystemException("1110", "Unparseable current_pincode_ic");
-            }
-            coApplicantsModel1.setPermanent_district(createLoanDataModel.getPermanent_district_ic_1());
-            try {
-                Integer permanent_pincode_ic = dataTypeConversion.getStringFromInt(createLoanDataModel.getPermanent_pincode_ic_1());
-                coApplicantsModel1.setPermanent_pincode(permanent_pincode_ic);
-            } catch (Exception e) {
-                throw new SystemException("1110", "Unparseable permanent_pincode_ic");
-            }
-            coApplicantsModel1.setMarital_status(createLoanDataModel.getMarital_status_ic_1());
-            coApplicantsModel1.setReligion(createLoanDataModel.getReligion_ic_1());
-            coApplicantsModel1.setEducation(createLoanDataModel.getEducation_ic_1());
-            try {
-                Float annual_income_ic = dataTypeConversion.getStringFromFloat(createLoanDataModel.getAnnual_income_ic_1());
-                coApplicantsModel1.setAnnual_income(annual_income_ic);
-            } catch (Exception e) {
-                throw new SystemException("1110", "Unparseable annual_income_ic");
-            }
-            try {
-                Integer bureau_score_ic = dataTypeConversion.getStringFromInt(createLoanDataModel.getBureau_score_ic_1());
-                coApplicantsModel1.setBureau_score(bureau_score_ic);
-            } catch (Exception e) {
-                throw new SystemException("1110", "Unparseable bureau_score_ic");
-            }
-            try {
-                Integer age_at_maturity_ic = dataTypeConversion.getStringFromInt(createLoanDataModel.getAge_at_maturity_ic_1());
-                coApplicantsModel1.setAge_at_maturity(age_at_maturity_ic);
-            } catch (Exception e) {
-                throw new SystemException("1110", "Unparseable age_at_maturity_ic");
-            }
-            coApplicantsModel1.setEmployment_details_designation(createLoanDataModel.getEmployment_details_designation_sp_1());
-            coApplicantsModel1.setCaste(createLoanDataModel.getCaste_ic_1());
-            coApplicantsModel1.setFather_first_name(createLoanDataModel.getFirst_name_ic_1());
-            coApplicantsModel1.setFather_last_name(createLoanDataModel.getFather_last_name_ic_1());
-            coApplicantsModel1.setPlace_of_birth(createLoanDataModel.getPlace_of_birth_ic_1());
-            coApplicantsModel1.setTitle(createLoanDataModel.getTitle_ic_1());
-            coApplicantsModel1.setIncome_source(createLoanDataModel.getIncome_source_ic_1());
-            coApplicantsModel1.setCurrent_address_line1(createLoanDataModel.getCurrent_address_ic_1());
-            try {
-                Float total_net_worth_ic = dataTypeConversion.getStringFromFloat(createLoanDataModel.getTotal_net_worth_ic_1());
-                coApplicantsModel1.setTotal_net_worth(total_net_worth_ic);
-            } catch (Exception e) {
-                throw new SystemException("1110", "Unparseable total_net_worth_ic");
-            }
-            coApplicantsModel1.setCustomer_type(createLoanDataModel.getCustomer_type_ic_1());
-            coApplicantsModel1.setCkyc_id(createLoanDataModel.getCkyc_id_ic_1());
-            coApplicantsModelList.add(coApplicantsModel1);
-        }
+                    //==Array3===
+                     if (createLoanDataModel.getRelationship_with_applicant_ic_3() !=null) {
+                     coApplicantsModel3.setRelationship_with_applicant(createLoanDataModel.getRelationship_with_applicant_ic_3());
+                     coApplicantsModel3.setFirst_name(createLoanDataModel.getFirst_name_ic_3());
+                     coApplicantsModel3.setLast_name(createLoanDataModel.getLast_name_ic_3());
+                     coApplicantsModel3.setGender(createLoanDataModel.getGender_ic_3());
+                     coApplicantsModel3.setOccupation(createLoanDataModel.getOccupation_ic_3());
+                     coApplicantsModel3.setDate_of_birth(createLoanDataModel.getDate_of_birth_ic_3());
+                     try {
+                         Long mobile_number_ic_3 = dataTypeConversion.getStringFromLong(createLoanDataModel.getMobile_number_ic_3());
+                         coApplicantsModel3.setMobile_number(mobile_number_ic_3);
+                     } catch (Exception e) {
+                        throw new SystemException("1110", "Unparseable mobile_number_ic_3");
+                     }
+                     coApplicantsModel3.setCurrent_address(createLoanDataModel.getCurrent_address_ic_3());
+                     coApplicantsModel3.setCurrent_city(createLoanDataModel.getCity_ic_3());
+                     coApplicantsModel3.setCurrent_district(createLoanDataModel.getCurrent_district_ic_3());
+                     coApplicantsModel3.setCurrent_state(createLoanDataModel.getState_ic_3());
+                     try {
+                         Integer current_pincode_ic_3 = dataTypeConversion.getStringFromInt(createLoanDataModel.getCurrent_pincode_ic_3());
+                         coApplicantsModel3.setCurrent_pincode(current_pincode_ic_3);
+                     } catch (Exception e) {
+                        throw new SystemException("1110", "Unparseable current_pincode_ic_3");
+                     }
+                     coApplicantsModel3.setPermanent_district(createLoanDataModel.getPermanent_district_ic_3());
+                     try {
+                         Integer permanent_pincode_ic_3 = dataTypeConversion.getStringFromInt(createLoanDataModel.getPermanent_pincode_ic_3());
+                         coApplicantsModel3.setPermanent_pincode(permanent_pincode_ic_3);
+                     } catch (Exception e) {
+                         throw new SystemException("1110", "Unparseable permanent_pincode_ic_3");
+                     }
+                     coApplicantsModel3.setMarital_status(createLoanDataModel.getMarital_status_ic_3());
+                     coApplicantsModel3.setReligion(createLoanDataModel.getReligion_ic_3());
+                     coApplicantsModel3.setEducation(createLoanDataModel.getEducation_ic_3());
+                     try {
+                         Float annual_income_ic_3 = dataTypeConversion.getStringFromFloat(createLoanDataModel.getAnnual_income_ic_3());
+                         coApplicantsModel3.setAnnual_income(annual_income_ic_3);
+                     } catch (Exception e) {
+                        throw new SystemException("1110", "Unparseable annual_income_ic_3");
+                     }
+                     try {
+                        Integer bureau_score_ic_3 = dataTypeConversion.getStringFromInt(createLoanDataModel.getBureau_score_ic_3());
+                        coApplicantsModel3.setBureau_score(bureau_score_ic_3);
+                     } catch (Exception e) {
+                        throw new SystemException("1110", "Unparseable bureau_score_ic_3");
+                     }
+                     try {
+                         Integer age_at_maturity_ic_3 = dataTypeConversion.getStringFromInt(createLoanDataModel.getAge_at_maturity_ic_3());
+                         coApplicantsModel3.setAge_at_maturity(age_at_maturity_ic_3);
+                     } catch (Exception e) {
+                        throw new SystemException("1110", "Unparseable age_at_maturity_ic_3");
+                     }
+                     coApplicantsModel3.setEmployment_details_designation(createLoanDataModel.getEmployment_details_designation_sp_3());
+                     coApplicantsModel3.setCaste(createLoanDataModel.getCaste_ic_3());
+                     coApplicantsModel3.setFather_first_name(createLoanDataModel.getFirst_name_ic_3());
+                     coApplicantsModel3.setFather_last_name(createLoanDataModel.getFather_last_name_ic_3());
+                     coApplicantsModel3.setPlace_of_birth(createLoanDataModel.getPlace_of_birth_ic_3());
+                     coApplicantsModel3.setTitle(createLoanDataModel.getTitle_ic_3());
+                     coApplicantsModel3.setIncome_source(createLoanDataModel.getIncome_source_ic_3());
+                     coApplicantsModel3.setCurrent_address_line1(createLoanDataModel.getCurrent_address_ic_3());
+                     try {
+                        Float total_net_worth_ic_3 = dataTypeConversion.getStringFromFloat(createLoanDataModel.getTotal_net_worth_ic_3());
+                        coApplicantsModel3.setTotal_net_worth(total_net_worth_ic_3);
+                     } catch (Exception e) {
+                       throw new SystemException("1110", "Unparseable total_net_worth_ic_3");
+                     }
+                     coApplicantsModel3.setCustomer_type(createLoanDataModel.getCustomer_type_ic_3());
+                     coApplicantsModel3.setCkyc_id(createLoanDataModel.getCkyc_id_ic_3());
+                     coApplicantsModelList.add(coApplicantsModel3);
+                    }
+
+                    //==Array4===
+                    if (createLoanDataModel.getRelationship_with_applicant_ic_4() !=null) {
+                     coApplicantsModel4.setRelationship_with_applicant(createLoanDataModel.getRelationship_with_applicant_ic_4());
+                     coApplicantsModel4.setFirst_name(createLoanDataModel.getFirst_name_ic_4());
+                     coApplicantsModel4.setLast_name(createLoanDataModel.getLast_name_ic_4());
+                     coApplicantsModel4.setGender(createLoanDataModel.getGender_ic_4());
+                     coApplicantsModel4.setOccupation(createLoanDataModel.getOccupation_ic_4());
+                     coApplicantsModel4.setDate_of_birth(createLoanDataModel.getDate_of_birth_ic_4());
+                     try {
+                        Long mobile_number_ic_4 = dataTypeConversion.getStringFromLong(createLoanDataModel.getMobile_number_ic_4());
+                        coApplicantsModel4.setMobile_number(mobile_number_ic_4);
+                     } catch (Exception e) {
+                       throw new SystemException("1110", "Unparseable mobile_number_ic_4");
+                     }
+                     coApplicantsModel4.setCurrent_address(createLoanDataModel.getCurrent_address_ic_4());
+                     coApplicantsModel4.setCurrent_city(createLoanDataModel.getCity_ic_4());
+                     coApplicantsModel4.setCurrent_district(createLoanDataModel.getCurrent_district_ic_4());
+                     coApplicantsModel4.setCurrent_state(createLoanDataModel.getState_ic_4());
+                     try {
+                        Integer current_pincode_ic_4 = dataTypeConversion.getStringFromInt(createLoanDataModel.getCurrent_pincode_ic_4());
+                        coApplicantsModel4.setCurrent_pincode(current_pincode_ic_4);
+                     } catch (Exception e) {
+                     throw new SystemException("1110", "Unparseable current_pincode_ic_4");
+                     }
+                     coApplicantsModel4.setPermanent_district(createLoanDataModel.getPermanent_district_ic_4());
+                     try {
+                         Integer permanent_pincode_ic_4 = dataTypeConversion.getStringFromInt(createLoanDataModel.getPermanent_pincode_ic_4());
+                         coApplicantsModel4.setPermanent_pincode(permanent_pincode_ic_4);
+                     } catch (Exception e) {
+                     throw new SystemException("1110", "Unparseable permanent_pincode_ic_4");
+                     }
+                     coApplicantsModel4.setMarital_status(createLoanDataModel.getMarital_status_ic_4());
+                     coApplicantsModel4.setReligion(createLoanDataModel.getReligion_ic_4());
+                     coApplicantsModel4.setEducation(createLoanDataModel.getEducation_ic_4());
+                     try {
+                         Float annual_income_ic_4 = dataTypeConversion.getStringFromFloat(createLoanDataModel.getAnnual_income_ic_4());
+                         coApplicantsModel4.setAnnual_income(annual_income_ic_4);
+                     } catch (Exception e) {
+                       throw new SystemException("1110", "Unparseable annual_income_ic_4");
+                     }
+                     try {
+                         Integer bureau_score_ic_4 = dataTypeConversion.getStringFromInt(createLoanDataModel.getBureau_score_ic_4());
+                         coApplicantsModel4.setBureau_score(bureau_score_ic_4);
+                     } catch (Exception e) {
+                        throw new SystemException("1110", "Unparseable bureau_score_ic_4");
+                     }
+                     try {
+                         Integer age_at_maturity_ic_4 = dataTypeConversion.getStringFromInt(createLoanDataModel.getAge_at_maturity_ic_4());
+                         coApplicantsModel4.setAge_at_maturity(age_at_maturity_ic_4);
+                     } catch (Exception e) {
+                         throw new SystemException("1110", "Unparseable age_at_maturity_ic_4");
+                     }
+                     coApplicantsModel4.setEmployment_details_designation(createLoanDataModel.getEmployment_details_designation_sp_4());
+                     coApplicantsModel4.setCaste(createLoanDataModel.getCaste_ic_4());
+                     coApplicantsModel4.setFather_first_name(createLoanDataModel.getFirst_name_ic_4());
+                     coApplicantsModel4.setFather_last_name(createLoanDataModel.getFather_last_name_ic_4());
+                     coApplicantsModel4.setPlace_of_birth(createLoanDataModel.getPlace_of_birth_ic_4());
+                     coApplicantsModel4.setTitle(createLoanDataModel.getTitle_ic_4());
+                     coApplicantsModel4.setIncome_source(createLoanDataModel.getIncome_source_ic_4());
+                     coApplicantsModel4.setCurrent_address_line1(createLoanDataModel.getCurrent_address_ic_4());
+                     try {
+                         Float total_net_worth_ic_4 = dataTypeConversion.getStringFromFloat(createLoanDataModel.getTotal_net_worth_ic_4());
+                         coApplicantsModel4.setTotal_net_worth(total_net_worth_ic_4);
+                     } catch (Exception e) {
+                        throw new SystemException("1110", "Unparseable total_net_worth_ic_4");
+                     }
+                     coApplicantsModel4.setCustomer_type(createLoanDataModel.getCustomer_type_ic_4());
+                     coApplicantsModel4.setCkyc_id(createLoanDataModel.getCkyc_id_ic_4());
+                     coApplicantsModelList.add(coApplicantsModel4);
+                    }
+
+                    //==Array5===
+                    if (createLoanDataModel.getRelationship_with_applicant_ic_5() !=null) {
+                      coApplicantsModel5.setRelationship_with_applicant(createLoanDataModel.getRelationship_with_applicant_ic_5());
+                      coApplicantsModel5.setFirst_name(createLoanDataModel.getFirst_name_ic_5());
+                      coApplicantsModel5.setLast_name(createLoanDataModel.getLast_name_ic_5());
+                      coApplicantsModel5.setGender(createLoanDataModel.getGender_ic_5());
+                      coApplicantsModel5.setOccupation(createLoanDataModel.getOccupation_ic_5());
+                      coApplicantsModel5.setDate_of_birth(createLoanDataModel.getDate_of_birth_ic_5());
+                      try {
+                          Long mobile_number_ic_5 = dataTypeConversion.getStringFromLong(createLoanDataModel.getMobile_number_ic_5());
+                          coApplicantsModel5.setMobile_number(mobile_number_ic_5);
+                      } catch (Exception e) {
+                         throw new SystemException("1110", "Unparseable mobile_number_ic_5");
+                      }
+                      coApplicantsModel5.setCurrent_address(createLoanDataModel.getCurrent_address_ic_5());
+                      coApplicantsModel5.setCurrent_city(createLoanDataModel.getCity_ic_5());
+                      coApplicantsModel5.setCurrent_district(createLoanDataModel.getCurrent_district_ic_5());
+                      coApplicantsModel5.setCurrent_state(createLoanDataModel.getState_ic_5());
+                      try {
+                          Integer current_pincode_ic_5 = dataTypeConversion.getStringFromInt(createLoanDataModel.getCurrent_pincode_ic_5());
+                          coApplicantsModel5.setCurrent_pincode(current_pincode_ic_5);
+                      } catch (Exception e) {
+                         throw new SystemException("1110", "Unparseable current_pincode_ic_5");
+                      }
+                      coApplicantsModel5.setPermanent_district(createLoanDataModel.getPermanent_district_ic_5());
+                      try {
+                           Integer permanent_pincode_ic_5 = dataTypeConversion.getStringFromInt(createLoanDataModel.getPermanent_pincode_ic_5());
+                           coApplicantsModel5.setPermanent_pincode(permanent_pincode_ic_5);
+                      } catch (Exception e) {
+                             throw new SystemException("1110", "Unparseable permanent_pincode_ic_5");
+                      }
+                      coApplicantsModel5.setMarital_status(createLoanDataModel.getMarital_status_ic_5());
+                      coApplicantsModel5.setReligion(createLoanDataModel.getReligion_ic_5());
+                      coApplicantsModel5.setEducation(createLoanDataModel.getEducation_ic_5());
+                      try {
+                          Float annual_income_ic_5 = dataTypeConversion.getStringFromFloat(createLoanDataModel.getAnnual_income_ic_5());
+                          coApplicantsModel5.setAnnual_income(annual_income_ic_5);
+                      } catch (Exception e) {
+                           throw new SystemException("1110", "Unparseable annual_income_ic_5");
+                      }
+                      try {
+                          Integer bureau_score_ic_5 = dataTypeConversion.getStringFromInt(createLoanDataModel.getBureau_score_ic_5());
+                          coApplicantsModel5.setBureau_score(bureau_score_ic_5);
+                      } catch (Exception e) {
+                            throw new SystemException("1110", "Unparseable bureau_score_ic_5");
+                      }
+                      try {
+                          Integer age_at_maturity_ic_5 = dataTypeConversion.getStringFromInt(createLoanDataModel.getAge_at_maturity_ic_5());
+                          coApplicantsModel5.setAge_at_maturity(age_at_maturity_ic_5);
+                      } catch (Exception e) {
+                          throw new SystemException("1110", "Unparseable age_at_maturity_ic_5");
+                      }
+                      coApplicantsModel5.setEmployment_details_designation(createLoanDataModel.getEmployment_details_designation_sp_5());
+                      coApplicantsModel5.setCaste(createLoanDataModel.getCaste_ic_5());
+                      coApplicantsModel5.setFather_first_name(createLoanDataModel.getFirst_name_ic_5());
+                      coApplicantsModel5.setFather_last_name(createLoanDataModel.getFather_last_name_ic_5());
+                      coApplicantsModel5.setPlace_of_birth(createLoanDataModel.getPlace_of_birth_ic_5());
+                      coApplicantsModel5.setTitle(createLoanDataModel.getTitle_ic_5());
+                      coApplicantsModel5.setIncome_source(createLoanDataModel.getIncome_source_ic_5());
+                      coApplicantsModel5.setCurrent_address_line1(createLoanDataModel.getCurrent_address_ic_5());
+                      try {
+                           Float total_net_worth_ic_5 = dataTypeConversion.getStringFromFloat(createLoanDataModel.getTotal_net_worth_ic_5());
+                           coApplicantsModel5.setTotal_net_worth(total_net_worth_ic_5);
+                      } catch (Exception e) {
+                          throw new SystemException("1110", "Unparseable total_net_worth_ic_5");
+                      }
+                      coApplicantsModel5.setCustomer_type(createLoanDataModel.getCustomer_type_ic_5());
+                      coApplicantsModel5.setCkyc_id(createLoanDataModel.getCkyc_id_ic_5());
+                      coApplicantsModelList.add(coApplicantsModel5);
+                    }
+
+
 
         return coApplicantsModelList;
     }
@@ -674,60 +966,352 @@ public class CustomerDetailServiceIMPL implements CustomerDetailService {
 
         List<BusinessCoApplicantsModel> businessCoApplicantsModelList = new ArrayList<>();
         BusinessCoApplicantsModel businessCoApplicantsModel = new BusinessCoApplicantsModel();
+        BusinessCoApplicantsModel businessCoApplicantsModel1 = new BusinessCoApplicantsModel();
+        BusinessCoApplicantsModel businessCoApplicantsModel2 = new BusinessCoApplicantsModel();
+        BusinessCoApplicantsModel businessCoApplicantsModel3 = new BusinessCoApplicantsModel();
+        BusinessCoApplicantsModel businessCoApplicantsModel4 = new BusinessCoApplicantsModel();
+        BusinessCoApplicantsModel businessCoApplicantsModel5 = new BusinessCoApplicantsModel();
 
 
-        businessCoApplicantsModel.setName_of_business(createLoanDataModel.getName_of_business_nic());
-        businessCoApplicantsModel.setNature_of_business(createLoanDataModel.getNature_of_business_nic());
-        businessCoApplicantsModel.setType_of_constitution(createLoanDataModel.getType_of_constitution_nic());
-        try {
-            String registration_date_nic = dataTypeConversion.getStringFromDate("yyyy-MM-dd",createLoanDataModel.getRegistration_date_nic());
-            businessCoApplicantsModel.setRegistration_date(registration_date_nic);
-        }catch (Exception e){
-            throw new SystemException("1110","Unparseable registration_date_nic");
+        if(createLoanDataModel.getName_of_business_nic() !=null) {
+            businessCoApplicantsModel.setName_of_business(createLoanDataModel.getName_of_business_nic());
+            businessCoApplicantsModel.setNature_of_business(createLoanDataModel.getNature_of_business_nic());
+            businessCoApplicantsModel.setType_of_constitution(createLoanDataModel.getType_of_constitution_nic());
+            try {
+                String registration_date_nic = dataTypeConversion.getStringFromDate("yyyy-MM-dd", createLoanDataModel.getRegistration_date_nic());
+                businessCoApplicantsModel.setRegistration_date(registration_date_nic);
+            } catch (Exception e) {
+                throw new SystemException("1110", "Unparseable registration_date_nic");
+            }
+            try {
+                String incorporation_date_nic = dataTypeConversion.getStringFromDate("yyyy-MM-dd", createLoanDataModel.getIncorporation_date_nic());
+                businessCoApplicantsModel.setIncorporation_date(incorporation_date_nic);
+            } catch (Exception e) {
+                throw new SystemException("1110", "Unparseable incorporation_date_nic");
+            }
+            businessCoApplicantsModel.setIndustry_type(createLoanDataModel.getIndustry_type_nic());
+            businessCoApplicantsModel.setSector_type(createLoanDataModel.getSector_type_nic());
+            businessCoApplicantsModel.setSub_sector_type(createLoanDataModel.getSub_sector_type_nic());
+            businessCoApplicantsModel.setBusiness_vintage(createLoanDataModel.getBusiness_vintage_nic());
+            businessCoApplicantsModel.setBusiness_registered_office_address(createLoanDataModel.getBusiness_registered_office_address_nic());
+            businessCoApplicantsModel.setBusiness_registered_office_city(createLoanDataModel.getBusiness_mailing_office_city_nic());
+            businessCoApplicantsModel.setBusiness_registered_office_state(createLoanDataModel.getBusiness_registered_office_address_nic());
+            businessCoApplicantsModel.setBusiness_registered_office_pincode(createLoanDataModel.getBusiness_mailing_office_pincode_nic());
+            businessCoApplicantsModel.setBusiness_mailing_office_address(createLoanDataModel.getBusiness_registered_office_address_nic());
+            businessCoApplicantsModel.setBusiness_mailing_office_address1(createLoanDataModel.getBusiness_mailing_office_address1_nic());
+            businessCoApplicantsModel.setBusiness_mailing_office_address2(createLoanDataModel.getBusiness_mailing_office_address2_nic());
+            businessCoApplicantsModel.setBusiness_mailing_office_address3(createLoanDataModel.getBusiness_mailing_office_address3_nic());
+            businessCoApplicantsModel.setBusiness_mailing_office_city(createLoanDataModel.getBusiness_mailing_office_city_nic());
+            try {
+                Integer business_mailing_office_pincode_nic = dataTypeConversion.getStringFromInt(createLoanDataModel.getBusiness_mailing_office_pincode_nic());
+                businessCoApplicantsModel.setBusiness_mailing_office_pincode(business_mailing_office_pincode_nic);
+            } catch (Exception e) {
+                throw new SystemException("1110", "Unparseable business_mailing_office_pincode_nic");
+            }
+            try {
+                Long business_phone_number_nic = dataTypeConversion.getStringFromLong(createLoanDataModel.getBusiness_phone_number_nic());
+                businessCoApplicantsModel.setBusiness_phone_number(business_phone_number_nic);
+            } catch (Exception e) {
+                throw new SystemException("1110", "Unparseable business_phone_number_nic");
+            }
+            businessCoApplicantsModel.setBusiness_pan_number(createLoanDataModel.getBusiness_pan_number_nic());
+            businessCoApplicantsModel.setBusiness_pan_link(createLoanDataModel.getBusiness_pan_link_nic());
+            businessCoApplicantsModel.setBusiness_rc_number(createLoanDataModel.getBusiness_rc_number_nic());
+            businessCoApplicantsModel.setBusiness_rc_link(createLoanDataModel.getBusiness_rc_link_nic());
+            try {
+                Float annual_business_turnover_sp = dataTypeConversion.getStringFromFloat(createLoanDataModel.getAnnual_business_turnover_sp());
+                businessCoApplicantsModel.setAnnual_business_turnover(annual_business_turnover_sp);
+            } catch (Exception e) {
+                throw new SystemException("1110", "Unparseable annual_business_turnover_sp");
+            }
+            businessCoApplicantsModel.setCkyc_id(createLoanDataModel.getCkyc_id_nic());
+            businessCoApplicantsModelList.add(businessCoApplicantsModel);
         }
-        try {
-            String incorporation_date_nic = dataTypeConversion.getStringFromDate("yyyy-MM-dd",createLoanDataModel.getIncorporation_date_nic());
-            businessCoApplicantsModel.setIncorporation_date(incorporation_date_nic);
-        }catch (Exception e){
-            throw new SystemException("1110","Unparseable incorporation_date_nic");
-        }
-        businessCoApplicantsModel.setIndustry_type(createLoanDataModel.getIndustry_type_nic());
-        businessCoApplicantsModel.setSector_type(createLoanDataModel.getSector_type_nic());
-        businessCoApplicantsModel.setSub_sector_type(createLoanDataModel.getSub_sector_type_nic());
-        businessCoApplicantsModel.setBusiness_vintage(createLoanDataModel.getBusiness_vintage_nic());
-        businessCoApplicantsModel.setBusiness_registered_office_address(createLoanDataModel.getBusiness_registered_office_address_nic());
-        businessCoApplicantsModel.setBusiness_registered_office_city(createLoanDataModel.getBusiness_mailing_office_city_nic());
-        businessCoApplicantsModel.setBusiness_registered_office_state(createLoanDataModel.getBusiness_registered_office_address_nic());
-        businessCoApplicantsModel.setBusiness_registered_office_pincode(createLoanDataModel.getBusiness_mailing_office_pincode_nic());
-        businessCoApplicantsModel.setBusiness_mailing_office_address(createLoanDataModel.getBusiness_registered_office_address_nic());
-        businessCoApplicantsModel.setBusiness_mailing_office_address1(createLoanDataModel.getBusiness_mailing_office_address1_nic());
-        businessCoApplicantsModel.setBusiness_mailing_office_address2(createLoanDataModel.getBusiness_mailing_office_address2_nic());
-        businessCoApplicantsModel.setBusiness_mailing_office_address3(createLoanDataModel.getBusiness_mailing_office_address3_nic());
-        businessCoApplicantsModel.setBusiness_mailing_office_city(createLoanDataModel.getBusiness_mailing_office_city_nic());
-        try {
-            Integer business_mailing_office_pincode_nic = dataTypeConversion.getStringFromInt(createLoanDataModel.getBusiness_mailing_office_pincode_nic());
-            businessCoApplicantsModel.setBusiness_mailing_office_pincode(business_mailing_office_pincode_nic);
-        }catch (Exception e){
-            throw new SystemException("1110","Unparseable business_mailing_office_pincode_nic");
-        }
-        try {
-            Long business_phone_number_nic = dataTypeConversion.getStringFromLong(createLoanDataModel.getBusiness_phone_number_nic());
-            businessCoApplicantsModel.setBusiness_phone_number(business_phone_number_nic);
-        }catch (Exception e){
-            throw new SystemException("1110","Unparseable business_phone_number_nic");
-        }
-        businessCoApplicantsModel.setBusiness_pan_number(createLoanDataModel.getBusiness_pan_number_nic());
-        businessCoApplicantsModel.setBusiness_pan_link(createLoanDataModel.getBusiness_pan_link_nic());
-        businessCoApplicantsModel.setBusiness_rc_number(createLoanDataModel.getBusiness_rc_number_nic());
-        businessCoApplicantsModel.setBusiness_rc_link(createLoanDataModel.getBusiness_rc_link_nic());
-        try {
-            Float annual_business_turnover_sp = dataTypeConversion.getStringFromFloat(createLoanDataModel.getAnnual_business_turnover_sp());
-            businessCoApplicantsModel.setAnnual_business_turnover(annual_business_turnover_sp);
-        }catch (Exception e){
-            throw new SystemException("1110","Unparseable annual_business_turnover_sp");
-        }
-        businessCoApplicantsModel.setCkyc_id(createLoanDataModel.getCkyc_id_nic());
-        businessCoApplicantsModelList.add(businessCoApplicantsModel);
+
+              //-----Array1--------
+              if(createLoanDataModel.getName_of_business_nic_1() !=null) {
+                  businessCoApplicantsModel1.setName_of_business(createLoanDataModel.getName_of_business_nic_1());
+                  businessCoApplicantsModel1.setNature_of_business(createLoanDataModel.getNature_of_business_nic_1());
+                  businessCoApplicantsModel1.setType_of_constitution(createLoanDataModel.getType_of_constitution_nic_1());
+                  try {
+                      String registration_date_nic_1 = dataTypeConversion.getStringFromDate("yyyy-MM-dd", createLoanDataModel.getRegistration_date_nic_1());
+                      businessCoApplicantsModel1.setRegistration_date(registration_date_nic_1);
+                  } catch (Exception e) {
+                     throw new SystemException("1110", "Unparseable registration_date_nic_1");
+                  }
+                  try {
+                      String incorporation_date_nic_1 = dataTypeConversion.getStringFromDate("yyyy-MM-dd", createLoanDataModel.getIncorporation_date_nic_1());
+                      businessCoApplicantsModel1.setIncorporation_date(incorporation_date_nic_1);
+                  } catch (Exception e) {
+                      throw new SystemException("1110", "Unparseable incorporation_date_nic_1");
+                  }
+                  businessCoApplicantsModel1.setIndustry_type(createLoanDataModel.getIndustry_type_nic_1());
+                  businessCoApplicantsModel1.setSector_type(createLoanDataModel.getSector_type_nic_1());
+                  businessCoApplicantsModel1.setSub_sector_type(createLoanDataModel.getSub_sector_type_nic_1());
+                  businessCoApplicantsModel1.setBusiness_vintage(createLoanDataModel.getBusiness_vintage_nic_1());
+                  businessCoApplicantsModel1.setBusiness_registered_office_address(createLoanDataModel.getBusiness_registered_office_address_nic_1());
+                  businessCoApplicantsModel1.setBusiness_registered_office_city(createLoanDataModel.getBusiness_mailing_office_city_nic_1());
+                  businessCoApplicantsModel1.setBusiness_registered_office_state(createLoanDataModel.getBusiness_registered_office_address_nic_1());
+                  businessCoApplicantsModel1.setBusiness_registered_office_pincode(createLoanDataModel.getBusiness_mailing_office_pincode_nic_1());
+                  businessCoApplicantsModel1.setBusiness_mailing_office_address(createLoanDataModel.getBusiness_registered_office_address_nic_1());
+                  businessCoApplicantsModel1.setBusiness_mailing_office_address1(createLoanDataModel.getBusiness_mailing_office_address1_nic_1());
+                  businessCoApplicantsModel1.setBusiness_mailing_office_address2(createLoanDataModel.getBusiness_mailing_office_address2_nic_1());
+                  businessCoApplicantsModel1.setBusiness_mailing_office_address3(createLoanDataModel.getBusiness_mailing_office_address3_nic_1());
+                  businessCoApplicantsModel1.setBusiness_mailing_office_city(createLoanDataModel.getBusiness_mailing_office_city_nic_1());
+                  try {
+                     Integer business_mailing_office_pincode_nic_1 = dataTypeConversion.getStringFromInt(createLoanDataModel.getBusiness_mailing_office_pincode_nic_1());
+                     businessCoApplicantsModel1.setBusiness_mailing_office_pincode(business_mailing_office_pincode_nic_1);
+                  } catch (Exception e) {
+                     throw new SystemException("1110", "Unparseable business_mailing_office_pincode_nic_1");
+                  }
+                  try {
+                      Long business_phone_number_nic_1 = dataTypeConversion.getStringFromLong(createLoanDataModel.getBusiness_phone_number_nic_1());
+                      businessCoApplicantsModel1.setBusiness_phone_number(business_phone_number_nic_1);
+                  } catch (Exception e) {
+                      throw new SystemException("1110", "Unparseable business_phone_number_nic_1");
+                  }
+                  businessCoApplicantsModel1.setBusiness_pan_number(createLoanDataModel.getBusiness_pan_number_nic_1());
+                  businessCoApplicantsModel1.setBusiness_pan_link(createLoanDataModel.getBusiness_pan_link_nic_1());
+                  businessCoApplicantsModel1.setBusiness_rc_number(createLoanDataModel.getBusiness_rc_number_nic_1());
+                  businessCoApplicantsModel1.setBusiness_rc_link(createLoanDataModel.getBusiness_rc_link_nic_1());
+                  try {
+                     Float annual_business_turnover_sp_1 = dataTypeConversion.getStringFromFloat(createLoanDataModel.getAnnual_business_turnover_sp_1());
+                     businessCoApplicantsModel1.setAnnual_business_turnover(annual_business_turnover_sp_1);
+                  } catch (Exception e) {
+                      throw new SystemException("1110", "Unparseable annual_business_turnover_sp_1");
+                  }
+                  businessCoApplicantsModel1.setCkyc_id(createLoanDataModel.getCkyc_id_nic_1());
+                  businessCoApplicantsModelList.add(businessCoApplicantsModel1);
+                }
+
+                //-----Array2--------
+                if(createLoanDataModel.getName_of_business_nic_2() !=null) {
+                   businessCoApplicantsModel2.setName_of_business(createLoanDataModel.getName_of_business_nic_2());
+                   businessCoApplicantsModel2.setNature_of_business(createLoanDataModel.getNature_of_business_nic_2());
+                   businessCoApplicantsModel2.setType_of_constitution(createLoanDataModel.getType_of_constitution_nic_2());
+                   try {
+                       String registration_date_nic_2 = dataTypeConversion.getStringFromDate("yyyy-MM-dd", createLoanDataModel.getRegistration_date_nic_2());
+                       businessCoApplicantsModel2.setRegistration_date(registration_date_nic_2);
+                   } catch (Exception e) {
+                      throw new SystemException("1110", "Unparseable registration_date_nic_2");
+                   }
+                   try {
+                      String incorporation_date_nic_2 = dataTypeConversion.getStringFromDate("yyyy-MM-dd", createLoanDataModel.getIncorporation_date_nic_2());
+                       businessCoApplicantsModel2.setIncorporation_date(incorporation_date_nic_2);
+                   } catch (Exception e) {
+                      throw new SystemException("1110", "Unparseable incorporation_date_nic_2");
+                   }
+                    businessCoApplicantsModel2.setIndustry_type(createLoanDataModel.getIndustry_type_nic_2());
+                    businessCoApplicantsModel2.setSector_type(createLoanDataModel.getSector_type_nic_2());
+                    businessCoApplicantsModel2.setSub_sector_type(createLoanDataModel.getSub_sector_type_nic_2());
+                    businessCoApplicantsModel2.setBusiness_vintage(createLoanDataModel.getBusiness_vintage_nic_2());
+                    businessCoApplicantsModel2.setBusiness_registered_office_address(createLoanDataModel.getBusiness_registered_office_address_nic_2());
+                    businessCoApplicantsModel2.setBusiness_registered_office_city(createLoanDataModel.getBusiness_mailing_office_city_nic_2());
+                    businessCoApplicantsModel2.setBusiness_registered_office_state(createLoanDataModel.getBusiness_registered_office_address_nic_2());
+                    businessCoApplicantsModel2.setBusiness_registered_office_pincode(createLoanDataModel.getBusiness_mailing_office_pincode_nic_2());
+                    businessCoApplicantsModel2.setBusiness_mailing_office_address(createLoanDataModel.getBusiness_registered_office_address_nic_2());
+                    businessCoApplicantsModel2.setBusiness_mailing_office_address1(createLoanDataModel.getBusiness_mailing_office_address1_nic_2());
+                    businessCoApplicantsModel2.setBusiness_mailing_office_address2(createLoanDataModel.getBusiness_mailing_office_address2_nic_2());
+                    businessCoApplicantsModel2.setBusiness_mailing_office_address3(createLoanDataModel.getBusiness_mailing_office_address3_nic_2());
+                    businessCoApplicantsModel2.setBusiness_mailing_office_city(createLoanDataModel.getBusiness_mailing_office_city_nic_2());
+                    try {
+                       Integer business_mailing_office_pincode_nic_2 = dataTypeConversion.getStringFromInt(createLoanDataModel.getBusiness_mailing_office_pincode_nic_2());
+                       businessCoApplicantsModel2.setBusiness_mailing_office_pincode(business_mailing_office_pincode_nic_2);
+                    } catch (Exception e) {
+                       throw new SystemException("1110", "Unparseable business_mailing_office_pincode_nic_2");
+                    }
+                    try {
+                       Long business_phone_number_nic_2 = dataTypeConversion.getStringFromLong(createLoanDataModel.getBusiness_phone_number_nic_2());
+                      businessCoApplicantsModel2.setBusiness_phone_number(business_phone_number_nic_2);
+                    } catch (Exception e) {
+                      throw new SystemException("1110", "Unparseable business_phone_number_nic_1");
+                    }
+                    businessCoApplicantsModel2.setBusiness_pan_number(createLoanDataModel.getBusiness_pan_number_nic_2());
+                    businessCoApplicantsModel2.setBusiness_pan_link(createLoanDataModel.getBusiness_pan_link_nic_2());
+                    businessCoApplicantsModel2.setBusiness_rc_number(createLoanDataModel.getBusiness_rc_number_nic_2());
+                    businessCoApplicantsModel2.setBusiness_rc_link(createLoanDataModel.getBusiness_rc_link_nic_2());
+                    try {
+                        Float annual_business_turnover_sp_2 = dataTypeConversion.getStringFromFloat(createLoanDataModel.getAnnual_business_turnover_sp_2());
+                        businessCoApplicantsModel2.setAnnual_business_turnover(annual_business_turnover_sp_2);
+                    } catch (Exception e) {
+                      throw new SystemException("1110", "Unparseable annual_business_turnover_sp_2");
+                    }
+                    businessCoApplicantsModel2.setCkyc_id(createLoanDataModel.getCkyc_id_nic_2());
+                    businessCoApplicantsModelList.add(businessCoApplicantsModel2);
+                   }
+
+
+                  //-----Array3--------
+                  if(createLoanDataModel.getName_of_business_nic_3() !=null) {
+                    businessCoApplicantsModel3.setName_of_business(createLoanDataModel.getName_of_business_nic_3());
+                    businessCoApplicantsModel3.setNature_of_business(createLoanDataModel.getNature_of_business_nic_3());
+                    businessCoApplicantsModel3.setType_of_constitution(createLoanDataModel.getType_of_constitution_nic_3());
+                    try {
+                        String registration_date_nic_3 = dataTypeConversion.getStringFromDate("yyyy-MM-dd", createLoanDataModel.getRegistration_date_nic_3());
+                        businessCoApplicantsModel1.setRegistration_date(registration_date_nic_3);
+                    } catch (Exception e) {
+                        throw new SystemException("1110", "Unparseable registration_date_nic_3");
+                    }
+                    try {
+                        String incorporation_date_nic_3 = dataTypeConversion.getStringFromDate("yyyy-MM-dd", createLoanDataModel.getIncorporation_date_nic_3());
+                        businessCoApplicantsModel1.setIncorporation_date(incorporation_date_nic_3);
+                    } catch (Exception e) {
+                         throw new SystemException("1110", "Unparseable incorporation_date_nic_3");
+                    }
+                    businessCoApplicantsModel3.setIndustry_type(createLoanDataModel.getIndustry_type_nic_3());
+                    businessCoApplicantsModel3.setSector_type(createLoanDataModel.getSector_type_nic_3());
+                    businessCoApplicantsModel3.setSub_sector_type(createLoanDataModel.getSub_sector_type_nic_3());
+                    businessCoApplicantsModel3.setBusiness_vintage(createLoanDataModel.getBusiness_vintage_nic_3());
+                    businessCoApplicantsModel3.setBusiness_registered_office_address(createLoanDataModel.getBusiness_registered_office_address_nic_3());
+                    businessCoApplicantsModel3.setBusiness_registered_office_city(createLoanDataModel.getBusiness_mailing_office_city_nic_3());
+                    businessCoApplicantsModel3.setBusiness_registered_office_state(createLoanDataModel.getBusiness_registered_office_address_nic_3());
+                    businessCoApplicantsModel3.setBusiness_registered_office_pincode(createLoanDataModel.getBusiness_mailing_office_pincode_nic_3());
+                    businessCoApplicantsModel3.setBusiness_mailing_office_address(createLoanDataModel.getBusiness_registered_office_address_nic_3());
+                    businessCoApplicantsModel3.setBusiness_mailing_office_address1(createLoanDataModel.getBusiness_mailing_office_address1_nic_3());
+                    businessCoApplicantsModel3.setBusiness_mailing_office_address2(createLoanDataModel.getBusiness_mailing_office_address2_nic_3());
+                    businessCoApplicantsModel3.setBusiness_mailing_office_address3(createLoanDataModel.getBusiness_mailing_office_address3_nic_3());
+                    businessCoApplicantsModel3.setBusiness_mailing_office_city(createLoanDataModel.getBusiness_mailing_office_city_nic_3());
+                    try {
+                       Integer business_mailing_office_pincode_nic_3 = dataTypeConversion.getStringFromInt(createLoanDataModel.getBusiness_mailing_office_pincode_nic());
+                        businessCoApplicantsModel3.setBusiness_mailing_office_pincode(business_mailing_office_pincode_nic_3);
+                    } catch (Exception e) {
+                       throw new SystemException("1110", "Unparseable business_mailing_office_pincode_nic_3");
+                    }
+                    try {
+                        Long business_phone_number_nic_3 = dataTypeConversion.getStringFromLong(createLoanDataModel.getBusiness_phone_number_nic_3());
+                        businessCoApplicantsModel3.setBusiness_phone_number(business_phone_number_nic_3);
+                    } catch (Exception e) {
+                        throw new SystemException("1110", "Unparseable business_phone_number_nic_3");
+                    }
+                    businessCoApplicantsModel3.setBusiness_pan_number(createLoanDataModel.getBusiness_pan_number_nic_3());
+                    businessCoApplicantsModel3.setBusiness_pan_link(createLoanDataModel.getBusiness_pan_link_nic_3());
+                    businessCoApplicantsModel3.setBusiness_rc_number(createLoanDataModel.getBusiness_rc_number_nic_3());
+                    businessCoApplicantsModel3.setBusiness_rc_link(createLoanDataModel.getBusiness_rc_link_nic_3());
+                    try {
+                        Float annual_business_turnover_sp_3 = dataTypeConversion.getStringFromFloat(createLoanDataModel.getAnnual_business_turnover_sp_3());
+                        businessCoApplicantsModel3.setAnnual_business_turnover(annual_business_turnover_sp_3);
+                    } catch (Exception e) {
+                        throw new SystemException("1110", "Unparseable annual_business_turnover_sp_3");
+                    }
+                    businessCoApplicantsModel3.setCkyc_id(createLoanDataModel.getCkyc_id_nic_3());
+                    businessCoApplicantsModelList.add(businessCoApplicantsModel3);
+                  }
+
+
+                   //-----Array4--------
+                    if(createLoanDataModel.getName_of_business_nic_4() !=null) {
+                     businessCoApplicantsModel4.setName_of_business(createLoanDataModel.getName_of_business_nic_4());
+                     businessCoApplicantsModel4.setNature_of_business(createLoanDataModel.getNature_of_business_nic_4());
+                     businessCoApplicantsModel4.setType_of_constitution(createLoanDataModel.getType_of_constitution_nic_4());
+                     try {
+                       String registration_date_nic_4 = dataTypeConversion.getStringFromDate("yyyy-MM-dd", createLoanDataModel.getRegistration_date_nic_4());
+                       businessCoApplicantsModel4.setRegistration_date(registration_date_nic_4);
+                     } catch (Exception e) {
+                         throw new SystemException("1110", "Unparseable registration_date_nic_4");
+                     }
+                     try {
+                         String incorporation_date_nic_4 = dataTypeConversion.getStringFromDate("yyyy-MM-dd", createLoanDataModel.getIncorporation_date_nic_4());
+                         businessCoApplicantsModel4.setIncorporation_date(incorporation_date_nic_4);
+                     } catch (Exception e) {
+                       throw new SystemException("1110", "Unparseable incorporation_date_nic_4");
+                     }
+                     businessCoApplicantsModel4.setIndustry_type(createLoanDataModel.getIndustry_type_nic_4());
+                     businessCoApplicantsModel4.setSector_type(createLoanDataModel.getSector_type_nic_4());
+                     businessCoApplicantsModel4.setSub_sector_type(createLoanDataModel.getSub_sector_type_nic_4());
+                     businessCoApplicantsModel4.setBusiness_vintage(createLoanDataModel.getBusiness_vintage_nic_4());
+                     businessCoApplicantsModel4.setBusiness_registered_office_address(createLoanDataModel.getBusiness_registered_office_address_nic_4());
+                     businessCoApplicantsModel4.setBusiness_registered_office_city(createLoanDataModel.getBusiness_mailing_office_city_nic_4());
+                     businessCoApplicantsModel4.setBusiness_registered_office_state(createLoanDataModel.getBusiness_registered_office_address_nic_4());
+                     businessCoApplicantsModel4.setBusiness_registered_office_pincode(createLoanDataModel.getBusiness_mailing_office_pincode_nic_4());
+                     businessCoApplicantsModel4.setBusiness_mailing_office_address(createLoanDataModel.getBusiness_registered_office_address_nic_4());
+                     businessCoApplicantsModel4.setBusiness_mailing_office_address1(createLoanDataModel.getBusiness_mailing_office_address1_nic_4());
+                     businessCoApplicantsModel4.setBusiness_mailing_office_address2(createLoanDataModel.getBusiness_mailing_office_address2_nic_4());
+                     businessCoApplicantsModel4.setBusiness_mailing_office_address3(createLoanDataModel.getBusiness_mailing_office_address3_nic_4());
+                     businessCoApplicantsModel4.setBusiness_mailing_office_city(createLoanDataModel.getBusiness_mailing_office_city_nic_4());
+                     try {
+                         Integer business_mailing_office_pincode_nic_4 = dataTypeConversion.getStringFromInt(createLoanDataModel.getBusiness_mailing_office_pincode_nic_4());
+                         businessCoApplicantsModel4.setBusiness_mailing_office_pincode(business_mailing_office_pincode_nic_4);
+                     } catch (Exception e) {
+                         throw new SystemException("1110", "Unparseable business_mailing_office_pincode_nic_4");
+                     }
+                     try {
+                         Long business_phone_number_nic_4 = dataTypeConversion.getStringFromLong(createLoanDataModel.getBusiness_phone_number_nic_4());
+                         businessCoApplicantsModel4.setBusiness_phone_number(business_phone_number_nic_4);
+                     } catch (Exception e) {
+                         throw new SystemException("1110", "Unparseable business_phone_number_nic_4");
+                     }
+                     businessCoApplicantsModel4.setBusiness_pan_number(createLoanDataModel.getBusiness_pan_number_nic_4());
+                     businessCoApplicantsModel4.setBusiness_pan_link(createLoanDataModel.getBusiness_pan_link_nic_4());
+                     businessCoApplicantsModel4.setBusiness_rc_number(createLoanDataModel.getBusiness_rc_number_nic_4());
+                     businessCoApplicantsModel4.setBusiness_rc_link(createLoanDataModel.getBusiness_rc_link_nic_4());
+                     try {
+                         Float annual_business_turnover_sp_4 = dataTypeConversion.getStringFromFloat(createLoanDataModel.getAnnual_business_turnover_sp_4());
+                         businessCoApplicantsModel4.setAnnual_business_turnover(annual_business_turnover_sp_4);
+                     } catch (Exception e) {
+                         throw new SystemException("1110", "Unparseable annual_business_turnover_sp_4");
+                     }
+                     businessCoApplicantsModel4.setCkyc_id(createLoanDataModel.getCkyc_id_nic_4());
+                     businessCoApplicantsModelList.add(businessCoApplicantsModel4);
+                    }
+
+                   //-----Array5--------
+                   if(createLoanDataModel.getName_of_business_nic_5() !=null) {
+                      businessCoApplicantsModel5.setName_of_business(createLoanDataModel.getName_of_business_nic_5());
+                      businessCoApplicantsModel5.setNature_of_business(createLoanDataModel.getNature_of_business_nic_5());
+                      businessCoApplicantsModel5.setType_of_constitution(createLoanDataModel.getType_of_constitution_nic_5());
+                      try {
+                        String registration_date_nic_5 = dataTypeConversion.getStringFromDate("yyyy-MM-dd", createLoanDataModel.getRegistration_date_nic_5());
+                        businessCoApplicantsModel5.setRegistration_date(registration_date_nic_5);
+                      } catch (Exception e) {
+                          throw new SystemException("1110", "Unparseable registration_date_nic_5");
+                      }
+                      try {
+                      String incorporation_date_nic_5 = dataTypeConversion.getStringFromDate("yyyy-MM-dd", createLoanDataModel.getIncorporation_date_nic_5());
+                      businessCoApplicantsModel5.setIncorporation_date(incorporation_date_nic_5);
+                      } catch (Exception e) {
+                      throw new SystemException("1110", "Unparseable incorporation_date_nic_5");
+                      }
+                      businessCoApplicantsModel5.setIndustry_type(createLoanDataModel.getIndustry_type_nic_5());
+                      businessCoApplicantsModel5.setSector_type(createLoanDataModel.getSector_type_nic_5());
+                      businessCoApplicantsModel5.setSub_sector_type(createLoanDataModel.getSub_sector_type_nic_5());
+                      businessCoApplicantsModel5.setBusiness_vintage(createLoanDataModel.getBusiness_vintage_nic_5());
+                      businessCoApplicantsModel5.setBusiness_registered_office_address(createLoanDataModel.getBusiness_registered_office_address_nic_5());
+                      businessCoApplicantsModel5.setBusiness_registered_office_city(createLoanDataModel.getBusiness_mailing_office_city_nic_5());
+                      businessCoApplicantsModel5.setBusiness_registered_office_state(createLoanDataModel.getBusiness_registered_office_address_nic_5());
+                      businessCoApplicantsModel5.setBusiness_registered_office_pincode(createLoanDataModel.getBusiness_mailing_office_pincode_nic_5());
+                      businessCoApplicantsModel5.setBusiness_mailing_office_address(createLoanDataModel.getBusiness_registered_office_address_nic_5());
+                      businessCoApplicantsModel5.setBusiness_mailing_office_address1(createLoanDataModel.getBusiness_mailing_office_address1_nic_5());
+                      businessCoApplicantsModel5.setBusiness_mailing_office_address2(createLoanDataModel.getBusiness_mailing_office_address2_nic_5());
+                      businessCoApplicantsModel5.setBusiness_mailing_office_address3(createLoanDataModel.getBusiness_mailing_office_address3_nic_5());
+                      businessCoApplicantsModel5.setBusiness_mailing_office_city(createLoanDataModel.getBusiness_mailing_office_city_nic_5());
+                      try {
+                         Integer business_mailing_office_pincode_nic_5 = dataTypeConversion.getStringFromInt(createLoanDataModel.getBusiness_mailing_office_pincode_nic_5());
+                         businessCoApplicantsModel5.setBusiness_mailing_office_pincode(business_mailing_office_pincode_nic_5);
+                      } catch (Exception e) {
+                         throw new SystemException("1110", "Unparseable business_mailing_office_pincode_nic_5");
+                      }
+                      try {
+                           Long business_phone_number_nic_5 = dataTypeConversion.getStringFromLong(createLoanDataModel.getBusiness_phone_number_nic_5());
+                           businessCoApplicantsModel5.setBusiness_phone_number(business_phone_number_nic_5);
+                      }  catch (Exception e) {
+                            throw new SystemException("1110", "Unparseable business_phone_number_nic_5");
+                      }
+                      businessCoApplicantsModel5.setBusiness_pan_number(createLoanDataModel.getBusiness_pan_number_nic_5());
+                      businessCoApplicantsModel5.setBusiness_pan_link(createLoanDataModel.getBusiness_pan_link_nic_5());
+                      businessCoApplicantsModel5.setBusiness_rc_number(createLoanDataModel.getBusiness_rc_number_nic_5());
+                      businessCoApplicantsModel5.setBusiness_rc_link(createLoanDataModel.getBusiness_rc_link_nic_5());
+                      try {
+                           Float annual_business_turnover_sp_5 = dataTypeConversion.getStringFromFloat(createLoanDataModel.getAnnual_business_turnover_sp_5());
+                           businessCoApplicantsModel5.setAnnual_business_turnover(annual_business_turnover_sp_5);
+                      } catch (Exception e) {
+                          throw new SystemException("1110", "Unparseable annual_business_turnover_sp_5");
+                      }
+                      businessCoApplicantsModel5.setCkyc_id(createLoanDataModel.getCkyc_id_nic_5());
+                      businessCoApplicantsModelList.add(businessCoApplicantsModel5);
+                    }
+
+
+
 
         return businessCoApplicantsModelList;
     }
@@ -862,14 +1446,6 @@ public class CustomerDetailServiceIMPL implements CustomerDetailService {
         return propertyReviewDocumentsModel;
     }
 
-
-    private List<String> getBureauReportLinkSP() {
-
-        List<String> bureauReportLinkSP = new ArrayList<>();
-        bureauReportLinkSP.add("https://cdn.pixabay.com/photo/2017/06/22/20/22/green-2432374_1280.jpg");
-        bureauReportLinkSP.add("https://cdn.pixabay.com/photo/2017/06/22/20/22/green-2432374_1280.jpg");
-        return bureauReportLinkSP;
-    }
 
     private List<Long> getBusinessPhoneNumberNia() {
 

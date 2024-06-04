@@ -29,6 +29,7 @@ public class DBQuery {
             "business_udhyam_regn_number_nia,\n" +
             "name_of_bureau_sp,\n" +
             "bureau_score_sp,\n" +
+            "bureau_report_link_SP,\n"+
             "product_id_sp,\n" +
             "application_id_sp,\n" +
             "category_sp,\n" +
@@ -136,7 +137,7 @@ public class DBQuery {
             "customer_type_ig,\n" +
             "ckyc_id_ig,\n" +
             "annual_income_ig,\n" +
-            //==========CoApplicants====================
+            //==========CoApplicants(Multipul Array)====================
             "relationship_with_applicant_ic,\n"+
             "first_name_ic,\n" +
             "last_name_ic,\n" +
@@ -167,37 +168,161 @@ public class DBQuery {
             "total_net_worth_ic,\n"+
             "customer_type_ic,\n" +
             "ckyc_id_ic,\n"+
-            //---Array1------
-            "relationship_with_applicant_ic_1,\n"+
-            "first_name_ic_1,\n" +
-            "last_name_ic_1,\n"+
-            "gender_ic_1,\n"+
-            "occupation_ic_1,\n"+
-            "date_of_birth_ic_1,\n"+
-            "mobile_number_ic_1,\n"+
-            "current_address_ic_1,\n"+
-            "city_ic_1,\n"+
-            "current_district_ic_1,\n"+
-            "state_ic_1,\n"+
-            "current_pincode_ic_1,\n"+
-            "permanent_district_ic_1,\n"+
-            "permanent_pincode_ic_1,\n"+
-            "marital_status_ic_1,\n"+
-            "religion_ic_1,\n"+
-            "education_ic_1,\n"+
-            "annual_income_ic_1,\n"+
-            "bureau_score_ic_1,\n"+
-            "age_at_maturity_ic_1,\n" +
-            "employment_details_designation_sp_1,\n"+
-            "caste_ic_1,\n"+
-            "father_first_name_ic_1,\n" +
-            "father_last_name_ic_1,\n"+
-            "place_of_birth_ic_1,\n" +
-            "title_ic_1 ,\n" +
-            "income_source_ic_1,\n" +
-            "total_net_worth_ic_1,\n" +
-            "customer_type_ic_1,\n" +
-            "ckyc_id_ic_1,\n" +
+                //---Array1------
+                "relationship_with_applicant_ic_1,\n"+
+                "first_name_ic_1,\n" +
+                "last_name_ic_1,\n"+
+                "gender_ic_1,\n"+
+                "occupation_ic_1,\n"+
+                "date_of_birth_ic_1,\n"+
+                "mobile_number_ic_1,\n"+
+                "current_address_ic_1,\n"+
+                "city_ic_1,\n"+
+                "current_district_ic_1,\n"+
+                "state_ic_1,\n"+
+                "current_pincode_ic_1,\n"+
+                "permanent_district_ic_1,\n"+
+                "permanent_pincode_ic_1,\n"+
+                "marital_status_ic_1,\n"+
+                "religion_ic_1,\n"+
+                "education_ic_1,\n"+
+                "annual_income_ic_1,\n"+
+                "bureau_score_ic_1,\n"+
+                "age_at_maturity_ic_1,\n" +
+                "employment_details_designation_sp_1,\n"+
+                "caste_ic_1,\n"+
+                "father_first_name_ic_1,\n" +
+                "father_last_name_ic_1,\n"+
+                "place_of_birth_ic_1,\n" +
+                "title_ic_1 ,\n" +
+                "income_source_ic_1,\n" +
+                "total_net_worth_ic_1,\n" +
+                "customer_type_ic_1,\n" +
+                "ckyc_id_ic_1,\n" +
+                //---Array2-----------
+                "relationship_with_applicant_ic_2,\n" +
+                " first_name_ic_2,\t\n" +
+                " last_name_ic_2,\n" +
+                " gender_ic_2,\n" +
+                " occupation_ic_2,\n" +
+                " date_of_birth_ic_2,\n" +
+                " mobile_number_ic_2,\n" +
+                " current_address_ic_2,\n" +
+                " city_ic_2,\n" +
+                " current_district_ic_2,\n" +
+                " state_ic_2,\n" +
+                " current_pincode_ic_2,\n" +
+                " permanent_district_ic_2,\n" +
+                " permanent_pincode_ic_2,\n" +
+                " marital_status_ic_2,\n" +
+                " religion_ic_2,\n" +
+                " education_ic_2,\n" +
+                " annual_income_ic_2,\n" +
+                " bureau_score_ic_2,\n" +
+                " age_at_maturity_ic_2,\n" +
+                " employment_details_designation_sp_2,\n" +
+                " caste_ic_2,\n"+
+                " father_first_name_ic_2,\n" +
+                " father_last_name_ic_2,\n" +
+                " place_of_birth_ic_2,\n" +
+                " title_ic_2,\n" +
+                " income_source_ic_2,\n" +
+                " total_net_worth_ic_2,\n" +
+                " customer_type_ic_2,\n" +
+                " ckyc_id_ic_2,\n"+
+                //----Array3---
+                "relationship_with_applicant_ic_3,\n" +
+                "first_name_ic_3,\n" +
+                "last_name_ic_3,\t\n" +
+                "gender_ic_3,\n" +
+                "occupation_ic_3,\n" +
+                "date_of_birth_ic_3,\n" +
+                "mobile_number_ic_3,\n" +
+                "current_address_ic_3,\n" +
+                "city_ic_3,\n" +
+                "current_district_ic_3,\n" +
+                "state_ic_3,\n" +
+                "current_pincode_ic_3,\n" +
+                "permanent_district_ic_3,\n" +
+                "permanent_pincode_ic_3,\n" +
+                "marital_status_ic_3,\n" +
+                "religion_ic_3,\n" +
+                "education_ic_3,\n" +
+                "annual_income_ic_3,\n" +
+                "bureau_score_ic_3,\n" +
+                "age_at_maturity_ic_3,\n" +
+                "employment_details_designation_sp_3,\n" +
+                "caste_ic_3,\n" +
+                "father_first_name_ic_3,\n" +
+                "father_last_name_ic_3,\n" +
+                "place_of_birth_ic_3,\n" +
+                "title_ic_3,\n" +
+                "income_source_ic_3,\n" +
+                "total_net_worth_ic_3,\n" +
+                "customer_type_ic_3,\n" +
+                "ckyc_id_ic_3,\n"+
+                //-----Array4----
+                "relationship_with_applicant_ic_4,\n" +
+                "first_name_ic_4\tlast_name_ic_4,\n" +
+                "gender_ic_4,\n" +
+                "occupation_ic_4,\n" +
+                "date_of_birth_ic_4,\n" +
+                "mobile_number_ic_4,\n" +
+                "current_address_ic_4,\n" +
+                "city_ic_4,\n" +
+                "current_district_ic_4,\n" +
+                "state_ic_4,\n" +
+                "current_pincode_ic_4,\n" +
+                "permanent_district_ic_4,\n" +
+                "permanent_pincode_ic_4,\n" +
+                "marital_status_ic_4,\n" +
+                "religion_ic_4,\n" +
+                "education_ic_4,\n" +
+                "annual_income_ic_4,\n" +
+                "bureau_score_ic_4,\n" +
+                "age_at_maturity_ic_4,\n" +
+                "employment_details_designation_sp_4,\n" +
+                "caste_ic_4,\n" +
+                "father_first_name_ic_4,\n" +
+                "father_last_name_ic_4,\n" +
+                "place_of_birth_ic_4,\n" +
+                "title_ic_4,\n" +
+                "income_source_ic_4,\n" +
+                "total_net_worth_ic_4,\n" +
+                "customer_type_ic_4,\n" +
+                "ckyc_id_ic_4,\n"+
+               //-----Array5-----
+                "relationship_with_applicant_ic_5,\n" +
+                "first_name_ic_5,\n" +
+                "last_name_ic_5,\n" +
+                "gender_ic_5,\n" +
+                "occupation_ic_5,\n" +
+                "date_of_birth_ic_5,\n" +
+                "mobile_number_ic_5,\n" +
+                "current_address_ic_5,\n" +
+                "city_ic_5,\n" +
+                "current_district_ic_5,\n" +
+                "state_ic_5,\n" +
+                "current_pincode_ic_5,\n" +
+                "permanent_district_ic_5,\n" +
+                "permanent_pincode_ic_5,\n" +
+                "marital_status_ic_5,\n" +
+                "religion_ic_5,\n" +
+                "education_ic_5,\n" +
+                "annual_income_ic_5,\n" +
+                "bureau_score_ic_5,\n" +
+                "age_at_maturity_ic_5,\n" +
+                "employment_details_designation_sp_5,\n" +
+                "caste_ic_5,\n" +
+                "father_first_name_ic_5,\n" +
+                "father_last_name_ic_5,\n" +
+                "place_of_birth_ic_5,\n" +
+                "title_ic_5,\n" +
+                "income_source_ic_5,\n" +
+                "total_net_worth_ic_5,\n" +
+                "customer_type_ic_5,\n" +
+                "ckyc_id_ic_5,\n"+
+
             //==========BankStatement==================
             "sma_account_sp,\n" +
             "business_transactions_sp,\n" +
@@ -217,7 +342,7 @@ public class DBQuery {
             "share_holding_rp,\n" +
             "designation_rp,\n" +
             "proposed_share_holding_rp,\n"+
-            //==============BusinessCoApplicants=============
+            //==============BusinessCoApplicants(Multipul Array)=============
             "name_of_business_nic,\n" +
             "nature_of_business_nic,\n" +
             "type_of_constitution_nic,\n" +
@@ -239,10 +364,136 @@ public class DBQuery {
             "business_pan_number_nic,\n" +
             "business_pan_link_nic,\n" +
             "business_rc_number_nic,\n" +
-             "business_rc_link_nic,\n" +
+            "business_rc_link_nic,\n" +
+            "ckyc_id_nic,\n"+
+
+            //----Array1------
+            "name_of_business_nic_1,\n" +
+            "nature_of_business_nic_1,\n" +
+            "type_of_constitution_nic_1,\n" +
+            "registration_date_nic_1,\n" +
+            "incorporation_date_nic_1,\n" +
+            "industry_type_nic_1,\n" +
+            "sector_type_nic_1,\n" +
+            "sub_sector_type_nic_1,\n" +
+            "business_vintage_nic_1,\n" +
+            "business_registered_office_address_nic_1,\n" +
+            "business_mailing_office_city_nic_1,\n" +
+            "state_nic_1,\n" +
+            "business_mailing_office_pincode_nic_1,\n" +
+            "business_mailing_office_address1_nic_1,\n" +
+            "business_mailing_office_address2_nic_1,\n" +
+            "business_mailing_office_address3_nic_1,\n" +
+            "business_phone_number_nic_1\t,\n" +
+            "business_pan_number_nic_1,\n" +
+            "business_pan_link_nic_1\t,\n" +
+            "business_rc_number_nic_1,\n" +
+            "business_rc_link_nic_1,\n" +
+            "annual_business_turnover_sp_1,\n" +
+            "ckyc_id_nic_1,\n"+
+
+            //----Array2------
+            "name_of_business_nic_2,\n" +
+            "nature_of_business_nic_2,\n" +
+            "type_of_constitution_nic_2,\n" +
+            "registration_date_nic_2\t,\n" +
+            "incorporation_date_nic_2,\n" +
+            "industry_type_nic_2\t,\n" +
+            "sector_type_nic_2,\n" +
+            "sub_sector_type_nic_2,\n" +
+            "business_vintage_nic_2,\n" +
+            "business_registered_office_address_nic_2,\n" +
+            "business_mailing_office_city_nic_2,\n" +
+            "state_nic_2\t,\n" +
+            "business_mailing_office_pincode_nic_2,\n" +
+            "business_mailing_office_address1_nic_2,\n" +
+            "business_mailing_office_address2_nic_2,\n" +
+            "business_mailing_office_address3_nic_2,\n" +
+            "business_phone_number_nic_2\t,\n" +
+            "business_pan_number_nic_2,\n" +
+            "business_pan_link_nic_2\t,\n" +
+            "business_rc_number_nic_2,\n" +
+            "business_rc_link_nic_2,\n" +
+            "annual_business_turnover_sp_2,\n" +
+            "ckyc_id_nic_2,\n"+
+
+            //------Array3-----
+            "name_of_business_nic_3,\n" +
+            "nature_of_business_nic_3,\n" +
+            "type_of_constitution_nic_3,\n" +
+            "registration_date_nic_3\t,\n" +
+            "incorporation_date_nic_3,\n" +
+            "industry_type_nic_3,\n" +
+            "sector_type_nic_3\t,\n" +
+            "sub_sector_type_nic_3,\n" +
+            "business_vintage_nic_3\t,\n" +
+            "business_registered_office_address_nic_3,\n" +
+            "business_mailing_office_city_nic_3,\n" +
+            "state_nic_3\tbusiness_mailing_office_pincode_nic_3,\n" +
+            "business_mailing_office_address1_nic_3,\n" +
+            "business_mailing_office_address2_nic_3,\n" +
+            "business_mailing_office_address3_nic_3,\n" +
+            "business_phone_number_nic_3,\n" +
+            "business_pan_number_nic_3,\n" +
+            "business_pan_link_nic_3\t,\n" +
+            "business_rc_number_nic_3,\n" +
+            "business_rc_link_nic_3,\n" +
+            "annual_business_turnover_sp_3,\n" +
+            "ckyc_id_nic_3,\n"+
+
+            //-----Array4-----
+            "name_of_business_nic_4,\n" +
+            "nature_of_business_nic_4,\n" +
+            "type_of_constitution_nic_4,\n" +
+            "registration_date_nic_4,\n" +
+            "incorporation_date_nic_4,\n" +
+            "industry_type_nic_4\t,\n" +
+            "sector_type_nic_4,\n" +
+            "sub_sector_type_nic_4,\n" +
+            "business_vintage_nic_4,\n" +
+            "business_registered_office_address_nic_4,\n" +
+            "business_mailing_office_city_nic_4,\n" +
+            "state_nic_4,\n" +
+            "business_mailing_office_pincode_nic_4,\n" +
+            "business_mailing_office_address1_nic_4,\n" +
+            "business_mailing_office_address2_nic_4,\n" +
+            "business_mailing_office_address3_nic_4,\n" +
+            "business_phone_number_nic_4,\n" +
+            "business_pan_number_nic_4,\n" +
+            "business_pan_link_nic_4,\n" +
+            "business_rc_number_nic_4,\n" +
+            "business_rc_link_nic_4,\n" +
+            "annual_business_turnover_sp_4,\n" +
+            "ckyc_id_nic_4,\n"+
+
+            //----Array5------
+            "name_of_business_nic_5,\n" +
+            "nature_of_business_nic_5,\n" +
+            "type_of_constitution_nic_5,\n" +
+            "registration_date_nic_5\t,\n" +
+            "incorporation_date_nic_5,\n" +
+            "industry_type_nic_5,\n" +
+            "sector_type_nic_5,\n" +
+            "sub_sector_type_nic_5,\n" +
+            "business_vintage_nic_5,\n" +
+            "business_registered_office_address_nic_5,\n" +
+            "business_mailing_office_city_nic_5,\n" +
+            "state_nic_5\t,\n" +
+            "business_mailing_office_pincode_nic_5,\n" +
+            "business_mailing_office_address1_nic_5,\n" +
+            "business_mailing_office_address2_nic_5,\n" +
+            "business_mailing_office_address3_nic_5,\n" +
+            "business_phone_number_nic_5,\n" +
+            "business_pan_number_nic_5,\n" +
+            "business_pan_link_nic_5\t,\n" +
+            "business_rc_number_nic_5,\n" +
+            "business_rc_link_nic_5,\n" +
+            "annual_business_turnover_sp_5,\n" +
+            "ckyc_id_nic_5,\n"+
+
+            //===========OriginalDisbursementDetails==========
             "disbursement_amount_sp, \n" +
             "disbursement_date_sp, \n" +
-            "ckyc_id_nic,\n"+
             //==========orignalloandetails===========
             "loan_amount,\n" +
             "tenure,\n" +

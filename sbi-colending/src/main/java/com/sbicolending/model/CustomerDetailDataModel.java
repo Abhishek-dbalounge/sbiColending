@@ -34,6 +34,7 @@ public class CustomerDetailDataModel {
     private String business_udhyam_regn_number_nia;
     private String name_of_bureau_sp;
     private String bureau_score_sp;
+    private String bureau_report_link_SP;
     private String product_id_sp;
     private String application_id_sp;
     private String category_sp;
@@ -141,7 +142,7 @@ public class CustomerDetailDataModel {
     private String customer_type_ig;
     private String ckyc_id_ig;
     private String annual_income_ig;
-    //=======CoApplicants==============================
+    //=======CoApplicants(Multipul Array)==============================
     private String relationship_with_applicant_ic;//(new)
     private String first_name_ic;
     private String last_name_ic;
@@ -171,38 +172,174 @@ public class CustomerDetailDataModel {
     private String total_net_worth_ic;//(new)
     private String customer_type_ic;
     private String ckyc_id_ic;//(new)
-    //---Array1------
-    private String relationship_with_applicant_ic_1;//(new)
-    private String first_name_ic_1;
-    private String last_name_ic_1;
-    private String gender_ic_1;
-    private String occupation_ic_1;
-    private Date date_of_birth_ic_1;
-    private String mobile_number_ic_1;
-    private String current_address_ic_1;
-    private String City_ic_1;
-    private String current_district_ic_1;
-    private String State_ic_1;
-    private String current_pincode_ic_1;
-    private String permanent_district_ic_1;
-    private String permanent_pincode_ic_1;
-    private String marital_status_ic_1;
-    private String religion_ic_1;
-    private String education_ic_1;
-    private String annual_income_ic_1;//(numeric)
-    private String bureau_score_ic_1;//(integer)
-    private String age_at_maturity_ic_1;
-    private String employment_details_designation_sp_1;
-    private String caste_ic_1;
-    private String father_first_name_ic_1;
-    private String father_last_name_ic_1;
-    private String place_of_birth_ic_1;
-    private String title_ic_1;
-    private String income_source_ic_1;//(new)
-    //private String current_address_ic;
-    private String total_net_worth_ic_1;//(new)
-    private String customer_type_ic_1;
-    private String ckyc_id_ic_1;//(new)
+
+        //---Array1------
+        private String relationship_with_applicant_ic_1;//(new)
+        private String first_name_ic_1;
+        private String last_name_ic_1;
+        private String gender_ic_1;
+        private String occupation_ic_1;
+        private Date date_of_birth_ic_1;
+        private String mobile_number_ic_1;
+        private String current_address_ic_1;
+        private String City_ic_1;
+        private String current_district_ic_1;
+        private String State_ic_1;
+        private String current_pincode_ic_1;
+        private String permanent_district_ic_1;
+        private String permanent_pincode_ic_1;
+        private String marital_status_ic_1;
+        private String religion_ic_1;
+        private String education_ic_1;
+        private String annual_income_ic_1;//(numeric)
+        private String bureau_score_ic_1;//(integer)
+        private String age_at_maturity_ic_1;
+        private String employment_details_designation_sp_1;
+        private String caste_ic_1;
+        private String father_first_name_ic_1;
+        private String father_last_name_ic_1;
+        private String place_of_birth_ic_1;
+        private String title_ic_1;
+        private String income_source_ic_1;//(new)
+       //private String current_address_ic;
+        private String total_net_worth_ic_1;//(new)
+        private String customer_type_ic_1;
+        private String ckyc_id_ic_1;//(new)
+
+        //----Arrray2----------
+        private String relationship_with_applicant_ic_2;//(new)
+        private String first_name_ic_2;
+        private String last_name_ic_2;
+        private String gender_ic_2;
+        private String occupation_ic_2;
+        private Date date_of_birth_ic_2;
+        private String mobile_number_ic_2;
+        private String current_address_ic_2;
+        private String City_ic_2;
+        private String current_district_ic_2;
+        private String State_ic_2;
+        private String current_pincode_ic_2;
+        private String permanent_district_ic_2;
+        private String permanent_pincode_ic_2;
+        private String marital_status_ic_2;
+        private String religion_ic_2;
+        private String education_ic_2;
+        private String annual_income_ic_2;//(numeric)
+        private String bureau_score_ic_2;//(integer)
+        private String age_at_maturity_ic_2;
+        private String employment_details_designation_sp_2;
+        private String caste_ic_2;
+        private String father_first_name_ic_2;
+        private String father_last_name_ic_2;
+        private String place_of_birth_ic_2;
+        private String title_ic_2;
+        private String income_source_ic_2;//(new)
+        //private String current_address_ic;
+        private String total_net_worth_ic_2;//(new)
+        private String customer_type_ic_2;
+        private String ckyc_id_ic_2;//(new)
+
+        //----Arrray3----------
+        private String relationship_with_applicant_ic_3;//(new)
+        private String first_name_ic_3;
+        private String last_name_ic_3;
+        private String gender_ic_3;
+        private String occupation_ic_3;
+        private Date date_of_birth_ic_3;
+        private String mobile_number_ic_3;
+        private String current_address_ic_3;
+        private String City_ic_3;
+        private String current_district_ic_3;
+        private String State_ic_3;
+        private String current_pincode_ic_3;
+        private String permanent_district_ic_3;
+        private String permanent_pincode_ic_3;
+        private String marital_status_ic_3;
+        private String religion_ic_3;
+        private String education_ic_3;
+        private String annual_income_ic_3;//(numeric)
+        private String bureau_score_ic_3;//(integer)
+        private String age_at_maturity_ic_3;
+        private String employment_details_designation_sp_3;
+        private String caste_ic_3;
+        private String father_first_name_ic_3;
+        private String father_last_name_ic_3;
+        private String place_of_birth_ic_3;
+        private String title_ic_3;
+        private String income_source_ic_3;//(new)
+        //private String current_address_ic;
+        private String total_net_worth_ic_3;//(new)
+        private String customer_type_ic_3;
+        private String ckyc_id_ic_3;//(new)
+
+        //----Arrray4----------
+        private String relationship_with_applicant_ic_4;//(new)
+        private String first_name_ic_4;
+        private String last_name_ic_4;
+        private String gender_ic_4;
+        private String occupation_ic_4;
+        private Date date_of_birth_ic_4;
+        private String mobile_number_ic_4;
+        private String current_address_ic_4;
+        private String City_ic_4;
+        private String current_district_ic_4;
+        private String State_ic_4;
+        private String current_pincode_ic_4;
+        private String permanent_district_ic_4;
+        private String permanent_pincode_ic_4;
+        private String marital_status_ic_4;
+        private String religion_ic_4;
+        private String education_ic_4;
+        private String annual_income_ic_4;//(numeric)
+        private String bureau_score_ic_4;//(integer)
+        private String age_at_maturity_ic_4;
+        private String employment_details_designation_sp_4;
+        private String caste_ic_4;
+        private String father_first_name_ic_4;
+        private String father_last_name_ic_4;
+        private String place_of_birth_ic_4;
+        private String title_ic_4;
+        private String income_source_ic_4;//(new)
+        //private String current_address_ic;
+        private String total_net_worth_ic_4;//(new)
+        private String customer_type_ic_4;
+        private String ckyc_id_ic_4;//(new)
+
+        //----Arrray5----------
+        private String relationship_with_applicant_ic_5;//(new)
+        private String first_name_ic_5;
+        private String last_name_ic_5;
+        private String gender_ic_5;
+        private String occupation_ic_5;
+        private Date date_of_birth_ic_5;
+        private String mobile_number_ic_5;
+        private String current_address_ic_5;
+        private String City_ic_5;
+        private String current_district_ic_5;
+        private String State_ic_5;
+        private String current_pincode_ic_5;
+        private String permanent_district_ic_5;
+        private String permanent_pincode_ic_5;
+        private String marital_status_ic_5;
+        private String religion_ic_5;
+        private String education_ic_5;
+        private String annual_income_ic_5;//(numeric)
+        private String bureau_score_ic_5;//(integer)
+        private String age_at_maturity_ic_5;
+        private String employment_details_designation_sp_5;
+        private String caste_ic_5;
+        private String father_first_name_ic_5;
+        private String father_last_name_ic_5;
+        private String place_of_birth_ic_5;
+        private String title_ic_5;
+        private String income_source_ic_5;//(new)
+        //private String current_address_ic;
+        private String total_net_worth_ic_5;//(new)
+        private String customer_type_ic_5;
+        private String ckyc_id_ic_5;//(new)
+
+
+
     //====================BankStatement===========================
     private String sma_account_sp;
     private String business_transactions_sp;
@@ -222,7 +359,7 @@ public class CustomerDetailDataModel {
     private String share_holding_rp;
     private String designation_rp;
     private String proposed_share_holding_rp;
-    //==============BusinessCoApplicants=======================
+    //==============BusinessCoApplicants(Multiple Array)=======================
     private String name_of_business_nic;
     private String nature_of_business_nic;
     private String type_of_constitution_nic;
@@ -243,7 +380,135 @@ public class CustomerDetailDataModel {
     private String business_pan_link_nic;
     private String business_rc_number_nic;
     private String business_rc_link_nic;
+    //private String annual_business_turnover_sp_1;
     private String ckyc_id_nic;
+
+         //---Array1---
+          private String name_of_business_nic_1;
+          private String nature_of_business_nic_1;
+          private String type_of_constitution_nic_1;
+          private Date registration_date_nic_1;//(Date)
+          private Date incorporation_date_nic_1;//(Date)
+          private String industry_type_nic_1;
+          private String sector_type_nic_1;
+          private String sub_sector_type_nic_1;
+          private String business_vintage_nic_1;//(Double)
+          private String business_registered_office_address_nic_1;
+          private String business_mailing_office_city_nic_1;
+          private String State_nic_1;
+          private String business_mailing_office_pincode_nic_1;
+          private String business_mailing_office_address1_nic_1;
+          private String business_mailing_office_address2_nic_1;
+          private String business_mailing_office_address3_nic_1;
+          private String business_phone_number_nic_1;
+          private String business_pan_number_nic_1;
+          private String business_pan_link_nic_1;
+          private String business_rc_number_nic_1;
+          private String business_rc_link_nic_1;
+          private String annual_business_turnover_sp_1;
+          private String ckyc_id_nic_1;
+
+          //---Array2---
+          private String name_of_business_nic_2;
+          private String nature_of_business_nic_2;
+          private String type_of_constitution_nic_2;
+          private Date registration_date_nic_2;//(Date)
+          private Date incorporation_date_nic_2;//(Date)
+          private String industry_type_nic_2;
+          private String sector_type_nic_2;
+          private String sub_sector_type_nic_2;
+          private String business_vintage_nic_2;//(Double)
+          private String business_registered_office_address_nic_2;
+          private String business_mailing_office_city_nic_2;
+          private String State_nic_2;
+          private String business_mailing_office_pincode_nic_2;
+          private String business_mailing_office_address1_nic_2;
+          private String business_mailing_office_address2_nic_2;
+          private String business_mailing_office_address3_nic_2;
+          private String business_phone_number_nic_2;
+          private String business_pan_number_nic_2;
+          private String business_pan_link_nic_2;
+          private String business_rc_number_nic_2;
+          private String business_rc_link_nic_2;
+          private String annual_business_turnover_sp_2;
+          private String ckyc_id_nic_2;
+
+          //---Array3---
+          private String name_of_business_nic_3;
+          private String nature_of_business_nic_3;
+          private String type_of_constitution_nic_3;
+          private Date registration_date_nic_3;//(Date)
+          private Date incorporation_date_nic_3;//(Date)
+          private String industry_type_nic_3;
+          private String sector_type_nic_3;
+          private String sub_sector_type_nic_3;
+          private String business_vintage_nic_3;//(Double)
+          private String business_registered_office_address_nic_3;
+          private String business_mailing_office_city_nic_3;
+          private String State_nic_3;
+          private String business_mailing_office_pincode_nic_3;
+          private String business_mailing_office_address1_nic_3;
+          private String business_mailing_office_address2_nic_3;
+          private String business_mailing_office_address3_nic_3;
+          private String business_phone_number_nic_3;
+          private String business_pan_number_nic_3;
+          private String business_pan_link_nic_3;
+          private String business_rc_number_nic_3;
+          private String business_rc_link_nic_3;
+          private String annual_business_turnover_sp_3;
+          private String ckyc_id_nic_3;
+
+          //---Array4---
+          private String name_of_business_nic_4;
+          private String nature_of_business_nic_4;
+          private String type_of_constitution_nic_4;
+          private Date registration_date_nic_4;//(Date)
+          private Date incorporation_date_nic_4;//(Date)
+          private String industry_type_nic_4;
+          private String sector_type_nic_4;
+          private String sub_sector_type_nic_4;
+          private String business_vintage_nic_4;//(Double)
+          private String business_registered_office_address_nic_4;
+          private String business_mailing_office_city_nic_4;
+          private String State_nic_4;
+          private String business_mailing_office_pincode_nic_4;
+          private String business_mailing_office_address1_nic_4;
+          private String business_mailing_office_address2_nic_4;
+          private String business_mailing_office_address3_nic_4;
+          private String business_phone_number_nic_4;
+          private String business_pan_number_nic_4;
+          private String business_pan_link_nic_4;
+          private String business_rc_number_nic_4;
+          private String business_rc_link_nic_4;
+          private String annual_business_turnover_sp_4;
+          private String ckyc_id_nic_4;
+
+          //---Array5---
+          private String name_of_business_nic_5;
+          private String nature_of_business_nic_5;
+          private String type_of_constitution_nic_5;
+          private Date registration_date_nic_5;//(Date)
+          private Date incorporation_date_nic_5;//(Date)
+          private String industry_type_nic_5;
+          private String sector_type_nic_5;
+          private String sub_sector_type_nic_5;
+          private String business_vintage_nic_5;//(Double)
+          private String business_registered_office_address_nic_5;
+          private String business_mailing_office_city_nic_5;
+          private String State_nic_5;
+          private String business_mailing_office_pincode_nic_5;
+          private String business_mailing_office_address1_nic_5;
+          private String business_mailing_office_address2_nic_5;
+          private String business_mailing_office_address3_nic_5;
+          private String business_phone_number_nic_5;
+          private String business_pan_number_nic_5;
+          private String business_pan_link_nic_5;
+          private String business_rc_number_nic_5;
+          private String business_rc_link_nic_5;
+          private String annual_business_turnover_sp_5;
+          private String ckyc_id_nic_5;
+
+
     //============OriginalDisbursementDetails====
     private String disbursement_amount_sp;//(numeric)
     private Date disbursement_date_sp;//(Date)
