@@ -55,4 +55,18 @@ public class CallYubiApiController {
     }
 
 
+
+
+   @GetMapping("/getLoanDetails/{loan_id}")
+   public ResponseEntity<?> getLoanDetails(@PathVariable("loan_id") String loan_id){
+
+       CommonResponseModel commonResponse = new CommonResponseModel();
+
+       Object getLoanDetailsResponse = callYubiApiService.getLoanDetails(loan_id);
+
+       return new ResponseEntity<>(getLoanDetailsResponse, HttpStatus.OK);
+
+   }
+
+
 }

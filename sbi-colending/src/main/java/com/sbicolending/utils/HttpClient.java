@@ -281,7 +281,7 @@ public class HttpClient {
 			ClientConnectionManager ccm = new PoolingClientConnectionManager(registry);
 			httpClient = new DefaultHttpClient(ccm);
 
-			// String urlOverHttps = "https://103.14.161.142:443/requestDetail";
+
 			HttpPost httpPost = new HttpPost(urlOverHttps);
 
 			LOGGER.info("#################URL#######################" + urlOverHttps);
@@ -869,9 +869,10 @@ public class HttpClient {
 			responseCode = response.getStatusLine().getStatusCode();
 			LOGGER.info("#################responseCode#######################" + responseCode
 					+ "#################URL#######################" + urlOverHttps);
-			if (responseCode == 200) {
 
-				responseString = getStringFromInputStream(response.getEntity().getContent());
+			responseString = getStringFromInputStream(response.getEntity().getContent());
+
+			if (responseCode == 200) {
 
 				rtnMap.put("responseCode", responseCode + "");
 				rtnMap.put("responseString", responseString);
@@ -879,8 +880,10 @@ public class HttpClient {
 			//LOGGER.info("#################responseString#######################" + responseString);
 			if (responseCode != 200 && responseCode != 202) {
 				LOGGER.error("response code not OK: " + responseCode);
-				throw new NoResponseException(responseCode + "",
-						"response code not OK or Null: " + responseCode + "Url: " + urlOverHttps);
+				LOGGER.error("response message not OK: " + responseString);
+
+				rtnMap.put("responseCode", responseCode + "");
+				rtnMap.put("responseString", responseString);
 			}
 		} catch (NoResponseException exception) {
 			LOGGER.info("##################NoResponseException##################");

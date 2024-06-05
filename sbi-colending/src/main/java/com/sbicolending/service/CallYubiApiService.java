@@ -6,4 +6,6 @@ import com.sbicolending.model.customerdetailsresponse.CustomerDetailResponseMode
 
 public interface CallYubiApiService {
      Object getCreateLoan(CreateLoanRequestModel request);
+
+    Object getLoanDetails(String loanId);
 }
