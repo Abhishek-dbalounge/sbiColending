@@ -427,7 +427,7 @@ public class HttpClient {
 	}
 
 	public static Map handleWebRequestApplicationXMLThroughProxy(String urlOverHttps, String requestData,
-			String proxyHost, int proxyPort) throws Exception {
+																 String proxyHost, int proxyPort) throws Exception {
 		int responseCode;
 		CloseableHttpClient httpClient = null;
 		String responseString = null;
@@ -496,7 +496,7 @@ public class HttpClient {
 	}
 
 	public static Map handleWebRequestApplicationJSONThroughProxy(String urlOverHttps, String requestData,
-			String proxyHost, int proxyPort, Map<String, String> header) throws Exception {
+																  String proxyHost, int proxyPort, Map<String, String> header) throws Exception {
 		int responseCode;
 		CloseableHttpClient httpClient = null;
 		String responseString = null;
@@ -570,7 +570,7 @@ public class HttpClient {
 	@SuppressWarnings("deprecation")
 
 	public static Map<String, String> handleWebRequestWithContentType(String urlOverHttps, String requestType,
-			String requestData, String contentType) throws Exception {
+																	  String requestData, String contentType) throws Exception {
 		int responseCode;
 		DefaultHttpClient httpClient = null;
 		String responseString = null;
@@ -838,6 +838,7 @@ public class HttpClient {
 		return rtnMap;
 	}
 
+
 	public static Map handleGETWebRequest(String urlOverHttps, Map<String, String> headers) throws Exception {
 		int responseCode;
 		CloseableHttpClient httpClient = null;
@@ -906,8 +907,84 @@ public class HttpClient {
 		return rtnMap;
 	}
 
+	//==========Abishek===========================
+	public static Map<String, String> handlePUTWebRequest(String insertCsvUrl,String requestData, Map<String, String> header) throws Exception {
+		int responseCode;
+		CloseableHttpClient httpClient = null;
+		String responseString = null;
+		Map rtnMap = new HashMap();
+
+		try {
+
+			TrustStrategy acceptingTrustStrategy = new TrustStrategy() {
+				public boolean isTrusted(X509Certificate[] certificate, String authType) {
+					return true;
+				}
+			};
+			SSLContext sslContext = SSLContexts.custom().useTLS().build();
+
+			SSLConnectionSocketFactory f = new SSLConnectionSocketFactory(sslContext,
+					new String[] { "SSLv3", "TLSv1", "TLSv1.1", "TLSv1.2" }, null,
+					SSLConnectionSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
+
+			httpClient = HttpClients.custom().setSSLSocketFactory(f).build();
+			LOGGER.info("#################URL#######################" + insertCsvUrl);
+			//LOGGER.info("#################requestData#######################" + binaryFile);
+			HttpPut httpPut = new HttpPut(insertCsvUrl);
+
+			//ByteArrayEntity entity = new ByteArrayEntity(binaryFile);
+
+			//httpPut.setEntity(entity);
+
+			StringEntity entity = new StringEntity(requestData);
+			httpPut.setEntity(entity);
+
+			for (Entry<String, String> entry : header.entrySet()) {
+				httpPut.setHeader(entry.getKey(), entry.getValue());
+			}
+
+			HttpResponse response = httpClient.execute(httpPut);
+			responseCode = response.getStatusLine().getStatusCode();
+			responseString = getStringFromInputStream(response.getEntity().getContent());
+
+			if (responseCode == 200) {
+
+				rtnMap.put("responseCode", responseCode + "");
+				rtnMap.put("responseString", responseString);
+			}
+			//LOGGER.info("#################responseString#######################" + responseString);
+			if (responseCode != 200 && responseCode != 202) {
+				LOGGER.error("response code not OK: " + responseCode);
+				LOGGER.error("response message not OK: " + responseString);
+
+				rtnMap.put("responseCode", responseCode + "");
+				rtnMap.put("responseString", responseString);
+			}
+		} catch (NoResponseException exception) {
+			LOGGER.info("##################NoResponseException##################");
+			LOGGER.error("Exception msg: ", exception);
+			throw new NoResponseException(exception.getErrorCode(), exception.getErrorMsg());
+		} catch (IOException exception) {
+			LOGGER.info("##################IOException##################");
+			LOGGER.error("Exception msg: ", exception);
+			throw new NoResponseException("00", "Url: " + insertCsvUrl + " " + exception.getMessage());
+		} catch (Exception exception) {
+			LOGGER.info("##################Exception##################");
+			LOGGER.error("Exception msg: ", exception);
+			throw new NoResponseException("00", "Url: " + insertCsvUrl + " " + exception.getMessage());
+		} finally {
+			if (httpClient != null) {
+				httpClient.close();
+			}
+		}
+
+		return rtnMap;
+	}
+	//====================================
+
+
 	public static Map<String, String> handlePUTWebRequest(String insertCsvUrl, byte[] binaryFile,
-			Map<String, String> header) throws Exception {
+														  Map<String, String> header) throws Exception {
 		int responseCode;
 		CloseableHttpClient httpClient = null;
 		String responseString = null;
@@ -986,7 +1063,7 @@ public class HttpClient {
 	}
 
 	public static Map<String, String> handlePATCHWebRequest(String updateJobStatusUrl, String requestString,
-			Map<String, String> header) throws Exception {
+															Map<String, String> header) throws Exception {
 		int responseCode;
 		CloseableHttpClient httpClient = null;
 		String responseString = null;
