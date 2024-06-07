@@ -7,6 +7,7 @@ import com.sbicolending.model.customerdetailsresponse.*;
 import com.sbicolending.service.CustomerDetailService;
 import com.sbicolending.utils.BaseLogger;
 import com.sbicolending.utils.DataTypeConversion;
+import com.sbicolending.utils.DocumentLinks;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,8 @@ public class CustomerDetailServiceIMPL implements CustomerDetailService {
     private CustomerDetailDao customerDetailDao;
     @Autowired
     private DataTypeConversion dataTypeConversion;
+    @Autowired
+    private DocumentLinks documentLinks;
 
     @Override
     public CustomerDetailResponseModel getCustomerDetails(String lanSp) {
@@ -78,7 +81,6 @@ public class CustomerDetailServiceIMPL implements CustomerDetailService {
                 }catch (Exception e){
                     throw new SystemException("1110","Unparseable bureau_score_sp");
                 }
-
 
                 List<String>  bureau_report_link_SP = new ArrayList<>();
                 bureau_report_link_SP.add(customerDetailDataModel.getBureau_report_link_SP());
@@ -300,12 +302,14 @@ public class CustomerDetailServiceIMPL implements CustomerDetailService {
         }catch (Exception e){
             throw new SystemException("1110","Unparseable business_phone_number_nia");
         }*/
-        List<Long> business_phone_number_nia = getBusinessPhoneNumberNia();
+        List<Long> business_phone_number_nia = documentLinks.getBusinessPhoneNumberNia();
         businessModel.setBusiness_phone_number(business_phone_number_nia);
 
-        List<String> business_email_id_nia = new ArrayList<>();
-        business_email_id_nia.add(createLoanDataModel.getBusiness_email_id_nia());
+        List<String> business_email_id_nia = documentLinks.getBusinessEmailIdNia();
         businessModel.setBusiness_email_id(business_email_id_nia);
+       /* List<String> business_email_id_nia = new ArrayList<>();
+        business_email_id_nia.add(createLoanDataModel.getBusiness_email_id_nia());
+        businessModel.setBusiness_email_id(business_email_id_nia);*/
         businessModel.setProperty_ownership_flag(createLoanDataModel.getProperty_ownership_flag_nic());
         businessModel.setBusiness_pan_number(createLoanDataModel.getBusiness_pan_number_nia());
         businessModel.setBusiness_rc_number(createLoanDataModel.getBusiness_rc_number_nia());
@@ -1447,13 +1451,6 @@ public class CustomerDetailServiceIMPL implements CustomerDetailService {
     }
 
 
-    private List<Long> getBusinessPhoneNumberNia() {
-
-        List<Long> businessPhoneNumberNia = new ArrayList<>();
-        businessPhoneNumberNia.add(9876543210L);
-        businessPhoneNumberNia.add(9876543210L);
-        return businessPhoneNumberNia;
-    }
 
 
 }

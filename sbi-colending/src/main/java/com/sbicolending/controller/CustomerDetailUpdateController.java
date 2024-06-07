@@ -2,9 +2,9 @@ package com.sbicolending.controller;
 
 import com.sbicolending.exception.SystemException;
 import com.sbicolending.model.CommonResponseModel;
-import com.sbicolending.model.updatecustomerdetailsrequest.CustomerDetailUpdateModel;
 import com.sbicolending.service.CustomerDetailUpdateService;
 import com.sbicolending.utils.BaseLogger;
+import com.sbicolending.utils.DocumentLinks;
 import jakarta.servlet.http.HttpServletResponse;
 import org.apache.commons.compress.utils.IOUtils;
 import org.apache.poi.ss.usermodel.*;
@@ -32,6 +32,8 @@ public class CustomerDetailUpdateController {
 
     @Autowired
     private CustomerDetailUpdateService customerDetailUpdateService;
+
+
 
     @PutMapping("/updateCustomerDetails/{lanSp}")
     public ResponseEntity<?> customerDetails(@PathVariable("lanSp") String lanSp, @RequestParam("file") MultipartFile file){
@@ -138,6 +140,15 @@ public class CustomerDetailUpdateController {
         header.add("interest_rate");
         header.add("loan_emi");
         header.add("applicant_age_at_maturity");
+        //=======Business======
+        header.add("Business.name_of_business");
+        header.add("Business.nature_of_business");
+        header.add("Business.type_of_constitution");
+        header.add("Business.registration_date");
+        header.add("Business.incorporation_date");
+        header.add("Business.industry_type");
+        header.add("Business.sector_type");
+        header.add("Business.sub_sector_type");
 
 
         return header;
@@ -187,7 +198,7 @@ public class CustomerDetailUpdateController {
 
                 ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
                 workbook.write(outputStream);
-                return null;
+                return new ByteArrayInputStream(outputStream.toByteArray());
             }
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -265,6 +276,14 @@ public class CustomerDetailUpdateController {
         header.add("interest_rate");
         header.add("loan_emi");
         header.add("applicant_age_at_maturity");
+        header.add("Business.name_of_business");
+        header.add("Business.nature_of_business");
+        header.add("Business.type_of_constitution");
+        header.add("Business.registration_date");
+        header.add("Business.incorporation_date");
+        header.add("Business.industry_type");
+        header.add("Business.sector_type");
+        header.add("Business.sub_sector_type");
 
 
         return header;

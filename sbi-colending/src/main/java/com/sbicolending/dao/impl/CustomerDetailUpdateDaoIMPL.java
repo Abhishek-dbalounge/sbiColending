@@ -2,6 +2,7 @@ package com.sbicolending.dao.impl;
 
 import com.sbicolending.dao.CustomerDetailUpdateDao;
 import com.sbicolending.exception.SystemException;
+import com.sbicolending.model.updatecustomerdetailsrequest.CustomerDetailUpdateBusinessModel;
 import com.sbicolending.model.updatecustomerdetailsrequest.CustomerDetailUpdateModel;
 import com.sbicolending.utils.DataTypeConversion;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,13 +29,6 @@ public class CustomerDetailUpdateDaoIMPL implements CustomerDetailUpdateDao {
 
         boolean status=false;
         try {
-
-           /* String primary_borrower_type =customerDetailUpdateData.getPrimary_borrower_type();
-            String first_name=customerDetailUpdateData.getFirst_name();
-            String current_address=customerDetailUpdateData.getCurrent_address();
-            String current_state=customerDetailUpdateData.getCurrent_state();
-            Integer number_of_tranches= customerDetailUpdateData.getNumber_of_tranches();
-*/
 
             String primary_borrower_type = customerDetailUpdateData.getPrimary_borrower_type();
             String first_name = customerDetailUpdateData.getFirst_name();
@@ -182,14 +176,30 @@ public class CustomerDetailUpdateDaoIMPL implements CustomerDetailUpdateDao {
             float loan_emi = customerDetailUpdateData.getLoan_emi();
             float applicant_age_at_maturity = customerDetailUpdateData.getApplicant_age_at_maturity();
 
-
-          /*  String sql = "UPDATE public.create_loan SET \n" +
-                    "customer_type_sp = '"+primary_borrower_type+"' ,\n"+
-                    "first_name_ia ='"+first_name+"' ,\n"+
-                    "current_address_ia ='"+current_address+"' ,\n"+
-                    "State_ia='"+current_state+"', \n"+
-                    "number_of_tranches_sp='"+number_of_tranches+"' \n" +
-                    "WHERE lan_sp ='"+lanSp+"' \n";*/
+            //=====Business========
+            CustomerDetailUpdateBusinessModel customerDetailUpdateBusinessModel=  customerDetailUpdateData.getBusiness();
+            String business_name_of_business = customerDetailUpdateBusinessModel.getName_of_business();
+            String business_nature_of_business= customerDetailUpdateBusinessModel.getNature_of_business();
+            String business_type_of_constitution= customerDetailUpdateBusinessModel.getType_of_constitution();
+            Date business_registration_date =null;
+            try {
+                Date registration_date_converter = dataTypeConversion.getDateFromString("yyyy-MM-dd", customerDetailUpdateBusinessModel.getRegistration_date());
+                business_registration_date=registration_date_converter;
+            }catch (Exception e){
+                throw new SystemException("1110","Unparseable date");
+            }
+            Date business_incorporation_date = null;
+            try {
+                Date incorporation_date_converter = dataTypeConversion.getDateFromString("yyyy-MM-dd", customerDetailUpdateBusinessModel.getIncorporation_date());
+                business_incorporation_date=incorporation_date_converter;
+            }catch (Exception e){
+                throw new SystemException("1110","Unparseable date");
+            }
+            String business_industry_type= customerDetailUpdateBusinessModel.getIndustry_type();
+            String business_sector_type= customerDetailUpdateBusinessModel.getSector_type() ;
+            System.out.println("business_sector_type"+business_sector_type);
+            String business_sub_sector_type= customerDetailUpdateBusinessModel.getSub_sector_type();
+            System.out.println("business_sub_sector_type"+business_sub_sector_type);
 
 
             String sql= "UPDATE public.create_loan SET \n" +
@@ -259,7 +269,17 @@ public class CustomerDetailUpdateDaoIMPL implements CustomerDetailUpdateDao {
                     "principal_amount_sp = '"+principal_amount+"' ,\n" +
                     "interest_rate_sp = '"+interest_rate+"' ,\n" +
                     "loan_emi_sp = '"+loan_emi+"' ,\n" +
-                    "applicant_age_at_maturity_ia = '"+applicant_age_at_maturity+"' \n" +
+                    "applicant_age_at_maturity_ia = '"+applicant_age_at_maturity+"', \n" +
+
+                    //=========Bussiness=============================
+                    "name_of_business_nia = '"+business_name_of_business+"' ,\n" +
+                    "nature_of_business_nia = '"+business_nature_of_business+"' ,\n" +
+                    "type_of_constitution_nia = '"+business_type_of_constitution+"' ,\n" +
+                    "registration_date_nia = '"+business_registration_date+"' ,\n" +
+                    "incorporation_date_nia = '"+business_incorporation_date+"' ,\n" +
+                    "industry_type_nia = '"+business_industry_type+"' ,\n" +
+                    "sector_type_nic = '"+business_sector_type+"' ,\n" +
+                    "sub_sector_type_nia = '"+business_sub_sector_type+"' \n" +
                     "WHERE lan_sp ='"+lanSp+"' \n";
 
             int i = jdbcTemplate.update(sql);

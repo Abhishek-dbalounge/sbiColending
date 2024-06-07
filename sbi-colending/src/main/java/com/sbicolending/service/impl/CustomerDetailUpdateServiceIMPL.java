@@ -3,9 +3,10 @@ package com.sbicolending.service.impl;
 import com.sbicolending.dao.CustomerDetailUpdateDao;
 import com.sbicolending.exception.SystemException;
 import com.sbicolending.model.CommonResponseModel;
+import com.sbicolending.model.updatecustomerdetailsrequest.CustomerDetailUpdateBusinessModel;
 import com.sbicolending.model.updatecustomerdetailsrequest.CustomerDetailUpdateModel;
 import com.sbicolending.service.CustomerDetailUpdateService;
-import org.apache.http.client.utils.DateUtils;
+import com.sbicolending.utils.DocumentLinks;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.NumberToTextConverter;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -86,8 +87,10 @@ public class CustomerDetailUpdateServiceIMPL  implements CustomerDetailUpdateSer
     private CommonResponseModel validExcelCustomerDetailsUpload(Sheet sheet, List<String> header,String lanSp) {
 
         CommonResponseModel commonResponseModel = new CommonResponseModel();
-        CustomerDetailUpdateModel customerDetailUpdateData = new CustomerDetailUpdateModel();
         List<CustomerDetailUpdateModel> customerDetailUpdateDataList = new ArrayList<>();
+        CustomerDetailUpdateModel customerDetailUpdateData = new CustomerDetailUpdateModel();
+        CustomerDetailUpdateBusinessModel customerDetailUpdateBusinessData = new CustomerDetailUpdateBusinessModel();
+
 
         try {
 
@@ -158,6 +161,16 @@ public class CustomerDetailUpdateServiceIMPL  implements CustomerDetailUpdateSer
              float interest_rate = 0f;
              float loan_emi = 0f;
              float applicant_age_at_maturity = 0f;
+
+             //========Business=======
+             String name_of_business=null;
+             String nature_of_business=null;
+             String type_of_constitution=null;
+             String registration_date=null;
+             String incorporation_date=null;
+             String industry_type=null;
+             String sector_type=null;
+             String sub_sector_type=null;
 
 
 
@@ -392,6 +405,33 @@ public class CustomerDetailUpdateServiceIMPL  implements CustomerDetailUpdateSer
                                 else if (j == 66)
                                      throw new SystemException("1111","Empty Cell applicant_age_at_maturity Please Check the file Column Number " + j);
 
+
+                                //==================Business===========
+
+                                else if (j == 67)
+                                    throw new SystemException("1111","Empty Cell Business.name_of_business Please Check the file Column Number " + j);
+
+                                else if (j == 68)
+                                    throw new SystemException("1111","Empty Cell Business.nature_of_business Please Check the file Column Number " + j);
+
+                                else if (j == 69)
+                                    throw new SystemException("1111","Empty Cell Business.type_of_constitution Please Check the file Column Number " + j);
+
+                                else if (j == 70)
+                                    throw new SystemException("1111","Empty Cell Business.registration_date Please Check the file Column Number " + j);
+
+                                else if (j == 71)
+                                    throw new SystemException("1111","Empty Cell Business.incorporation_date Please Check the file Column Number " + j);
+
+                                else if (j == 72)
+                                    throw new SystemException("1111","Empty Cell Business.industry_type Please Check the file Column Number " + j);
+
+                                else if (j == 73)
+                                    throw new SystemException("1111","Empty Cell Business.sector_type Please Check the file Column Number " + j);
+
+                                else if (j == 74)
+                                    throw new SystemException("1111","Empty Cell Business.sub_sector_type Please Check the file Column Number " + j);
+
                                 break;
 
                             case NUMERIC:
@@ -596,6 +636,33 @@ public class CustomerDetailUpdateServiceIMPL  implements CustomerDetailUpdateSer
 
                                 else if (j == 66)
                                 applicant_age_at_maturity = (float) cell.getNumericCellValue();
+
+                                //Business==========
+
+                                else if (j == 67)
+                                name_of_business =  NumberToTextConverter.toText(cell.getNumericCellValue());
+
+                                else if (j == 68)
+                                nature_of_business =  NumberToTextConverter.toText(cell.getNumericCellValue());
+
+                                else if (j == 69)
+                                type_of_constitution = NumberToTextConverter.toText(cell.getNumericCellValue());
+
+                                else if (j == 70)
+                                registration_date = NumberToTextConverter.toText(cell.getNumericCellValue());
+
+                                else if (j == 71)
+                                incorporation_date = NumberToTextConverter.toText(cell.getNumericCellValue());
+
+                                else if (j == 72)
+                                industry_type = NumberToTextConverter.toText(cell.getNumericCellValue());
+
+                                else if (j == 73)
+                                sector_type = NumberToTextConverter.toText(cell.getNumericCellValue());
+
+                                else if (j == 74)
+                                sub_sector_type = NumberToTextConverter.toText(cell.getNumericCellValue());
+
 
                                 break;
 
@@ -802,6 +869,32 @@ public class CustomerDetailUpdateServiceIMPL  implements CustomerDetailUpdateSer
                                 else if (j == 66)
                                     applicant_age_at_maturity =  Float.parseFloat(cell.getStringCellValue());
 
+                                //==Business=======
+
+                                else if (j == 67)
+                                name_of_business =  cell.getStringCellValue();
+
+                                else if (j == 68)
+                                nature_of_business =  cell.getStringCellValue();
+
+                                else if (j == 69)
+                                type_of_constitution = cell.getStringCellValue();
+
+                                else if (j == 70)
+                                registration_date =  cell.getStringCellValue();
+
+                                else if (j == 71)
+                                incorporation_date =  cell.getStringCellValue();
+
+                                else if (j == 72)
+                                industry_type =  cell.getStringCellValue();
+
+                                else if (j == 73)
+                                sector_type =  cell.getStringCellValue();
+
+                                else if (j == 74)
+                                sub_sector_type =  cell.getStringCellValue();
+
                                 break;
 
                             default:
@@ -882,6 +975,18 @@ public class CustomerDetailUpdateServiceIMPL  implements CustomerDetailUpdateSer
                     customerDetailUpdate.setInterest_rate(interest_rate);
                     customerDetailUpdate.setLoan_emi(loan_emi);
                     customerDetailUpdate.setApplicant_age_at_maturity(applicant_age_at_maturity);
+
+                    //==Business==========
+                    customerDetailUpdateBusinessData.setName_of_business(name_of_business);
+                    customerDetailUpdateBusinessData.setNature_of_business(nature_of_business);
+                    customerDetailUpdateBusinessData.setType_of_constitution(type_of_constitution);
+                    customerDetailUpdateBusinessData.setRegistration_date(registration_date);
+                    customerDetailUpdateBusinessData.setIncorporation_date(incorporation_date);
+                    customerDetailUpdateBusinessData.setIndustry_type(industry_type);
+                    customerDetailUpdateBusinessData.setSector_type(sector_type);
+                    customerDetailUpdateBusinessData.setSub_sector_type(sub_sector_type);
+                    customerDetailUpdate.setBusiness(customerDetailUpdateBusinessData);
+
 
                     customerDetailUpdateDataList.add(customerDetailUpdate);
                     customerDetailUpdateData = customerDetailUpdateDataList.get(0);
